@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">FinderX_MAD</string>
+    <string name="app_name">FinderX</string>
+
+    <string-array name="userlist">
+        <item>Student</item>
+        <item>Lecturer</item>
+    </string-array>
 </resources>
