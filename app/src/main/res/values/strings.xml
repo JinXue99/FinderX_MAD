@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FinderX</string>
+
+    <string-array name="userlist">
+        <item>Student</item>
+        <item>Lecturer</item>
+    </string-array>
+</resources>
