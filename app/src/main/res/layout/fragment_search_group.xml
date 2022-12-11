@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/CLayoutSearch"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchGroup">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/IVBackgroud"
+        android:layout_width="527dp"
+        android:layout_height="875dp"
+        android:layout_marginStart="-67dp"
+        android:src="@drawable/backgroudimage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ETSearchBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="160dp"
+        android:background="@color/material_dynamic_neutral_variant90"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:text="Search teams"
+        android:textColor="#A8000000"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/IBSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="-210dp"
+        android:background="@color/purple_200"
+        android:backgroundTint="#D0CFFE"
+        android:src="@drawable/searchbutton"
+        app:layout_constraintBottom_toTopOf="@+id/IVBackgroud"
+        app:layout_constraintStart_toEndOf="@+id/ETSearchBar" />
+
+    <ImageButton
+        android:id="@+id/IBCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="-47dp"
+        android:background="@color/purple_200"
+        android:backgroundTint="#D0CFFE"
+        android:src="@drawable/createbutton"
+        app:layout_constraintStart_toEndOf="@id/IBSearch"
+        app:layout_constraintTop_toBottomOf="@id/ETSearchBar" />
+
+    <ImageView
+        android:id="@+id/IVGroupInfo2"
+        android:layout_width="307dp"
+        android:layout_height="143dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="-400dp"
+        android:src="@drawable/groupinfo2"
+        app:layout_constraintEnd_toStartOf="@+id/IVBackgroud"
+        app:layout_constraintTop_toBottomOf="@id/IBSearch" />
+
+    <ImageView
+        android:id="@+id/IVGroupInfo"
+        android:layout_width="307dp"
+        android:layout_height="143dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="-400dp"
+        android:src="@drawable/groupinfo"
+        app:layout_constraintEnd_toStartOf="@+id/IVBackgroud"
+        app:layout_constraintTop_toBottomOf="@id/IBSearch" />
+
+    <ImageView
+        android:id="@+id/IVGroupInfo3"
+        android:layout_width="307dp"
+        android:layout_height="143dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginEnd="-400dp"
+        android:src="@drawable/groupinfo3"
+        app:layout_constraintEnd_toStartOf="@id/IVBackgroud"
+        app:layout_constraintTop_toBottomOf="@id/IBSearch" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
