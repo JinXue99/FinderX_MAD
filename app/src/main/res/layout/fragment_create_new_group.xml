@@ -202,7 +202,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginEnd="40dp"
         android:backgroundTint="#C2716EE7"
-        android:text="Invite & Publish"
+        android:text="Invite and Publish"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -230,7 +230,7 @@
         android:layout_marginTop="15dp"
         android:backgroundTint="#D1D0FF"
         android:contentDescription="@string/hello_blank_fragment"
-        android:src="@drawable/backbutton"
+         android:src="@drawable/backbutton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

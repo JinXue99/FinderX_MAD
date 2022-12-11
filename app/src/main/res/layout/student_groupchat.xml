@@ -10,12 +10,24 @@
         android:id="@+id/ivheader"
         android:layout_width="215dp"
         android:layout_height="218dp"
-        android:layout_marginBottom="632dp"
+        android:layout_marginBottom="684dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/headerlogo" />
+
+    <ImageView
+        android:id="@+id/ivAcc"
+        android:layout_width="47dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintStart_toEndOf="@+id/ivheader"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_account_icon" />
+
     <TextView
         android:id="@+id/tvSearchCourse"
         android:layout_width="280dp"
@@ -101,16 +113,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn2003" />
 
-    <ImageView
-        android:id="@+id/ivAcc"
-        android:layout_width="47dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.895"
-        app:layout_constraintStart_toEndOf="@+id/ivheader"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_account_icon" />
 
     <ImageView
         android:id="@+id/ivSearch"
