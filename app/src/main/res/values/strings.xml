@@ -5,4 +5,15 @@
         <item>Student</item>
         <item>Lecturer</item>
     </string-array>
+
+    <string-array name="lecturerName">
+        <item>Dr Hafizah</item>
+        <item>Dr Tey Kok Soon</item>
+    </string-array>
+
+    <string-array name="TaskContent">
+        <item>Task 1</item>
+        <item>Assignment</item>
+    </string-array>
+
 </resources>
