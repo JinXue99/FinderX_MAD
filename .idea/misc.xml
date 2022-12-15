@@ -3,14 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/drawable-v24/custom_input.xml" value="0.1715" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/drawable-v24/ic_email.xml" value="0.1715" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/drawable-v24/unselected.xml" value="0.188" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/drawable/custom_input_teacher_task.xml" value="0.1715" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/drawable/gradient_circle_student.xml" value="0.104" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/drawable/gradient_studentbackground.xml" value="0.104" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/drawable/gradient_teacherbackground.xml" value="0.104" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/drawable/ic_account_icon.xml" value="0.104" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/drawable/ic_account_icon_teacher.xml" value="0.104" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/drawable/ic_calendar.xml" value="0.1715" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/drawable/round_button.xml" value="0.187" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/activity_main.xml" value="0.14444444444444443" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/activity_slide.xml" value="0.14444444444444443" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/activity_student_profile.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/activity_teacher_profile.xml" value="0.14743589743589744" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/content_teacher_course.xml" value="0.14743589743589744" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_create_new_group.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_first.xml" value="0.14743589743589744" />
@@ -21,7 +28,11 @@
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/student_course.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/student_groupchat.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/student_mainpage.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/task_view.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/teacher_add_new_task.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/teacher_add_task.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/teacher_course.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/teacher_view_task.xml" value="0.22" />
       </map>
     </option>
   </component>
