@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/my_announcement_row.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/student_announcement.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/task_view.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/task_view2.xml" value="0.22" />
-        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/teacher_view_task.xml" value="0.13148148148148148" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/task_view_for_student.xml" value="0.22" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/task_view_for_teacher.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/teacher_view_task.xml" value="0.14666666666666667" />
       </map>
     </option>
   </component>

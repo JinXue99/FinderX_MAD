@@ -19,7 +19,7 @@ public class announcementActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_announcement);
 
-        recyclerView= findViewById(R.id.AnnouncementView);
+//        recyclerView= findViewById(R.id.AnnouncementView);
 
         s1 = getResources().getStringArray(R.array.lecturerName);
         s2 = getResources().getStringArray(R.array.TaskContent);

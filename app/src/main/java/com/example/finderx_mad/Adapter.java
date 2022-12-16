@@ -35,9 +35,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         String date = taskModels.get(position).getTaskDate();
         String time = taskModels.get(position).getTaskTime();
 
-        holder.nTitle.setText(title);
-        holder.nDate.setText(date);
-        holder.nTime.setText(time);
+        holder.tvTaskTitle.setText(title);
+        holder.tvDate.setText(date);
+        holder.tvTime.setText(time);
 
     }
 
@@ -47,13 +47,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView nTitle, nDate, nTime;
+        TextView tvTaskTitle, tvDate, tvTime;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            nTitle = itemView.findViewById(R.id.nTitle);
-            nTime = itemView.findViewById(R.id.nTime);
-            nDate = itemView.findViewById(R.id.nDate);
+            tvTaskTitle = itemView.findViewById(R.id.tvTaskTitle);
+            tvDate = itemView.findViewById(R.id.tvDate);
+            tvTime = itemView.findViewById(R.id.tvTime);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
