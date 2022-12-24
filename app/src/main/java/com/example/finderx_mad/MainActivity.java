@@ -1,17 +1,27 @@
 package com.example.finderx_mad;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.finderx_mad.R.array;
+import com.example.finderx_mad.R.id;
+import com.example.finderx_mad.R.layout;
+import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(layout.activity_main);
 
 //        ArrayList<String> users = new ArrayList<>();
 //        users.add("Student");
@@ -23,15 +33,30 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Spinner spinner = findViewById(R.id.sUser);
+        Spinner spinner = findViewById(id.sUser);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
-                R.layout.custom_spinner,
-                getResources().getStringArray(R.array.userlist)
+                layout.custom_spinner,
+                getResources().getStringArray(array.userlist)
 
         );
-        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown);
+        adapter.setDropDownViewResource(layout.custom_spinner_dropdown);
         spinner.setAdapter(adapter);
-    }
-}
+
+
+    TextView username = findViewById(id.etUsernameEmail);
+    TextView password = findViewById(id.etPassword);
+
+    final Button loginbtn = findViewById(id.btnLogin);
+    loginbtn.setOnClickListener(new View.OnClickListener() {
+
+        @Override
+        public void onClick(View view) {
+            if (username.getText().toString().equals("admin") && password.getText().toString().equals("1234")) {
+                Toast.makeText(MainActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+            } else
+                Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+        }
+    })
+    ;}}

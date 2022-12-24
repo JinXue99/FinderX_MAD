@@ -77,14 +77,14 @@
 
     <Spinner
         android:id="@+id/sUser"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/tvPleaseSelect"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toEndOf="@+id/tvPleaseSelect"
         app:layout_constraintTop_toTopOf="@+id/tvPleaseSelect"
-        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+        android:layout_width="wrap_content" />
 
     <TextView
         android:id="@+id/tvPleaseSelect"
