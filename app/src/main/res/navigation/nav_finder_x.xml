@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_finder_x"
+    app:startDestination="@id/DestLogin">
+    <fragment
+        android:id="@+id/DestLogin"
+        android:name="com.example.finderx_mad.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_DestLogin_to_DestStudentMainPage3"
+            app:destination="@id/DestStudentMainPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/DestStudentProfile"
+        android:name="com.example.finderx_mad.StudentProfileFragment"
+        android:label="fragment_student_profile"
+        tools:layout="@layout/fragment_student_profile" />
+    <fragment
+        android:id="@+id/DestStudentCourse"
+        android:name="com.example.finderx_mad.StudentCourseFragment"
+        android:label="fragment_student_course"
+        tools:layout="@layout/fragment_student_course" />
+    <fragment
+        android:id="@+id/DestStudentGroupChat"
+        android:name="com.example.finderx_mad.StudentGroupChatFragment"
+        android:label="fragment_student_group_chat"
+        tools:layout="@layout/fragment_student_group_chat" />
+    <fragment
+        android:id="@+id/DestStudentMainPage"
+        android:name="com.example.finderx_mad.StudentMainPageFragment"
+        android:label="fragment_student_main_page"
+        tools:layout="@layout/fragment_student_main_page" >
+        <action
+            android:id="@+id/action_DestStudentMainPage_to_DestStudentProfile"
+            app:destination="@id/DestStudentProfile" />
+        <action
+            android:id="@+id/action_DestStudentMainPage_to_DestStudentCourse"
+            app:destination="@id/DestStudentCourse" />
+        <action
+            android:id="@+id/action_DestStudentMainPage_to_DestStudentGroupChat"
+            app:destination="@id/DestStudentGroupChat" />
+        <action
+            android:id="@+id/action_DestStudentMainPage_to_DestStudentAnnouncement"
+            app:destination="@id/DestStudentAnnouncement" />
+        <action
+            android:id="@+id/action_DestStudentMainPage_to_studentViewRequestFragment"
+            app:destination="@id/DestStudentViewRequest" />
+    </fragment>
+    <fragment
+        android:id="@+id/DestStudentAnnouncement"
+        android:name="com.example.finderx_mad.StudentAnnouncementFragment"
+        android:label="fragment_student_announcement"
+        tools:layout="@layout/fragment_student_announcement" />
+    <fragment
+        android:id="@+id/DestStudentViewRequest"
+        android:name="com.example.finderx_mad.StudentViewRequestFragment"
+        android:label="fragment_student_view_request"
+        tools:layout="@layout/fragment_student_view_request" />
+</navigation>
