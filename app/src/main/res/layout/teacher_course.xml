@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_studentbackground">
+    android:background="@drawable/gradient_teacherbackground">
 
     <ImageView
         android:id="@+id/ivheader"
@@ -18,6 +18,17 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/headerlogo" />
 
+    <TextView
+        android:id="@+id/tvSearchCourse"
+        android:layout_width="280dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="160dp"
+        android:background="#91B0B2"
+        android:text="Search Task"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/ivAcc"
         android:layout_width="47dp"
@@ -28,6 +39,17 @@
         app:layout_constraintStart_toEndOf="@+id/ivheader"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_account_icon_teacher" />
+
+    <ImageView
+        android:id="@+id/ivSearch"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSearchCourse"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+        app:layout_constraintStart_toEndOf="@+id/tvSearchCourse"
+        app:layout_constraintTop_toTopOf="@+id/tvSearchCourse"
+        app:srcCompat="@drawable/ic_baseline_search_24" />
+
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -60,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="167dp" />
+        app:layout_constraintGuide_begin="232dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineDown"
@@ -68,7 +90,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="852dp" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
