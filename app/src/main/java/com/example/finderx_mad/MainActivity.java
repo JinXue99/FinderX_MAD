@@ -1,15 +1,23 @@
 package com.example.finderx_mad;
 
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+import android.os.Bundle;
+
+import android.view.Menu;
+import android.view.MenuItem;
+
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 import com.example.finderx_mad.R.array;
 import com.example.finderx_mad.R.id;
@@ -17,46 +25,69 @@ import com.example.finderx_mad.R.layout;
 import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {
-
+    private ActionBarDrawerToggle toggle;
+    private DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(layout.activity_main);
 
-//        ArrayList<String> users = new ArrayList<>();
-//        users.add("Student");
-//        users.add("Lecturer");
-
-//        R.layout.custom_spinner
-//        android.R.layout.simple_spinner_dropdown_item,
-//        adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown);
-
-
-
-        Spinner spinner = findViewById(id.sUser);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this,
-                layout.custom_spinner,
-                getResources().getStringArray(array.userlist)
-
-        );
-        adapter.setDropDownViewResource(layout.custom_spinner_dropdown);
-        spinner.setAdapter(adapter);
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.TBMainAct);
+        setSupportActionBar(toolbar);
+        drawerLayout = findViewById(R.id.DLMain);
+        toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        NavHostFragment host = (NavHostFragment)
+                getSupportFragmentManager().findFragmentById(R.id.NHFMain);
+        NavController navController = host.getNavController();
+        AppBarConfiguration appBarConfiguration = new
+                AppBarConfiguration.Builder(navController.getGraph()).build();
+        NavigationUI.setupActionBarWithNavController(this,
+                navController, appBarConfiguration);
+//        setupBottomNavMenu(navController);
+        setupNavMenu(navController);
+    }
 
 
-    TextView username = findViewById(id.etUsernameEmail);
-    TextView password = findViewById(id.etPassword);
+//    public void setupBottomNavMenu(NavController navController) {
+//
+//        BottomNavigationView bottomNav = findViewById(R.id.bottom_nav_view);
+//
+//        NavigationUI.setupWithNavController(bottomNav, navController, false);
+//
+//    }
 
-    final Button loginbtn = findViewById(id.btnLogin);
-    loginbtn.setOnClickListener(new View.OnClickListener() {
+    private void setupNavMenu(NavController navController){
 
-        @Override
-        public void onClick(View view) {
-            if (username.getText().toString().equals("admin") && password.getText().toString().equals("1234")) {
-                Toast.makeText(MainActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-            } else
-                Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+        NavigationView sideNav = findViewById(R.id.sideNav);
+
+        NavigationUI.setupWithNavController(sideNav, navController, false);
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_bottom, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        try {
+            Navigation.findNavController(this,
+                    R.id.NHFMain).navigate(item.getItemId());
+            return true;
         }
-    })
-    ;}}
+        catch (Exception ex)
+        {
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+}
+

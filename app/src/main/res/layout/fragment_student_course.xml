@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".StudentCourseFragment"
     android:background="@drawable/gradient_studentbackground">
 
+    <!-- TODO: Update blank fragment layout -->
     <ImageView
         android:id="@+id/ivheader"
         android:layout_width="199dp"
@@ -25,7 +27,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="160dp"
         android:background="#B8B7FF"
-        android:text="Search Task"
+        android:text="Search Course"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,75 +93,4 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="852dp" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-<!--<Button-->
-<!--android:id="@+id/btn2007"-->
-<!--android:layout_width="280dp"-->
-<!--android:layout_height="75dp"-->
-<!--android:layout_marginTop="30dp"-->
-<!--android:backgroundTint="#9F9DFF"-->
-<!--android:fontFamily="@font/poppins_semibold"-->
-<!--android:text="WIA2007"-->
-<!--android:textAllCaps="false"-->
-<!--android:textColor="#000000"-->
-<!--android:textSize="20sp"-->
-<!--android:textStyle="bold"-->
-<!--app:layout_constraintEnd_toEndOf="parent"-->
-<!--app:layout_constraintHorizontal_bias="0.287"-->
-<!--app:layout_constraintStart_toStartOf="parent"-->
-<!--app:layout_constraintTop_toBottomOf="@+id/tvSearchCourse" />-->
-
-<!--<Button-->
-<!--android:id="@+id/btn2006"-->
-<!--android:layout_width="280dp"-->
-<!--android:layout_height="75dp"-->
-<!--android:layout_marginStart="10dp"-->
-<!--android:layout_marginTop="24dp"-->
-<!--android:backgroundTint="#9F9DFF"-->
-<!--android:fontFamily="@font/poppins_semibold"-->
-<!--android:text="WIA2006"-->
-<!--android:textAllCaps="false"-->
-<!--android:textColor="#000000"-->
-<!--android:textSize="20sp"-->
-<!--android:textStyle="bold"-->
-<!--app:layout_constraintEnd_toEndOf="parent"-->
-<!--app:layout_constraintHorizontal_bias="0.185"-->
-<!--app:layout_constraintStart_toStartOf="parent"-->
-<!--app:layout_constraintTop_toBottomOf="@+id/btn2007" />-->
-
-<!--<Button-->
-<!--android:id="@+id/btn2003"-->
-<!--android:layout_width="280dp"-->
-<!--android:layout_height="75dp"-->
-<!--android:layout_marginStart="10dp"-->
-<!--android:layout_marginTop="24dp"-->
-<!--android:backgroundTint="#9F9DFF"-->
-<!--android:fontFamily="@font/poppins_semibold"-->
-<!--android:text="WIA2003"-->
-<!--android:textAllCaps="false"-->
-<!--android:textColor="#000000"-->
-<!--android:textSize="20sp"-->
-<!--android:textStyle="bold"-->
-<!--app:layout_constraintEnd_toEndOf="parent"-->
-<!--app:layout_constraintHorizontal_bias="0.185"-->
-<!--app:layout_constraintStart_toStartOf="parent"-->
-<!--app:layout_constraintTop_toBottomOf="@+id/btn2006" />-->
-
-<!--<Button-->
-<!--android:id="@+id/btn2001"-->
-<!--android:layout_width="280dp"-->
-<!--android:layout_height="75dp"-->
-<!--android:layout_marginTop="24dp"-->
-<!--android:backgroundTint="#9F9DFF"-->
-<!--android:fontFamily="@font/poppins_semibold"-->
-<!--android:text="WIA2001"-->
-<!--android:textAllCaps="false"-->
-<!--android:textColor="#000000"-->
-<!--android:textSize="20sp"-->
-<!--android:textStyle="bold"-->
-<!--app:layout_constraintEnd_toEndOf="parent"-->
-<!--app:layout_constraintHorizontal_bias="0.256"-->
-<!--app:layout_constraintStart_toStartOf="parent"-->
-<!--app:layout_constraintTop_toBottomOf="@+id/btn2003" />-->

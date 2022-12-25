@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/SideNavMain">
+        <item
+            android:id="@+id/DestStudentMainPage"
+            android:title="Home"
+            android:icon="@drawable/ic_home"/>
+        <item
+            android:id="@+id/DestStudentCourse"
+            android:title="Course"
+            android:icon="@drawable/ic_book"/>
+        <item
+            android:id="@+id/DestStudentGroupChat"
+            android:title="Group Chat"
+            android:icon="@drawable/ic_group"/>
+        <item
+            android:id="@+id/DestStudentAnnouncement"
+            android:title="Announcement"
+            android:icon="@drawable/ic_announcement"/>
+        <item
+            android:id="@+id/DestStudentViewRequest"
+            android:title="View Request"
+            android:icon="@drawable/ic_request"/>
+    </group>
+    <group android:id="@+id/SideNavOthers">
+        <item
+            android:id="@+id/DestStudentProfile"
+            android:title="Profile"
+            android:icon="@drawable/ic_person"/>
+        <item android:title="Logout"
+            android:icon="@drawable/ic_logout"/>
+    </group>
+</menu>
