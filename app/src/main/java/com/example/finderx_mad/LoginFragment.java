@@ -12,8 +12,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -22,6 +24,9 @@ import android.widget.Toast;
  * create an instance of this fragment.
  */
 public class LoginFragment extends Fragment {
+
+    EditText etUsernameEmail,etPassword;
+    Button btnLogin;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,13 +62,21 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+       /*             TextView username = findViewById(R.id.etUsernameEmail);
+                    TextView password = findViewById(R.id.etPassword);
 
+                    final Button loginbtn = findViewById(R.id.btnLogin);
 
-    }
+                    loginbtn.setOnClickListener(new View.OnClickListener()) {
+                        @Override
+                        public void onClick(View view) {
+                            if (username.getText().toString().equals("admin") && password.getText().toString().equals("1234")) {
+                                Toast.makeText(LoginFragment.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                            } else
+                                Toast.makeText(LoginFragment.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                        }*/
+    };
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -131,9 +144,27 @@ public class LoginFragment extends Fragment {
         View.OnClickListener OCLLogin = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String UsernameEmail = etUsernameEmail.getText().toString();
+                String Password = etPassword.getText().toString();
+                //String confPass = //connect database
+
+                if(UsernameEmail.isEmpty()){
+                    etUsernameEmail.setError("Username or Email is required");
+                    return;
+                }
+                if(Password.isEmpty()){
+                    etPassword.setError("Password is required");
+                    return;
+                }
+                /*if(!Password.equals(confPass)){
+                    etPassword.setError("Password do not match!");
+                }*/
+
+
+                Toast.makeText(getActivity(),"Login Successfully",Toast.LENGTH_SHORT).show();
+
                 //Navigate to Student Main Page Fragment
                 Navigation.findNavController(view).navigate(R.id.DestStudentMainPage);
-
 
             }
         };
