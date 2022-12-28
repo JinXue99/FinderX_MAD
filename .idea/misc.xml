@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/course_view_for_teacher.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/custom_spinner.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_login.xml" value="0.14743589743589744" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_profile.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_add_new_task.xml" value="0.14743589743589744" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_choice.xml" value="0.14743589743589744" />
@@ -14,6 +16,7 @@
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_view_task.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/group_chat_view_for_student.xml" value="0.14743589743589744" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/group_view_for_teacher.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/nav_header.xml" value="0.14743589743589744" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/occ_view_for_teacher.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/task_view_for_teacher.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/teacher_add_new_task.xml" value="0.12962962962962962" />

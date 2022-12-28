@@ -4,11 +4,13 @@
     android:id="@android:id/text1"
     style="?attr/spinnerDropDownItemStyle"
     android:singleLine="true"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="100dp"
+    android:layout_height="40dp"
     android:ellipsize="marquee"
     android:textColor="@color/black"
+    android:textSize="20sp"
     android:background="@color/white"
     android:textAlignment="center"
-    android:fontFamily="sans-serif"/>
+    android:fontFamily="sans-serif"
+    android:gravity="center"/>
 

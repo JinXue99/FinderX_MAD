@@ -98,6 +98,7 @@ public class LoginFragment extends Fragment {
                     //Navigate to Student Main Page Fragment
                     Navigation.findNavController(view).navigate(R.id.DestStudentMainPage);
                 }else if(user.equals("Lecturer")){
+                    //Navigate to Teacher Course Page Fragment
                     Navigation.findNavController(view).navigate(R.id.DestTeacherCourse);
                 }
 
