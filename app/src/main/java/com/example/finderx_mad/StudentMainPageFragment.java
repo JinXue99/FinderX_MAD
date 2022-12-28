@@ -64,42 +64,6 @@ public class StudentMainPageFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
-//        Button btnCourse = view.findViewById(R.id.btnCourse);
-//        View.OnClickListener OCLCourse = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Navigation.findNavController(view).navigate(R.id.DestStudentCourse);
-//            }
-//        };
-//        btnCourse.setOnClickListener(OCLCourse);
-//
-//        Button btnGroupChat = view.findViewById(R.id.btnGroupChat);
-//        View.OnClickListener OCLGroupChat = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Navigation.findNavController(view).navigate(R.id.DestStudentGroupChat);
-//            }
-//        };
-//        btnGroupChat.setOnClickListener(OCLGroupChat);
-//
-//        Button btnAnnouncement = view.findViewById(R.id.btnAnnouncement);
-//        View.OnClickListener OCLAnnouncement = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Navigation.findNavController(view).navigate(R.id.DestStudentAnnouncement);
-//            }
-//        };
-//        btnAnnouncement.setOnClickListener(OCLAnnouncement);
-//
-//        Button btnViewRequest = view.findViewById(R.id.btnViewRequest);
-//        View.OnClickListener OCLViewRequest = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Navigation.findNavController(view).navigate(R.id.DestStudentViewRequest);
-//            }
-//        };
-//        btnViewRequest.setOnClickListener(OCLViewRequest);
-
 
         ImageView ivAcc = view.findViewById(R.id.ivAcc);
         View.OnClickListener OCLAcc = new View.OnClickListener() {

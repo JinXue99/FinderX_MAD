@@ -76,6 +76,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
         Spinner spinner = view.findViewById(R.id.sUser);
+        Button btnLogin;
 
 
         ArrayAdapter adapter = new ArrayAdapter<>(
@@ -87,52 +88,19 @@ public class LoginFragment extends Fragment {
         adapter.setDropDownViewResource(R.layout.custom_spinner_dropdown);
         spinner.setAdapter(adapter);
 
-
-        //Set an OnItemSelectedListener
-//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                String user = adapterView.getItemAtPosition(i).toString();
-//                if(user.equals("Student") || user.equals("Teacher")){
-//                    //Enable the login button
-//                    Button btnLogin = view.findViewById(R.id.btnLogin);
-//                    btnLogin.setEnabled(true);
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
-
-//        //Set and OnClickListener on the login button
-//        Button btnLogin = view.findViewById(R.id.btnLogin);
-//        View.OnClickListener OCLLogin = new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                //Get the selected user from the spinner
-//                Spinner spinner = view.findViewById(R.id.sUser);
-//                String user = spinner.getSelectedItem().toString();
-//                if(user.equals("Student")){
-//                    //Navigate to Student Main Page Fragment
-//                    Navigation.findNavController(view).navigate(R.id.DestStudentMainPage);
-//                }else if(user.equals("Teacher")){
-
-//                }
-//
-//            }
-//        };
-//        btnLogin.setOnClickListener(OCLLogin);
-
-
         //Set and OnClickListener on the login button
-        Button btnLogin = view.findViewById(R.id.btnLogin);
+        btnLogin = view.findViewById(R.id.btnLogin);
         View.OnClickListener OCLLogin = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Navigate to Student Main Page Fragment
-                Navigation.findNavController(view).navigate(R.id.DestStudentMainPage);
+                String user = spinner.getSelectedItem().toString();
+                if(user.equals("Student")){
+                    //Navigate to Student Main Page Fragment
+                    Navigation.findNavController(view).navigate(R.id.DestStudentMainPage);
+                }else if(user.equals("Lecturer")){
+                    Navigation.findNavController(view).navigate(R.id.DestTeacherCourse);
+                }
+
 
 
             }
