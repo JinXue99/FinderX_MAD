@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/course_view_for_teacher.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_profile.xml" value="0.12962962962962962" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_add_new_task.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_choice.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_course.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_occ.xml" value="0.11851851851851852" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_profile.xml" value="0.12962962962962962" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_view_group.xml" value="0.12962962962962962" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_view_task.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/group_chat_view_for_student.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/group_view_for_teacher.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/occ_view_for_teacher.xml" value="0.12962962962962962" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/task_view_for_teacher.xml" value="0.12962962962962962" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/teacher_add_new_task.xml" value="0.12962962962962962" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>
