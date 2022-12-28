@@ -39,17 +39,9 @@ public class MainActivity extends AppCompatActivity {
                 AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this,
                 navController, appBarConfiguration);
-//        setupBottomNavMenu(navController);
+
         setupNavMenu(navController);
     }
-
-//    public void setupBottomNavMenu(NavController navController) {
-//
-//        BottomNavigationView bottomNav = findViewById(R.id.bottom_nav_view);
-//
-//        NavigationUI.setupWithNavController(bottomNav, navController, false);
-//
-//    }
 
     private void setupNavMenu(NavController navController){
 
@@ -57,12 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationUI.setupWithNavController(sideNav, navController, false);
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_bottom, menu);
-        return true;
     }
 
     @Override
