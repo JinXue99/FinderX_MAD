@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_studentbackground"
+    tools:context=".StudentJoinGroupFragment">
+
+
+    <ImageView
+        android:id="@+id/ivGroupProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Team 1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivGroupProfile" />
+
+    <TextView
+        android:id="@+id/tvNumPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="People(4)"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTeamName" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvCourse"
+        android:layout_width="319dp"
+        android:layout_height="450dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FFFFFF"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNumPeople">
+
+        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:elevation="5dp"-->
+        <!--            android:padding="5dp">-->
+
+        <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--                android:id="@+id/constraintLayout"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent">-->
+
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/textView"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:fontFamily="@font/poppins_semibold"-->
+        <!--                    android:text="Course"-->
+        <!--                    android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+        <!--                    android:textStyle="bold"-->
+        <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                    app:layout_constraintStart_toStartOf="parent"-->
+        <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--                <ImageView-->
+        <!--                    android:id="@+id/imageView4"-->
+        <!--                    android:layout_width="40dp"-->
+        <!--                    android:layout_height="37dp"-->
+        <!--                    android:layout_marginEnd="10dp"-->
+        <!--                    android:src="@drawable/right_arrow"-->
+        <!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                    app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnJoinGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#514FE1"
+        android:fontFamily="sans-serif"
+        android:text="Join this Group"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:cornerRadius="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvCourse" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/addRecycleView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineDown"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineUp"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="49dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="344dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="349dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="705dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

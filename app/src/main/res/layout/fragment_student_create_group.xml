@@ -222,15 +222,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
-    <ImageButton
-        android:id="@+id/IBBack"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:backgroundTint="#D1D0FF"
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

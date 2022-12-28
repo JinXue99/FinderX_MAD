@@ -1,18 +1,19 @@
 package com.example.finderx_mad;
 
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.fragment.app.Fragment;
-
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SearchGroup#newInstance} factory method to
+ * Use the {@link StudentJoinGroupFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class SearchGroup extends Fragment {
+public class StudentJoinGroupFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,7 +24,7 @@ public class SearchGroup extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public SearchGroup() {
+    public StudentJoinGroupFragment() {
         // Required empty public constructor
     }
 
@@ -33,11 +34,11 @@ public class SearchGroup extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment SearchGroup.
+     * @return A new instance of fragment StudentJoinGroupFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SearchGroup newInstance(String param1, String param2) {
-        SearchGroup fragment = new SearchGroup();
+    public static StudentJoinGroupFragment newInstance(String param1, String param2) {
+        StudentJoinGroupFragment fragment = new StudentJoinGroupFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -58,6 +59,6 @@ public class SearchGroup extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_student_search_group, container, false);
+        return inflater.inflate(R.layout.fragment_student_join_group, container, false);
     }
 }
