@@ -58,6 +58,6 @@ public class CreateNewGroup extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_new_group, container, false);
+        return inflater.inflate(R.layout.fragment_student_create_group, container, false);
     }
 }

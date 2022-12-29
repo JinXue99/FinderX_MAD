@@ -58,6 +58,6 @@ public class SearchGroup extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search_group, container, false);
+        return inflater.inflate(R.layout.fragment_student_search_group, container, false);
     }
 }
