@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "648967939869",
+    "project_id": "finderx-6cd15",
+    "storage_bucket": "finderx-6cd15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648967939869:android:f64acc9541de569eeba3f4",
+        "android_client_info": {
+          "package_name": "com.example.finderx_mad"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648967939869-m8ob4el2vtajn9fha4qtmu097qnut9pf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.finderx_mad",
+            "certificate_hash": "8e68932076bcf1f46d480229f4cfa13fbd8216c5"
+          }
+        },
+        {
+          "client_id": "648967939869-9o82ba0ctm2furuiir0783vt9pusan65.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLg7L7JoY_1ym-uKf6-JwyjXe-MaaL_3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648967939869-9o82ba0ctm2furuiir0783vt9pusan65.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

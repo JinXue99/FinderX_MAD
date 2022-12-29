@@ -9,14 +9,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Login extends AppCompatActivity {
+    EditText etUsernameEmail, etPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        etUsernameEmail = findViewById(R.id.etUsernameEmail);
+        etPassword = findViewById(R.id.etPassword);
 
 //        ArrayList<String> users = new ArrayList<>();
 //        users.add("Student");
@@ -45,5 +52,14 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    //Automatically Login to the Student Main Page
+    @Override
+    public void onStart() {
+        super.onStart();
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
+            startActivity(new Intent(getApplicationContext(),StudentMainPageFragment.class));
+            finish();
+        }
     }
 }
