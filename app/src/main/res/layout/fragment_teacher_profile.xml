@@ -88,7 +88,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/TVTeacherTele"
+            android:id="@+id/TVTeacherPhone"
             android:layout_width="match_parent"
             android:layout_height="99dp"
             android:gravity="center"
@@ -97,7 +97,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/TVTeacherGmail"
+            android:id="@+id/TVTeacherEmail"
             android:layout_width="match_parent"
             android:layout_height="99dp"
             android:gravity="center"
