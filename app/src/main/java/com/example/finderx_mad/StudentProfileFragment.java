@@ -1,6 +1,6 @@
 package com.example.finderx_mad;
 
-import android.content.Intent;
+import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,12 +11,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -90,19 +94,27 @@ public class StudentProfileFragment extends Fragment {
         //RBRating.setRating(AvgRating);
         RBRating.setIsIndicator(true);
 
-        EditText editText = view.findViewById(R.id.ETStudentDescription2);
-        ImageView imageView = view.findViewById(R.id.IVEditPen);
-        imageView.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View view) {
-                                             editText.setEnabled(true);
-                                         }
-                                     });
+        //EditText editText = view.findViewById(R.id.TVStudentDescription);
+        //ImageView imageView = view.findViewById(R.id.IVEditPen);
+       // imageView.setOnClickListener(new View.OnClickListener() {
+       //                                  @Override
+        //                                 public void onClick(View view) {
+                                           //editText.setEnabled(true);
+        //                                 }
+         //                            });
+
                 TextView TVStudentName =(TextView)  view.findViewById(R.id.TVStudentName);
                 TextView TVStudentID = (TextView) view.findViewById(R.id.TVStudentID);
                 TextView TVStudentMajor = (TextView) view.findViewById(R.id.TVStudentMajor);
                 TextView TVStudentPhone = (TextView) view.findViewById(R.id.TVStudentPhone);
                 TextView TVStudentEmail = (TextView) view.findViewById(R.id.TVStudentEmail);
+                TextView TVStudentDescription = (TextView) view.findViewById(R.id.TVStudentDescription);
+                TVStudentDescription.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showCustomDialog();
+                    }
+                });
 
                 // Connect to Firebase
                 student = FirebaseAuth.getInstance().getCurrentUser();
@@ -119,6 +131,7 @@ public class StudentProfileFragment extends Fragment {
                             TVStudentEmail.setText(document.getString("Email"));
                             TVStudentMajor.setText(document.getString("Majoring"));
                             TVStudentPhone.setText(document.getString("Phone"));
+                            TVStudentDescription.setText(document.getString("Description"));
                             if (document.exists()) {
                                 Log.d("TAG", "DocumentSnapshot data: " + document.getData());
                             } else {
@@ -132,6 +145,48 @@ public class StudentProfileFragment extends Fragment {
 
         return view;
     }
+
+    //Function to display the custom dialog
+    private void showCustomDialog() {
+        final Dialog descDialog = new Dialog(getContext());
+        //Add A title in hte custom layout
+        descDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //The user able to cancel the dialog by clicking anywhere outside the dialog
+        descDialog.setCancelable(true);
+        //Mention the name of the layout of your custom dialog
+        descDialog.setContentView(R.layout.student_description_dialog);
+
+        //initializing the views of the dialog
+        final EditText ETStudentDescription = descDialog.findViewById(R.id.ETStudentDescription);
+        //String updatedDescription = String.valueOf(ETStudentDescription.getText());
+        DocumentReference dfDesc = FirebaseStore.collection("User").document(StudentID);
+
+        Button btnUpdate = descDialog.findViewById(R.id.btnUpdate);
+        btnUpdate.setOnClickListener((v -> {
+            String studentUpdatedDesc = ETStudentDescription.getText().toString();
+            dfDesc.update("Description",studentUpdatedDesc);
+            dfDesc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    Toast.makeText(getContext().getApplicationContext(),"Update Successfully!",Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getContext().getApplicationContext(),"Fail!",Toast.LENGTH_SHORT).show();
+                }
+            });
+            //Toast.makeText(getContext().getApplicationContext(),"Update Successfully!",Toast.LENGTH_SHORT).show();
+           // updateStudentDesc(studentUpdatedDesc);
+            descDialog.dismiss();
+        }));
+
+        descDialog.show();
+    }
+/*
+    private void updateStudentDesc(String studentUpdatedDesc) {
+
+    }*/
 
     //to calculate the average rating and display them
         /*float sum=0;

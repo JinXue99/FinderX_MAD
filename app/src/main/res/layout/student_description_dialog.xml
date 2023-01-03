@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/TVUpdateDescTitle"
+        android:layout_width="549dp"
+        android:layout_height="59dp"
+        android:gravity="center|start"
+        android:text="   Update Description"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/ETStudentDescription"
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:editable="false"
+        android:ems="10"
+        android:hint="Update Your Description"
+        android:inputType="textShortMessage|textLongMessage|textMultiLine|textPersonName" />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/light_blue"
+        android:text="Update" />
+</LinearLayout>
