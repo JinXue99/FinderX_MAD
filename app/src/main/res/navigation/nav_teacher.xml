@@ -19,4 +19,9 @@
         android:name="com.example.finderx_mad.TeacherProfileFragment"
         android:label="Teacher Profile"
         tools:layout="@layout/fragment_teacher_profile" />
+    <fragment
+        android:id="@+id/teacherProfileNoAccessFragment"
+        android:name="com.example.finderx_mad.TeacherProfileNoAccessFragment"
+        android:label="fragment_teacher_profile_no_access"
+        tools:layout="@layout/fragment_teacher_profile_no_access" />
 </navigation>
