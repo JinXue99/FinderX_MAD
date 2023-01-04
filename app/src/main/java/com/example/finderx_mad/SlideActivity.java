@@ -1,5 +1,6 @@
 package com.example.finderx_mad;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -19,15 +20,15 @@ public class SlideActivity extends AppCompatActivity {
         adapter = new SlideViewPageAdapter(this);
         viewPager.setAdapter(adapter);
 
-//        if(isOpenAlready()){
-//            Intent intent = new Intent(SlideActivity.this, MainActivity.class);
-//            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
-//            startActivity(intent);
-//        }else{
-//            SharedPreferences.Editor editor = getSharedPreferences("slides", MODE_PRIVATE).edit();
-//            editor.putBoolean("slide", true);
-//            editor.commit();
-//        }
+        if(isOpenAlready()){
+            Intent intent = new Intent(SlideActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }else{
+            SharedPreferences.Editor editor = getSharedPreferences("slides", MODE_PRIVATE).edit();
+            editor.putBoolean("slide", true);
+            editor.commit();
+        }
     }
 
     private boolean isOpenAlready() {

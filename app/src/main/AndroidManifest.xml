@@ -27,7 +27,7 @@
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".SlideActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".Login"
@@ -52,7 +52,7 @@
             android:name=".TeacherProfile"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SlideActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -65,5 +65,6 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
 </manifest>

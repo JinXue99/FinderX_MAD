@@ -53,6 +53,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TVStudentMajor">
 
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="68dp">
@@ -72,7 +79,6 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         <TextView
             android:id="@+id/TVStudentID"
@@ -101,35 +107,24 @@
             android:textColor="#090909"
             android:textSize="24sp" />
 
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
+
+        <TextView
+            android:id="@+id/TVStudentDescription"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:drawableEnd="@drawable/ic_baseline_edit_24"
+            android:gravity="center"
+            android:text="Description"
+            android:textColor="#090909"
+            android:textSize="24sp" />
+
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/ETStudentDescription2"
-        android:layout_width="match_parent"
-        android:layout_height="156dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/descriptionbg"
-        android:backgroundTint="#434141"
-        android:backgroundTintMode="add"
-        android:ems="10"
-        android:hint="Write About Yourself......."
-        android:inputType="textPersonName"
-        android:textColor="#60675F5F"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-
-    <ImageView
-        android:id="@+id/IVEditPen"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="52dp"
-        android:clickable="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:srcCompat="@android:drawable/ic_menu_edit"
-        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/imageView6"
