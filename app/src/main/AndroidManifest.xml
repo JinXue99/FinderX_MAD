@@ -25,13 +25,7 @@
             android:label="@string/title_activity_teacher"
             android:theme="@style/Theme.FinderX_MAD.NoActionBar" />
         <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".EditProfile"
@@ -40,18 +34,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".TeacherAddNewTask"
-            android:exported="false" />
-        <activity
-            android:name=".TeacherCourse"
-            android:exported="false" />
-        <activity
-            android:name=".TeacherViewTask"
-            android:exported="false" />
-        <activity
-            android:name=".TeacherProfile"
-            android:exported="false" />
         <activity
             android:name=".SlideActivity"
             android:exported="true">
