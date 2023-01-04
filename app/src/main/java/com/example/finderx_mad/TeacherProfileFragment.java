@@ -2,11 +2,22 @@ package com.example.finderx_mad;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,7 +25,12 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class TeacherProfileFragment extends Fragment {
+    //private FirebaseAuth student;
+    private FirebaseUser teacher;
+    private FirebaseFirestore FirebaseStore;
+    private DocumentReference df;
 
+    String TeacherID;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -58,7 +74,42 @@ public class TeacherProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_student_profile,null,false);
+
+        TextView TVTeacherName = (TextView) view.findViewById(R.id.TVTeacherName);
+        TextView TVTeacherID = (TextView) view.findViewById(R.id.TVTeacherID);
+        TextView TVTeacherMajor = (TextView) view.findViewById(R.id.TVTeacherMajor);
+        TextView TVTeacherPhone = (TextView) view.findViewById(R.id.TVTeacherPhone);
+        TextView TVTeacherEmail =(TextView)  view.findViewById(R.id.TVTeacherEmail);
+/*
+        // Connect to Firebase
+        teacher = FirebaseAuth.getInstance().getCurrentUser();
+        TeacherID = teacher.getUid();
+        this.FirebaseStore = FirebaseFirestore.getInstance();
+        df = FirebaseStore.collection("User").document(TeacherID);
+        df.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    TVTeacherName.setText(document.getString("Name"));
+                    TVTeacherID.setText(document.getString("TeacherID"));
+                    TVTeacherEmail.setText(document.getString("Email"));
+                    TVTeacherMajor.setText(document.getString("Majoring"));
+                    TVTeacherPhone.setText(document.getString("Phone"));
+                    if (document.exists()) {
+                        Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+                    } else {
+                        Log.d("TAG", "No such document");
+                    }
+                } else {
+                    Log.d("TAG", "get failed with ", task.getException());
+                }
+            }
+        });
+
+ */
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_teacher_profile, container, false);
+        return view;
     }
 }

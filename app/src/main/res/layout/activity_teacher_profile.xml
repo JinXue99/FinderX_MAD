@@ -98,7 +98,7 @@
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/TVStudentTele"
+            android:id="@+id/TVStudentTelephone"
             android:layout_width="match_parent"
             android:layout_height="99dp"
             android:gravity="center"
