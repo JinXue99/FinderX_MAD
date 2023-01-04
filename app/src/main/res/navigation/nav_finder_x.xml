@@ -4,76 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_finder_x"
     app:startDestination="@id/DestLogin">
-    <fragment
-        android:id="@+id/DestLogin"
-        android:name="com.example.finderx_mad.LoginFragment"
-        android:label="Login"
-        tools:layout="@layout/fragment_login">
-        <action
-            android:id="@+id/action_DestLogin_to_DestStudentMainPage3"
-            app:destination="@id/DestStudentMainPage" />
-        <action
-            android:id="@+id/action_DestLogin_to_teacherCourseFragment"
-            app:destination="@id/DestTeacherCourse" />
-    </fragment>
-    <fragment
-        android:id="@+id/DestStudentProfile"
-        android:name="com.example.finderx_mad.StudentProfileFragment"
-        android:label="Profile"
-        tools:layout="@layout/fragment_student_profile" />
-    <fragment
-        android:id="@+id/DestStudentCourse"
-        android:name="com.example.finderx_mad.StudentCourseFragment"
-        android:label="Course"
-        tools:layout="@layout/fragment_student_course" />
-    <fragment
-        android:id="@+id/DestStudentGroupChat"
-        android:name="com.example.finderx_mad.StudentGroupChatFragment"
-        android:label="Group Chat"
-        tools:layout="@layout/fragment_student_group_chat" />
-    <fragment
-        android:id="@+id/DestStudentMainPage"
-        android:name="com.example.finderx_mad.StudentMainPageFragment"
-        android:label="Home"
-        tools:layout="@layout/fragment_student_main_page">
-        <action
-            android:id="@+id/action_DestStudentMainPage_to_DestStudentProfile"
-            app:destination="@id/DestStudentProfile" />
-        <action
-            android:id="@+id/action_DestStudentMainPage_to_DestStudentCourse"
-            app:destination="@id/DestStudentCourse" />
-        <action
-            android:id="@+id/action_DestStudentMainPage_to_DestStudentGroupChat"
-            app:destination="@id/DestStudentGroupChat" />
-        <action
-            android:id="@+id/action_DestStudentMainPage_to_DestStudentAnnouncement"
-            app:destination="@id/DestStudentAnnouncement" />
-        <action
-            android:id="@+id/action_DestStudentMainPage_to_studentViewRequestFragment"
-            app:destination="@id/DestStudentViewRequest" />
-    </fragment>
-    <fragment
-        android:id="@+id/DestStudentAnnouncement"
-        android:name="com.example.finderx_mad.StudentAnnouncementFragment"
-        android:label="Announcement"
-        tools:layout="@layout/fragment_student_announcement" />
-    <fragment
-        android:id="@+id/DestStudentViewRequest"
-        android:name="com.example.finderx_mad.StudentViewRequestFragment"
-        android:label="View Request"
-        tools:layout="@layout/fragment_student_view_request" />
-    <fragment
-        android:id="@+id/DestTeacherCourse"
-        android:name="com.example.finderx_mad.TeacherCourseFragment"
-        android:label="Course"
-        tools:layout="@layout/fragment_teacher_course" >
-        <action
-            android:id="@+id/action_DestTeacherCourse_to_teacherProfileFragment"
-            app:destination="@id/DestTeacherProfile" />
-    </fragment>
-    <fragment
-        android:id="@+id/DestTeacherProfile"
-        android:name="com.example.finderx_mad.TeacherProfileFragment"
-        android:label="Profile"
-        tools:layout="@layout/fragment_teacher_profile" />
+<!--    <fragment-->
+<!--        android:id="@+id/DestLogin"-->
+<!--        android:name="com.example.finderx_mad.LoginFragment"-->
+<!--        android:label="Login"-->
+<!--        tools:layout="@layout/fragment_login">-->
+<!--        <action-->
+<!--            android:id="@+id/action_DestLogin_to_DestStudentMainPage3"-->
+<!--            app:destination="@id/DestStudentMainPage" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_DestLogin_to_teacherCourseFragment"-->
+<!--            app:destination="@id/DestTeacherCourse" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/DestStudentProfile"-->
+<!--        android:name="com.example.finderx_mad.StudentProfileFragment"-->
+<!--        android:label="Profile"-->
+<!--        tools:layout="@layout/fragment_student_profile" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/DestStudentCourse"-->
+<!--        android:name="com.example.finderx_mad.StudentCourseFragment"-->
+<!--        android:label="Course"-->
+<!--        tools:layout="@layout/fragment_student_course" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/DestStudentGroupChat"-->
+<!--        android:name="com.example.finderx_mad.StudentGroupChatFragment"-->
+<!--        android:label="Group Chat"-->
+<!--        tools:layout="@layout/fragment_student_group_chat" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/DestStudentMainPage"-->
+<!--        android:name="com.example.finderx_mad.StudentMainPageFragment"-->
+<!--        android:label="Home"-->
+<!--        tools:layout="@layout/fragment_student_main_page">-->
+<!--        <action-->
+<!--            android:id="@+id/action_DestStudentMainPage_to_DestStudentProfile"-->
+<!--            app:destination="@id/DestStudentProfile" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_DestStudentMainPage_to_DestStudentCourse"-->
+<!--            app:destination="@id/DestStudentCourse" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_DestStudentMainPage_to_DestStudentGroupChat"-->
+<!--            app:destination="@id/DestStudentGroupChat" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_DestStudentMainPage_to_DestStudentAnnouncement"-->
+<!--            app:destination="@id/DestStudentAnnouncement" />-->
+<!--        <action-->
+<!--            android:id="@+id/action_DestStudentMainPage_to_studentViewRequestFragment"-->
+<!--            app:destination="@id/DestStudentViewRequest" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/DestStudentAnnouncement"-->
+<!--        android:name="com.example.finderx_mad.StudentAnnouncementFragment"-->
+<!--        android:label="Announcement"-->
+<!--        tools:layout="@layout/fragment_student_announcement" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/DestStudentViewRequest"-->
+<!--        android:name="com.example.finderx_mad.StudentViewRequestFragment"-->
+<!--        android:label="View Request"-->
+<!--        tools:layout="@layout/fragment_student_view_request" />-->
+<!--    <fragment-->
+<!--        android:id="@+id/DestTeacherCourse"-->
+<!--        android:name="com.example.finderx_mad.TeacherCourseFragment"-->
+<!--        android:label="Course"-->
+<!--        tools:layout="@layout/fragment_teacher_course" >-->
+<!--        <action-->
+<!--            android:id="@+id/action_DestTeacherCourse_to_teacherProfileFragment"-->
+<!--            app:destination="@id/DestTeacherProfile" />-->
+<!--    </fragment>-->
+<!--    <fragment-->
+<!--        android:id="@+id/DestTeacherProfile"-->
+<!--        android:name="com.example.finderx_mad.TeacherProfileFragment"-->
+<!--        android:label="Profile"-->
+<!--        tools:layout="@layout/fragment_teacher_profile" />-->
 </navigation>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="50dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/TVAnimalLover"
+        android:layout_width="104dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/playball"
+        android:text="FinderX"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/TVAnimalLoverDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No of us is smart as all of us"
+        app:layout_constraintStart_toStartOf="@+id/TVAnimalLover"
+        app:layout_constraintTop_toBottomOf="@+id/TVAnimalLover" />
+
+    <ImageView
+        android:id="@+id/IVAvatar"
+        android:layout_width="216dp"
+        android:layout_height="146dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="@+id/TVAnimalLoverDesc"
+        app:layout_constraintTop_toBottomOf="@+id/TVAnimalLoverDesc"
+        app:srcCompat="@drawable/side_student" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

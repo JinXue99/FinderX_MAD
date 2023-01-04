@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_student"
+    app:startDestination="@+id/DestStudentMainPage">
+
+
+    <fragment
+        android:id="@+id/DestStudentMainPage"
+        android:name="com.example.finderx_mad.StudentMainPageFragment"
+        android:label="Student Home"
+        tools:layout="@layout/fragment_student_main_page" />
+    <fragment
+        android:id="@+id/DestStudentCourse"
+        android:name="com.example.finderx_mad.StudentCourseFragment"
+        android:label="Student Course"
+        tools:layout="@layout/fragment_student_course" />
+    <fragment
+        android:id="@+id/DestStudentGroupChat"
+        android:name="com.example.finderx_mad.StudentGroupChatFragment"
+        android:label="Student Group Chat"
+        tools:layout="@layout/fragment_student_group_chat" />
+    <fragment
+        android:id="@+id/DestStudentAnnouncement"
+        android:name="com.example.finderx_mad.StudentAnnouncementFragment"
+        android:label="Student Announcement"
+        tools:layout="@layout/fragment_student_announcement" />
+    <fragment
+        android:id="@+id/DestStudentViewRequest"
+        android:name="com.example.finderx_mad.StudentViewRequestFragment"
+        android:label="Student View Request"
+        tools:layout="@layout/fragment_student_view_request" />
+    <activity
+        android:id="@+id/DestLogin"
+        android:name="com.example.finderx_mad.MainActivity"
+        android:label="Login"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/DestStudentProfile"
+        android:name="com.example.finderx_mad.StudentProfileFragment"
+        android:label="fragment_student_profile"
+        tools:layout="@layout/fragment_student_profile" />
+</navigation>
