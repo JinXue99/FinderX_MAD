@@ -65,14 +65,14 @@ public class StudentMainPageFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
 
-        ImageView ivAcc = view.findViewById(R.id.ivAcc);
-        View.OnClickListener OCLAcc = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.DestStudentProfile);
-            }
-        };
-        ivAcc.setOnClickListener(OCLAcc);
+//        ImageView ivAcc = view.findViewById(R.id.ivAcc);
+//        View.OnClickListener OCLAcc = new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Navigation.findNavController(view).navigate(R.id.DestStudentProfile);
+//            }
+//        };
+//        ivAcc.setOnClickListener(OCLAcc);
 
         CardView cvCourse = view.findViewById(R.id.cvCourse);
         View.OnClickListener OCLCourse = new View.OnClickListener() {

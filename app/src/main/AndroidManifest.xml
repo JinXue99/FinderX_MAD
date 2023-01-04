@@ -28,7 +28,7 @@
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
-            android:name=".SlideActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".Login"
@@ -53,7 +53,7 @@
             android:name=".TeacherProfile"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SlideActivity"
             android:exported="true">
 
             <intent-filter>

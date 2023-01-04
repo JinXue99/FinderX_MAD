@@ -39,6 +39,6 @@
     <fragment
         android:id="@+id/DestStudentProfile"
         android:name="com.example.finderx_mad.StudentProfileFragment"
-        android:label="fragment_student_profile"
+        android:label="Student Profile"
         tools:layout="@layout/fragment_student_profile" />
 </navigation>
