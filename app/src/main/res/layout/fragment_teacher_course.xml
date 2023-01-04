@@ -40,6 +40,17 @@
         app:layout_constraintTop_toTopOf="@+id/tvSearchCourse"
         app:srcCompat="@drawable/ic_baseline_search_24" />
 
+    <ImageView
+        android:id="@+id/ivAccTeacher"
+        android:layout_width="47dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.895"
+        app:layout_constraintStart_toEndOf="@+id/ivheader"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_account_icon_teacher" />
+
 
 
     <androidx.recyclerview.widget.RecyclerView
