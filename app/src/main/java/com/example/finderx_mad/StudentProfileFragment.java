@@ -1,16 +1,15 @@
 package com.example.finderx_mad;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,13 +66,23 @@ public class StudentProfileFragment extends Fragment {
         RatingBar RBRating = view.findViewById(R.id.RBRating);
         //RBRating.setRating(AvgRating);
         RBRating.setIsIndicator(true);
-        Button BtnEdit = view.findViewById(R.id.BtnEdit);
+        EditText editText = view.findViewById(R.id.ETStudentDescription2);
+        ImageView imageView = view.findViewById(R.id.IVEditPen);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editText.setEnabled(true);
+            }
+        });
+
+
+        /*Button BtnEdit = view.findViewById(R.id.BtnEdit);
         BtnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(),EditProfile.class));
-            }
-        });
+                //startActivity(new Intent(getActivity(),EditProfile.class));
+            }*/
+        ;
 
         return view;
     }

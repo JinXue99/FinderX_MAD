@@ -1,12 +1,17 @@
 package com.example.finderx_mad;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +19,37 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class StudentCourseFragment extends Fragment {
+    String Code,Name,surl;
+//zero constructors
+
+    public StudentCourseFragment(String code, String name, String surl) {
+        Code = code;
+        Name = name;
+        this.surl = surl;
+    }
+
+    public String getCode() {
+        return Code;
+    }
+
+    public void setCode(String code) {
+        Code = code;
+    }
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public String getSurl() {
+        return surl;
+    }
+
+    public void setSurl(String surl) {
+        this.surl = surl;
+    }
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,9 +82,13 @@ public class StudentCourseFragment extends Fragment {
         return fragment;
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -59,6 +99,27 @@ public class StudentCourseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_student_course, container, false);
+        View rootView=inflater.inflate(R.layout.fragment_student_course, container, false);
+
+        RecyclerView recyclerView = rootView.findViewById(R.id.addRecycleView);
+
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        RecyclerView recyclerView = view.findViewById(R.id.addRecycleView);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+//recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        FirebaseRecyclerOptions<StudentCourseFragment> options =
+        new FirebaseRecyclerOptions.Builder<StudentCourseFragment>()
+                .setQuery(FirebaseDatabase.getInstance().getReference().child("Course Code"),StudentCourseFragment.class)
+                .build();
+
+        //MainAdapter mainAdapter = new MainAdapter(options);
+        //recyclerView.setAdaper(mainAdapter);
+
     }
 }
