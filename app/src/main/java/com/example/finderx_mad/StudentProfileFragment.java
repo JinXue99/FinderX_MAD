@@ -39,10 +39,10 @@ public class StudentProfileFragment extends Fragment {
     private FirebaseFirestore FirebaseStore;
     private DocumentReference df;
 
-   String StudentID;
+    String StudentID;
     //private String StudentName;
     //private String StudentGmail;
-   // private String StudentMajor;
+    // private String StudentMajor;
     //private String StudentTelephone;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -96,52 +96,52 @@ public class StudentProfileFragment extends Fragment {
 
         //EditText editText = view.findViewById(R.id.TVStudentDescription);
         //ImageView imageView = view.findViewById(R.id.IVEditPen);
-       // imageView.setOnClickListener(new View.OnClickListener() {
-       //                                  @Override
+        // imageView.setOnClickListener(new View.OnClickListener() {
+        //                                  @Override
         //                                 public void onClick(View view) {
-                                           //editText.setEnabled(true);
+        //editText.setEnabled(true);
         //                                 }
-         //                            });
+        //                            });
 
-                TextView TVStudentName =(TextView)  view.findViewById(R.id.TVStudentName);
-                TextView TVStudentID = (TextView) view.findViewById(R.id.TVStudentID);
-                TextView TVStudentMajor = (TextView) view.findViewById(R.id.TVStudentMajor);
-                TextView TVStudentPhone = (TextView) view.findViewById(R.id.TVStudentPhone);
-                TextView TVStudentEmail = (TextView) view.findViewById(R.id.TVStudentEmail);
-                TextView TVStudentDescription = (TextView) view.findViewById(R.id.TVStudentDescription);
-                TVStudentDescription.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showCustomDialog();
-                    }
-                });
+        TextView TVStudentName =(TextView)  view.findViewById(R.id.TVStudentName);
+        TextView TVStudentID = (TextView) view.findViewById(R.id.TVStudentID);
+        TextView TVStudentMajor = (TextView) view.findViewById(R.id.TVStudentMajor);
+        TextView TVStudentPhone = (TextView) view.findViewById(R.id.TVStudentPhone);
+        TextView TVStudentEmail = (TextView) view.findViewById(R.id.TVStudentEmail);
+        TextView TVStudentDescription = (TextView) view.findViewById(R.id.TVStudentDescription);
+        TVStudentDescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCustomDialog();
+            }
+        });
 
-                // Connect to Firebase
-                student = FirebaseAuth.getInstance().getCurrentUser();
-                StudentID = student.getUid();
-                FirebaseStore = FirebaseFirestore.getInstance();
-                df = FirebaseStore.collection("User").document(StudentID);
-                df.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()) {
-                            DocumentSnapshot document = task.getResult();
-                            TVStudentName.setText(document.getString("Name"));
-                            TVStudentID.setText(document.getString("StudentID"));
-                            TVStudentEmail.setText(document.getString("Email"));
-                            TVStudentMajor.setText(document.getString("Majoring"));
-                            TVStudentPhone.setText(document.getString("Phone"));
-                            TVStudentDescription.setText(document.getString("Description"));
-                            if (document.exists()) {
-                                Log.d("TAG", "DocumentSnapshot data: " + document.getData());
-                            } else {
-                                Log.d("TAG", "No such document");
-                            }
-                        } else {
-                            Log.d("TAG", "get failed with ", task.getException());
-                        }
+        // Connect to Firebase
+        student = FirebaseAuth.getInstance().getCurrentUser();
+        StudentID = student.getUid();
+        FirebaseStore = FirebaseFirestore.getInstance();
+        df = FirebaseStore.collection("User").document(StudentID);
+        df.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    TVStudentName.setText(document.getString("Name"));
+                    TVStudentID.setText(document.getString("StudentID"));
+                    TVStudentEmail.setText(document.getString("Email"));
+                    TVStudentMajor.setText(document.getString("Majoring"));
+                    TVStudentPhone.setText(document.getString("Phone"));
+                    TVStudentDescription.setText(document.getString("Description"));
+                    if (document.exists()) {
+                        Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+                    } else {
+                        Log.d("TAG", "No such document");
                     }
-                });
+                } else {
+                    Log.d("TAG", "get failed with ", task.getException());
+                }
+            }
+        });
 
         return view;
     }
@@ -158,8 +158,17 @@ public class StudentProfileFragment extends Fragment {
 
         //initializing the views of the dialog
         final EditText ETStudentDescription = descDialog.findViewById(R.id.ETStudentDescription);
-        //String updatedDescription = String.valueOf(ETStudentDescription.getText());
         DocumentReference dfDesc = FirebaseStore.collection("User").document(StudentID);
+        dfDesc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                //initial description
+                ETStudentDescription.setText(document.getString("Description"));
+            }
+        });
+
+        //String updatedDescription = String.valueOf(ETStudentDescription.getText());
 
         Button btnUpdate = descDialog.findViewById(R.id.btnUpdate);
         btnUpdate.setOnClickListener((v -> {
@@ -177,7 +186,7 @@ public class StudentProfileFragment extends Fragment {
                 }
             });
             //Toast.makeText(getContext().getApplicationContext(),"Update Successfully!",Toast.LENGTH_SHORT).show();
-           // updateStudentDesc(studentUpdatedDesc);
+            // updateStudentDesc(studentUpdatedDesc);
             descDialog.dismiss();
         }));
 
