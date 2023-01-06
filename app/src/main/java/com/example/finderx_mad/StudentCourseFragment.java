@@ -60,7 +60,7 @@ public class StudentCourseFragment extends Fragment {
 
         adapter=new CourseListAdapter(options);
         recview.setAdapter(adapter);
-
+        adapter.notifyDataSetChanged();
         return view;
     }
 
