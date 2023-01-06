@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.datepicker.MaterialDatePicker;
+import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,9 +32,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.TimeZone;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,10 +50,16 @@ public class TeacherAddNewTaskFragment extends Fragment {
     FirebaseDatabase database;
     DatabaseReference myRef,TaskRef;
 
+    TextView tvDeadLine;
     EditText etTaskTitle;
     EditText etTaskDetails;
     EditText etTaskDeadline;
+    Calendar calendar;
+    SimpleDateFormat sdf;
+    String currentDateandTime;
     TaskModel task;
+    String DL;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -98,9 +111,34 @@ public class TeacherAddNewTaskFragment extends Fragment {
         myRef = database.getReference("Teacher");
         TaskRef = myRef.child("Course Code").child("C1").child("Occ").child("Occ 1").child("Task Assigned");
 
+
+        tvDeadLine =(TextView)  view.findViewById(R.id.tvDeadLine);
         etTaskTitle =(EditText)  view.findViewById(R.id.etTaskTitle);
         etTaskDetails =(EditText)  view.findViewById(R.id.etTaskDetails);
-        etTaskDeadline =(EditText)  view.findViewById(R.id.etTaskDeadline);
+        calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+        sdf = new SimpleDateFormat("yyyy.MM.dd");
+        currentDateandTime = sdf.format(new Date());
+
+        MaterialDatePicker materialDatePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText("Select Submission Date")
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .build();
+
+        Button btnPickADate = (Button) view.findViewById(R.id.btnPickADate);
+        btnPickADate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                materialDatePicker.show(getActivity().getSupportFragmentManager(), "Tag Picker");
+                materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+                    @Override
+                    public void onPositiveButtonClick(Object selection) {
+                        DL = materialDatePicker.getHeaderText();
+                        tvDeadLine.setText(DL);
+                    }
+                });
+
+            }
+        });
 
         Button btnUpload = (Button) view.findViewById(R.id.btnUpload);
         btnUpload.setOnClickListener(new View.OnClickListener() {
@@ -118,7 +156,8 @@ public class TeacherAddNewTaskFragment extends Fragment {
         TaskModel aTask = new TaskModel(
                 etTaskTitle.getText().toString(),
                 etTaskDetails.getText().toString(),
-                etTaskDeadline.getText().toString()
+                DL,
+                currentDateandTime
         );
 
         TaskRef.child(aTask.getTaskTitle()).setValue(aTask)
