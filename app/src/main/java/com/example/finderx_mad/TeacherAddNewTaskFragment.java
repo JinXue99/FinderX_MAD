@@ -144,6 +144,19 @@ public class TeacherAddNewTaskFragment extends Fragment {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (etTaskTitle.getText().toString().isEmpty()) {
+                    etTaskTitle.setError("Task Title is required!");
+                    return;
+                }
+                if (etTaskDetails.getText().toString().isEmpty()) {
+                    etTaskDetails.setError("Task Description is required!");
+                    return;
+                }
+                if (tvDeadLine.getText().toString().equals("MMM DD, YYYY")){
+                    tvDeadLine.setError("Deadline is required!");
+                    return;
+
+                }
                 AddNewTask(task);
 
             }
