@@ -20,8 +20,18 @@
         android:label="Teacher Profile"
         tools:layout="@layout/fragment_teacher_profile" />
     <fragment
-        android:id="@+id/teacherProfileNoAccessFragment"
-        android:name="com.example.finderx_mad.TeacherProfileNoAccessFragment"
-        android:label="fragment_teacher_profile_no_access"
-        tools:layout="@layout/fragment_teacher_profile_no_access" />
+        android:id="@+id/DestTeacherViewTask2"
+        android:name="com.example.finderx_mad.TeacherViewTask2Fragment"
+        android:label="Teacher Task"
+        tools:layout="@layout/fragment_teacher_view_task2" />
+    <fragment
+        android:id="@+id/DestTeacherAddNewTask"
+        android:name="com.example.finderx_mad.TeacherAddNewTaskFragment"
+        android:label="Add New Task"
+        tools:layout="@layout/fragment_teacher_add_new_task" />
+    <activity
+        android:id="@+id/editProfile"
+        android:name="com.example.finderx_mad.EditProfile"
+        android:label="activity_edit_profile"
+        tools:layout="@layout/activity_edit_profile" />
 </navigation>
