@@ -2,11 +2,18 @@ package com.example.finderx_mad;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.ScrollView;
+import android.widget.TextView;
+import androidx.appcompat.widget.Toolbar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +21,14 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class StudentChatFragment extends Fragment {
+
+    View chatView;
+    private Toolbar myToolbar;
+    private ImageButton BtnSendMessage;
+    private EditText userMessageInput;
+    private ScrollView myScrollView;
+    private TextView displayTextMessage;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +74,27 @@ public class StudentChatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_student_chat, container, false);
+        chatView = inflater.inflate(R.layout.fragment_student_chat, container, false);
+
+        InitializeField();
+
+        return chatView;
+
+    }
+
+
+
+    private void InitializeField() {
+        myToolbar = (Toolbar) chatView.findViewById(R.id.group_chat_bar_layout);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(myToolbar);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Group Name: ");
+        //setSupportActionBar(myToolbar);
+        //getSupportActionBar().setTitle("Group Name:");
+
+        BtnSendMessage = (ImageButton) chatView.findViewById(R.id.IBSendMessage);
+        userMessageInput = (EditText) chatView.findViewById(R.id.input_group_message);
+        displayTextMessage = (TextView) chatView.findViewById(R.id.group_chat_text_display);
+        myScrollView = (ScrollView) chatView.findViewById(R.id.my_scroll_view);
+
     }
 }

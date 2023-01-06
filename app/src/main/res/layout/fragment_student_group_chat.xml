@@ -7,7 +7,6 @@
     tools:context=".StudentGroupChatFragment"
     android:background="@drawable/gradient_studentbackground">
 
-    <!-- TODO: Update blank fragment layout -->
     <ImageView
         android:id="@+id/ivheader"
         android:layout_width="199dp"
@@ -20,68 +19,54 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/headerlogo" />
 
-    <TextView
-        android:id="@+id/tvSearchCourse"
-        android:layout_width="280dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="160dp"
-        android:background="#B8B7FF"
-        android:text="Search Course"
+    <Button
+        android:id="@+id/TentativeGroupChat"
+        android:layout_width="130dp"
+        android:layout_height="74dp"
+        android:layout_marginBottom="16dp"
+        android:text="GroupChat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <SearchView
+        android:id="@+id/SearchGroup"
+        android:layout_width="319dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="19dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ivheader" />
 
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/TentativeGroupChat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/ivSearch"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvSearchCourse"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-        app:layout_constraintStart_toEndOf="@+id/tvSearchCourse"
-        app:layout_constraintTop_toTopOf="@+id/tvSearchCourse"
-        app:srcCompat="@drawable/ic_baseline_search_24" />
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="@+id/SearchGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <RelativeLayout
+        android:layout_width="409dp"
+        android:layout_height="439dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SearchGroup">
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/addRecycleView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineDown"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
-        app:layout_constraintTop_toTopOf="@+id/guidelineUp"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="377dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="232dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineDown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="852dp" />
-
+        <ListView
+            android:id="@+id/group_chat_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
