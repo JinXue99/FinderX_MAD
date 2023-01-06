@@ -12,10 +12,6 @@
             android:id="@+id/DestTeacherViewTask2"
             android:icon="@drawable/ic_book"
             android:title="Task" />
-        <item
-            android:id="@+id/editProfile"
-            android:icon="@drawable/ic_book"
-            android:title="Edit Profile" />
 
     </group>
 
