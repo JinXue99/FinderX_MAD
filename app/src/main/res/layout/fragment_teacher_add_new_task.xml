@@ -88,26 +88,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Submission Deadline: "
+        android:text="Task Deadline: "
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toBottomOf="@+id/etTaskDetails" />
 
-    <EditText
-        android:id="@+id/etTaskDeadline"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="80dp"
-        android:drawableEnd="@drawable/ic_calendar"
-        android:hint="DD/MM/YYYY"
-        android:inputType="date"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSubmissionDeadline" />
+<!--    <EditText-->
+<!--        android:id="@+id/etTaskDeadline"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="18dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginEnd="80dp"-->
+<!--        android:drawableEnd="@drawable/ic_calendar"-->
+<!--        android:hint="DD/MM/YYYY"-->
+<!--        android:inputType="date"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvSubmissionDeadline" />-->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -116,6 +116,27 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="20dp" />
 
+    <Button
+        android:id="@+id/btnPickADate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#7C9799"
+        android:text="Pick A Date"
+        android:textAllCaps="false"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/tvSubmissionDeadline" />
+
+    <TextView
+        android:id="@+id/tvDeadLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="MMM DD, YYYY"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSubmissionDeadline"
+        app:layout_constraintStart_toEndOf="@+id/tvSubmissionDeadline"
+        app:layout_constraintTop_toTopOf="@+id/tvSubmissionDeadline" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

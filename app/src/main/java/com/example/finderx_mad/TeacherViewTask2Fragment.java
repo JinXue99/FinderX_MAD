@@ -2,14 +2,27 @@ package com.example.finderx_mad;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +30,14 @@ import android.widget.Toast;
  * create an instance of this fragment.
  */
 public class TeacherViewTask2Fragment extends Fragment {
+
+    RecyclerView recyclerView;
+    TaskViewTeacherAdapter adapter;
+    ArrayList<TaskModel> list;
+//    List<TaskModel> taskModelList;
+    FirebaseDatabase database;
+    DatabaseReference myRef,TaskRef;
+    TaskModel teacherViewTask;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -63,6 +84,37 @@ public class TeacherViewTask2Fragment extends Fragment {
                              Bundle savedInstanceState) {
         //Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_teacher_view_task2,null,false);
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.teacherViewTaskRecycleView);
+
+        database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app");
+        myRef = database.getReference("Teacher");
+        TaskRef = myRef.child("Course Code").child("C1").child("Occ").child("Occ 1").child("Task Assigned");
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext().getApplicationContext());
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(layoutManager);
+
+        list = new ArrayList<>();
+        adapter = new TaskViewTeacherAdapter(getContext().getApplicationContext(), list);
+        recyclerView.setAdapter(adapter);
+
+        TaskRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    teacherViewTask = dataSnapshot.getValue(TaskModel.class);
+                    list.add(teacherViewTask);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         ImageView ivAddTaskButton = (ImageView) view.findViewById(R.id.ivAddTaskButton);
         ivAddTaskButton.setOnClickListener(new View.OnClickListener() {
