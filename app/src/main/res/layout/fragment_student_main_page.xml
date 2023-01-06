@@ -20,7 +20,6 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/headerlogo" />
 
-
     <ImageView
         android:id="@+id/ivAcc"
         android:layout_width="47dp"

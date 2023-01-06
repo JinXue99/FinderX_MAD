@@ -20,19 +20,6 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/headerlogo" />
 
-
-    <ImageView
-        android:id="@+id/ivAcc"
-        android:layout_width="47dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.895"
-        app:layout_constraintStart_toEndOf="@+id/ivheader"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_account_icon_teacher" />
-
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cvTaskAssigned"
         android:layout_width="319dp"

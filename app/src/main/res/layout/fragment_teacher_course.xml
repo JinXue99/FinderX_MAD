@@ -31,6 +31,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/ivSearch"
+        android:layout_width="27dp"
+        android:layout_height="27dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSearchCourse"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
+        app:layout_constraintStart_toEndOf="@+id/tvSearchCourse"
+        app:layout_constraintTop_toTopOf="@+id/tvSearchCourse"
+        app:srcCompat="@drawable/ic_baseline_search_24" />
+
+    <ImageView
         android:id="@+id/ivAccTeacher"
         android:layout_width="47dp"
         android:layout_height="52dp"
@@ -40,16 +50,6 @@
         app:layout_constraintStart_toEndOf="@+id/ivheader"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_account_icon_teacher" />
-
-    <ImageView
-        android:id="@+id/ivSearch"
-        android:layout_width="27dp"
-        android:layout_height="27dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvSearchCourse"
-        app:layout_constraintEnd_toStartOf="@+id/guidelineRight"
-        app:layout_constraintStart_toEndOf="@+id/tvSearchCourse"
-        app:layout_constraintTop_toTopOf="@+id/tvSearchCourse"
-        app:srcCompat="@drawable/ic_baseline_search_24" />
 
 
 

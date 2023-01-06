@@ -31,17 +31,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/ivAccTeacher"
-        android:layout_width="47dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.895"
-        app:layout_constraintStart_toEndOf="@+id/ivheader"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_account_icon_teacher" />
-
-    <ImageView
         android:id="@+id/ivSearch"
         android:layout_width="27dp"
         android:layout_height="27dp"

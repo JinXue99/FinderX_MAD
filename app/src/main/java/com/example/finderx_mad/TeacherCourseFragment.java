@@ -69,15 +69,14 @@ public class TeacherCourseFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
 
-        ImageView ivAccTeacher = view.findViewById(R.id.ivAccTeacher);
-        View.OnClickListener OCLAccTeacher = new View.OnClickListener() {
+        ImageView ivAcc = view.findViewById(R.id.ivAccTeacher);
+        View.OnClickListener OCLAcc = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(view).navigate(R.id.DestTeacherProfile);
             }
         };
-        ivAccTeacher.setOnClickListener(OCLAccTeacher);
-
+        ivAcc.setOnClickListener(OCLAcc);
 
     }
 }

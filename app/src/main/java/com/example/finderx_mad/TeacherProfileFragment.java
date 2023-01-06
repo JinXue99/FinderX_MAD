@@ -74,14 +74,14 @@ public class TeacherProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_student_profile,null,false);
+        View view = inflater.inflate(R.layout.fragment_teacher_profile,null,false);
 
         TextView TVTeacherName = (TextView) view.findViewById(R.id.TVTeacherName);
         TextView TVTeacherID = (TextView) view.findViewById(R.id.TVTeacherID);
         TextView TVTeacherMajor = (TextView) view.findViewById(R.id.TVTeacherMajor);
         TextView TVTeacherPhone = (TextView) view.findViewById(R.id.TVTeacherPhone);
         TextView TVTeacherEmail =(TextView)  view.findViewById(R.id.TVTeacherEmail);
-/*
+
         // Connect to Firebase
         teacher = FirebaseAuth.getInstance().getCurrentUser();
         TeacherID = teacher.getUid();
@@ -108,7 +108,7 @@ public class TeacherProfileFragment extends Fragment {
             }
         });
 
- */
+
         // Inflate the layout for this fragment
         return view;
     }
