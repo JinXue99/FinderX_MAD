@@ -34,7 +34,7 @@ public class TeacherActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.DestTeacherCourse, R.id.DestTeacherProfile, R.id.DestTeacherViewTask2, R.id.DestLogin, R.id.editProfile)
+                R.id.DestTeacherCourse, R.id.DestTeacherProfile, R.id.DestTeacherViewTask2, R.id.DestLogin)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_teacher);

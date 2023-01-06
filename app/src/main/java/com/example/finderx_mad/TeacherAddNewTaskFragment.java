@@ -95,8 +95,8 @@ public class TeacherAddNewTaskFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_teacher_add_new_task,null,false);
 
         database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app");
-        myRef = database.getReference("Courses");
-        TaskRef = myRef.child("Course Code").child("C4");
+        myRef = database.getReference("Teacher");
+        TaskRef = myRef.child("Course Code").child("C1").child("Occ").child("Occ 1").child("Task Assigned");
 
         etTaskTitle =(EditText)  view.findViewById(R.id.etTaskTitle);
         etTaskDetails =(EditText)  view.findViewById(R.id.etTaskDetails);
