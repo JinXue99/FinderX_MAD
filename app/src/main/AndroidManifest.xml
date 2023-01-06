@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.finderx_mad">
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinderX_MAD"
         tools:targetApi="31">
-
         <activity
             android:name=".StudentActivity"
             android:exported="false"
@@ -37,10 +38,8 @@
         <activity
             android:name=".SlideActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -49,7 +48,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
 </manifest>
