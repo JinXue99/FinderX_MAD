@@ -43,13 +43,19 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.my
         return list.size();
     }
 
+    public void filterList(ArrayList<CourseList> filteredList){
+        list = filteredList;
+        notifyDataSetChanged();
+    }
+
     public class myviewHolder extends RecyclerView.ViewHolder {
+
         TextView Code,Name;
         public myviewHolder(@NonNull View itemView) {
             super(itemView);
 
-            Code=itemView.findViewById(R.id.TVCourseName);
-            Name=itemView.findViewById(R.id.TVCourseCode);
+            Code=itemView.findViewById(R.id.TVCourseCodeTitle);
+            Name=itemView.findViewById(R.id.TVCourseNameStudent);
         }
     }
 }

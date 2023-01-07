@@ -8,6 +8,9 @@ public class CourseList {
         this.Name = name;
     }
 
+    public CourseList(){
+    }
+
     public String getCode() {
         return Code;
     }
