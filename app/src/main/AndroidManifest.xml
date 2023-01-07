@@ -27,14 +27,7 @@
             android:theme="@style/Theme.FinderX_MAD.NoActionBar" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EditProfile"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".SlideActivity"
             android:exported="true">

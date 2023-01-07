@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 
@@ -25,6 +24,7 @@ public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacher
         this.inflater = LayoutInflater.from(context);
         this.list = list;
     }
+
 
     @NonNull
     @Override

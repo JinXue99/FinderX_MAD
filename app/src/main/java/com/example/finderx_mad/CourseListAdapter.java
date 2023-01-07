@@ -1,42 +1,46 @@
 package com.example.finderx_mad;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import java.util.ArrayList;
 
-public class CourseListAdapter extends FirebaseRecyclerAdapter<CourseList,CourseListAdapter.myviewHolder> {
+public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.myviewHolder> {
 
-    public CourseListAdapter(@NonNull FirebaseRecyclerOptions<CourseList> options){
-        super(options);
-    }
 
-    @Override
-    protected void onBindViewHolder(@NonNull myviewHolder holder, int position, @NonNull CourseList model) {
-        holder.Code.setText(model.getCode());
-        holder.Name.setText(model.getName());
+    LayoutInflater inflater;
+    ArrayList<CourseList>list;
 
-        holder.Code.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AppCompatActivity activity=(AppCompatActivity)view.getContext();
-                //activity.getSupportFragmentManager().beginTransaction().replace( );
-            }
-        });
+    CourseListAdapter(Context context, ArrayList<CourseList> list){
+        this.inflater = LayoutInflater.from(context);
+        this.list = list;
     }
 
     @NonNull
     @Override
-    public myviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.course_item,parent,false);
-        return new myviewHolder(view);
+    public CourseListAdapter.myviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = inflater.inflate(R.layout.course_item, parent, false);
+        return new CourseListAdapter.myviewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull myviewHolder holder, int position) {
+        String code = list.get(position).getCode();
+        String name = list.get(position).getName();
+
+        holder.Code.setText(code);
+        holder.Name.setText(name);
+    }
+
+    @Override
+    public int getItemCount() {
+        return list.size();
     }
 
     public class myviewHolder extends RecyclerView.ViewHolder {
