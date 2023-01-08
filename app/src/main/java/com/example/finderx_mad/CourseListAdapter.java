@@ -1,12 +1,15 @@
 package com.example.finderx_mad;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -30,12 +33,44 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.my
     }
 
     @Override
-    public void onBindViewHolder(@NonNull myviewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull myviewHolder holder, @SuppressLint("RecyclerView") int position) {
         String code = list.get(position).getCode();
         String name = list.get(position).getName();
 
         holder.Code.setText(code);
         holder.Name.setText(name);
+
+        holder.Name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch(position){
+                    case 0:
+                        Toast.makeText(view.getContext().getApplicationContext(),"Moving to Database Group",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.DestStudentGrouplist);
+                        break;
+                    case 1:
+                        Toast.makeText(view.getContext().getApplicationContext(),"Moving to P&S Group",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.DestGroup2003);
+                        break;
+                    case 2:
+                        Toast.makeText(view.getContext().getApplicationContext(),"Moving to SAD Group",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.DestGroup2006);
+                        break;
+                    case 3:
+                        Toast.makeText(view.getContext().getApplicationContext(),"Moving to MAD Group",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.DestGroup2007);
+                        break;
+                    case 4:
+                        Toast.makeText(view.getContext().getApplicationContext(),"Moving to TCS Group",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.DestGroup2001);
+                        break;
+                    case 5:
+                        Toast.makeText(view.getContext().getApplicationContext(),"Moving to PM Group",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.DestGroup2002);
+                        break;
+                }
+            }
+        });
     }
 
     @Override
@@ -51,6 +86,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.my
     public class myviewHolder extends RecyclerView.ViewHolder {
 
         TextView Code,Name;
+
         public myviewHolder(@NonNull View itemView) {
             super(itemView);
 

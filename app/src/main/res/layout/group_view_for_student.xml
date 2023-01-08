@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="220dp"
     android:layout_margin="16dp"
     android:backgroundTint="#9F9DFF"
     app:cardCornerRadius="30dp"
@@ -21,28 +21,42 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tvTeamName"
+                android:id="@+id/TVGroupName"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="51dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/poppins_semibold"
-                android:paddingLeft="20dp"
-                android:paddingTop="10dp"
-                android:text="Team 1"
+                android:text="Group Name: "
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
-                android:id="@+id/tvNumPeople"
+                android:id="@+id/TVMembers"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="22dp"
-                android:text="People(4)"
-                android:textSize="16sp"
+                android:layout_height="51dp"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Members: "
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/tvTeamName"
-                app:layout_constraintTop_toBottomOf="@+id/tvTeamName" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TVGroupName" />
+
+            <TextView
+                android:id="@+id/tvTeamName"
+                android:layout_width="wrap_content"
+                android:layout_height="51dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Team 1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/TVGroupName"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/ivArrow"
@@ -54,42 +68,77 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/ivPerson1"
-                android:layout_width="36dp"
-                android:layout_height="33dp"
-                android:layout_marginStart="20dp"
+            <TextView
+                android:id="@+id/tvTM1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
+                android:paddingLeft="22dp"
+                android:text="TM1"
+                android:textAlignment="textStart"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@id/TVMembers"
+                app:layout_constraintTop_toBottomOf="@+id/TVGroupName" />
+
+
+            <TextView
+                android:id="@+id/tvTM2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="4dp"
+                android:paddingLeft="22dp"
+                android:text="TM2"
+                android:textAlignment="textStart"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/TVMembers"
+                app:layout_constraintTop_toBottomOf="@+id/tvTM1" />
+
+            <TextView
+                android:id="@+id/tvTM3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="148dp"
+                android:layout_marginTop="8dp"
+                android:paddingLeft="22dp"
+                android:text="TM3"
+                android:textAlignment="textStart"
+                android:textSize="16sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvNumPeople"
-                app:srcCompat="@drawable/ic_account_icon_group_people" />
+                app:layout_constraintTop_toBottomOf="@+id/tvTM2" />
 
-            <ImageView
-                android:id="@+id/ivPerson2"
-                android:layout_width="36dp"
-                android:layout_height="33dp"
-                android:layout_marginStart="15dp"
-                app:layout_constraintStart_toEndOf="@+id/ivPerson1"
-                app:layout_constraintTop_toTopOf="@+id/ivPerson1"
-                app:srcCompat="@drawable/ic_account_icon_group_people" />
+            <TextView
+                android:id="@+id/tvTM4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="148dp"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="22dp"
+                android:text="TM4"
+                android:textAlignment="textStart"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTM3" />
 
-            <ImageView
-                android:id="@+id/ivPerson3"
-                android:layout_width="36dp"
-                android:layout_height="33dp"
-                android:layout_marginStart="15dp"
-                app:layout_constraintStart_toEndOf="@+id/ivPerson2"
-                app:layout_constraintTop_toTopOf="@+id/ivPerson2"
-                app:srcCompat="@drawable/ic_account_icon_group_people" />
+            <TextView
+                android:id="@+id/tvTM5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="148dp"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="22dp"
+                android:text="TM5"
+                android:textAlignment="textStart"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTM4" />
 
-            <ImageView
-                android:id="@+id/ivPerson4"
-                android:layout_width="36dp"
-                android:layout_height="33dp"
-                android:layout_marginStart="15dp"
-                app:layout_constraintStart_toEndOf="@+id/ivPerson3"
-                app:layout_constraintTop_toTopOf="@+id/ivPerson3"
-                app:srcCompat="@drawable/ic_account_icon_group_people" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

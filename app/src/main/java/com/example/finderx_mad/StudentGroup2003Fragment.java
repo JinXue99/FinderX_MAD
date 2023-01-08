@@ -20,31 +20,30 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 
-public class StudentCourseFragment extends Fragment {
+public class StudentGroup2003Fragment extends Fragment {
+
+    RecyclerView recview;
+    SGroupListPSAdapter adapter;
+    ArrayList<SGroupListPS> list;
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+    SGroupListPS viewGroup;
+
+    SearchView searchView;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+
     private String mParam1;
     private String mParam2;
 
-    RecyclerView recview;
-    CourseListAdapter adapter;
-    ArrayList<CourseList> list;
-    FirebaseDatabase database;
-    DatabaseReference myRef, CourseRef;
-    CourseList viewCourse;
-
-    //private MenuItem menuItem;
-    SearchView searchView;
-    //Toolbar toolbar;
-
-    public StudentCourseFragment() {
-
+    public StudentGroup2003Fragment() {
+        // Required empty public constructor
     }
 
-    public static StudentCourseFragment newInstance(String param1, String param2) {
-        StudentCourseFragment fragment = new StudentCourseFragment();
+    public static StudentGroup2003Fragment newInstance(String param1, String param2) {
+        StudentGroup2003Fragment fragment = new StudentGroup2003Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -52,20 +51,10 @@ public class StudentCourseFragment extends Fragment {
         return fragment;
     }
 
-    @Override
-    public void onCreate(@NonNull Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
     private void filter(String newText) {
-        ArrayList<CourseList>filteredList = new ArrayList<>();
-        for(CourseList item : list){
-            if(item.getCode().toLowerCase().contains(newText.toLowerCase())
-                    ||item.getName().toLowerCase().contains(newText.toLowerCase())){
+        ArrayList<SGroupListPS>filteredList = new ArrayList<>();
+        for(SGroupListPS item : list){
+            if(item.getTName().toLowerCase().contains(newText.toLowerCase())){
                 filteredList.add(item);
             }
         }
@@ -73,22 +62,23 @@ public class StudentCourseFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_student_course, null, false);
-
-
-        /*toolbar=view.findViewById(R.id.SCourseToolbar);
-        AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-        appCompatActivity.setSupportActionBar(toolbar);
-        appCompatActivity.getSupportActionBar().setTitle("Course Enrolled");*/
+        View view = inflater.inflate(R.layout.fragment_student_group2003, null, false);
+        recview = (RecyclerView) view.findViewById(R.id.RVGList2003);
 
         //Firebase
-        recview = (RecyclerView) view.findViewById(R.id.RVCourseList);
         database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        myRef = database.getReference("Courses").child("Course Code");
-        //CourseRef = myRef.child("Course Code");
+        myRef = database.getReference("Student Group List PS").child("Teams");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext().getApplicationContext());
         layoutManager.setReverseLayout(true);
@@ -96,15 +86,15 @@ public class StudentCourseFragment extends Fragment {
         recview.setLayoutManager(layoutManager);
 
         list = new ArrayList<>();
-        adapter = new CourseListAdapter(getContext().getApplicationContext(), list);
+        adapter = new SGroupListPSAdapter(getContext().getApplicationContext(),list);
         recview.setAdapter(adapter);
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    viewCourse = dataSnapshot.getValue(CourseList.class);
-                    list.add(viewCourse);
+                    viewGroup = dataSnapshot.getValue(SGroupListPS.class);
+                    list.add(viewGroup);
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -115,7 +105,7 @@ public class StudentCourseFragment extends Fragment {
             }
         });
 
-        searchView=view.findViewById(R.id.searchField);
+        searchView = view.findViewById(R.id.search2003);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -131,5 +121,4 @@ public class StudentCourseFragment extends Fragment {
 
         return view;
     }
-
 }

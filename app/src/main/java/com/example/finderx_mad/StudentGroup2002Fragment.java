@@ -19,32 +19,36 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link StudentGroup2002Fragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class StudentGroup2002Fragment extends Fragment {
 
-public class StudentCourseFragment extends Fragment {
+    RecyclerView recview;
+    SGroupListPMAdapter adapter;
+    ArrayList<SGroupListPM> list;
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+    SGroupListPM viewGroup;
+
+    SearchView searchView;
+
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-    RecyclerView recview;
-    CourseListAdapter adapter;
-    ArrayList<CourseList> list;
-    FirebaseDatabase database;
-    DatabaseReference myRef, CourseRef;
-    CourseList viewCourse;
-
-    //private MenuItem menuItem;
-    SearchView searchView;
-    //Toolbar toolbar;
-
-    public StudentCourseFragment() {
-
+    public StudentGroup2002Fragment() {
+        // Required empty public constructor
     }
 
-    public static StudentCourseFragment newInstance(String param1, String param2) {
-        StudentCourseFragment fragment = new StudentCourseFragment();
+    public static StudentGroup2002Fragment newInstance(String param1, String param2) {
+        StudentGroup2002Fragment fragment = new StudentGroup2002Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -53,7 +57,7 @@ public class StudentCourseFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(@NonNull Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -62,10 +66,9 @@ public class StudentCourseFragment extends Fragment {
     }
 
     private void filter(String newText) {
-        ArrayList<CourseList>filteredList = new ArrayList<>();
-        for(CourseList item : list){
-            if(item.getCode().toLowerCase().contains(newText.toLowerCase())
-                    ||item.getName().toLowerCase().contains(newText.toLowerCase())){
+        ArrayList<SGroupListPM>filteredList = new ArrayList<>();
+        for(SGroupListPM item : list){
+            if(item.getTName().toLowerCase().contains(newText.toLowerCase())){
                 filteredList.add(item);
             }
         }
@@ -75,20 +78,12 @@ public class StudentCourseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_student_course, null, false);
-
-
-        /*toolbar=view.findViewById(R.id.SCourseToolbar);
-        AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
-        appCompatActivity.setSupportActionBar(toolbar);
-        appCompatActivity.getSupportActionBar().setTitle("Course Enrolled");*/
+        View view = inflater.inflate(R.layout.fragment_student_group2002, null, false);
+        recview = (RecyclerView) view.findViewById(R.id.RVGList2002);
 
         //Firebase
-        recview = (RecyclerView) view.findViewById(R.id.RVCourseList);
         database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        myRef = database.getReference("Courses").child("Course Code");
-        //CourseRef = myRef.child("Course Code");
+        myRef = database.getReference("Student Group List PM").child("Teams");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext().getApplicationContext());
         layoutManager.setReverseLayout(true);
@@ -96,15 +91,15 @@ public class StudentCourseFragment extends Fragment {
         recview.setLayoutManager(layoutManager);
 
         list = new ArrayList<>();
-        adapter = new CourseListAdapter(getContext().getApplicationContext(), list);
+        adapter = new SGroupListPMAdapter(getContext().getApplicationContext(),list);
         recview.setAdapter(adapter);
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    viewCourse = dataSnapshot.getValue(CourseList.class);
-                    list.add(viewCourse);
+                    viewGroup = dataSnapshot.getValue(SGroupListPM.class);
+                    list.add(viewGroup);
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -115,7 +110,7 @@ public class StudentCourseFragment extends Fragment {
             }
         });
 
-        searchView=view.findViewById(R.id.searchField);
+        searchView=view.findViewById(R.id.search2002);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -131,5 +126,4 @@ public class StudentCourseFragment extends Fragment {
 
         return view;
     }
-
 }
