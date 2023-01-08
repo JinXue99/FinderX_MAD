@@ -16,6 +16,9 @@
         android:theme="@style/Theme.FinderX_MAD"
         tools:targetApi="31">
         <activity
+            android:name=".StudentChat"
+            android:exported="false" />
+        <activity
             android:name=".StudentActivity"
             android:exported="false"
             android:label="@string/title_activity_student2"
@@ -27,7 +30,12 @@
             android:theme="@style/Theme.FinderX_MAD.NoActionBar" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="false" />
+
+        <meta-data
+            android:name="android.app.lib_name"
+            android:value="" />
+
         <activity
             android:name=".SlideActivity"
             android:exported="true">

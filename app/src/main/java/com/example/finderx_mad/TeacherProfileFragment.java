@@ -15,6 +15,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,8 +32,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class TeacherProfileFragment extends Fragment {
     //private FirebaseAuth student;
     private FirebaseUser teacher;
-    private FirebaseFirestore FirebaseStore;
-    private DocumentReference df;
+
+    // Declare Database
+    private FirebaseDatabase database;
+    private DatabaseReference teacherRef;
+
+
+    //private FirebaseFirestore FirebaseStore;
+   // private DocumentReference df;
 
     String TeacherID;
     // TODO: Rename parameter arguments, choose names that match
@@ -85,6 +96,26 @@ public class TeacherProfileFragment extends Fragment {
         // Connect to Firebase
         teacher = FirebaseAuth.getInstance().getCurrentUser();
         TeacherID = teacher.getUid();
+        database=FirebaseDatabase.getInstance();
+        teacherRef=database.getReference("Users").child(TeacherID);
+        teacherRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists() && snapshot.hasChildren()){
+                    TVTeacherName.setText(snapshot.child("Name").getValue().toString());
+                    TVTeacherID.setText(snapshot.child("TeacherID").getValue().toString());
+                    TVTeacherEmail.setText(snapshot.child("Email").getValue().toString());
+                    TVTeacherMajor.setText(snapshot.child("Majoring").getValue().toString());
+                    TVTeacherPhone.setText(snapshot.child("Phone").getValue().toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        /*
         this.FirebaseStore = FirebaseFirestore.getInstance();
         df = FirebaseStore.collection("User").document(TeacherID);
         df.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -108,6 +139,8 @@ public class TeacherProfileFragment extends Fragment {
             }
         });
 
+
+         */
 
         // Inflate the layout for this fragment
         return view;

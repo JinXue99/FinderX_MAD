@@ -22,4 +22,5 @@
     <style name="Theme.FinderX_MAD.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.FinderX_MAD.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

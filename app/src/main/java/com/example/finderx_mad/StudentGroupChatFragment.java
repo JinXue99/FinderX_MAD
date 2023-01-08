@@ -7,12 +7,14 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -96,43 +98,40 @@ public class StudentGroupChatFragment extends Fragment {
         GroupRef = myRef.child("Group");
         InitializeField();
         RetrieveAndDisplayGroups();
+
+        //onItemClickListenerMethod of groupChatView item
+        groupChatView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+                String currentGroupName = adapterView.getItemAtPosition(position).toString();
+
+                Intent groupChatIntent = new Intent(getContext().getApplicationContext(),StudentChat.class);
+                groupChatIntent.putExtra("groupName",currentGroupName);
+                startActivity(groupChatIntent);
+            }
+        });
+
+        //Create Group OnClickListener
         Button tentative = (Button) view.findViewById(R.id.TentativeGroupChat);
         tentative.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                CreateGroup();
-            }
-        });
+          public void onClick(View v) {
+               CreateGroup();
+        }
+     });
 
         return view;
     }
 
-    private void RetrieveAndDisplayGroups() {
-        GroupRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Set<String> set = new HashSet<>();
-                Iterator iterator = snapshot.getChildren().iterator();
-                while(iterator.hasNext()){
-                    set.add(((DataSnapshot)iterator.next()).getKey());
-                }
-                list_of_group_chat.clear();
-                list_of_group_chat.addAll(set);
-                arrayAdapter.notifyDataSetChanged();
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
-        });
-    }
-
+    //Initialize Field
     private void InitializeField() {
         groupChatView = (ListView) view.findViewById(R.id.group_chat_view);
         arrayAdapter = new ArrayAdapter<String>(getContext().getApplicationContext(), android.R.layout.simple_list_item_1,list_of_group_chat);
         groupChatView.setAdapter(arrayAdapter);
     }
 
+    // Create Group Analog
     private void CreateGroup( ) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Enter Group Name");
@@ -162,7 +161,31 @@ public class StudentGroupChatFragment extends Fragment {
         builder.show();
     }
 
-    private void CreateYourGroup(String groupName) {
+
+    //Print the Group List
+    private void RetrieveAndDisplayGroups() {
+        GroupRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Set<String> set = new HashSet<>();
+                Iterator iterator = snapshot.getChildren().iterator();
+                while(iterator.hasNext()){
+                    set.add(((DataSnapshot)iterator.next()).getKey());
+                }
+                list_of_group_chat.clear();
+                list_of_group_chat.addAll(set);
+                arrayAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
+    }
+
+
+    //Save the Created GroupName into FirebaseDatabase
+   private void CreateYourGroup(String groupName) {
         myRef.child("Group").child(groupName).setValue("")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
