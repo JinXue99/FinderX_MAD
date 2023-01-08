@@ -41,4 +41,28 @@
         android:name="com.example.finderx_mad.StudentProfileFragment"
         android:label="Student Profile"
         tools:layout="@layout/fragment_student_profile" />
+    <fragment
+        android:id="@+id/DestStudentGrouplist"
+        android:name="com.example.finderx_mad.StudentGroupListFragment"
+        android:label="fragment_student_group_list" />
+    <fragment
+        android:id="@+id/DestGroup2003"
+        android:name="com.example.finderx_mad.StudentGroup2003Fragment"
+        android:label="StudentGroup2003Fragment" />
+    <fragment
+        android:id="@+id/DestGroup2001"
+        android:name="com.example.finderx_mad.StudentGroup2001Fragment"
+        android:label="StudentGroup2001Fragment" />
+    <fragment
+        android:id="@+id/DestGroup2006"
+        android:name="com.example.finderx_mad.StudentGroup2006Fragment"
+        android:label="StudentGroup2006Fragment" />
+    <fragment
+        android:id="@+id/DestGroup2007"
+        android:name="com.example.finderx_mad.StudentGroup2007Fragment"
+        android:label="StudentGroup2007Fragment" />
+    <fragment
+        android:id="@+id/DestGroup2002"
+        android:name="com.example.finderx_mad.StudentGroup2002Fragment"
+        android:label="StudentGroup2002Fragment" />
 </navigation>

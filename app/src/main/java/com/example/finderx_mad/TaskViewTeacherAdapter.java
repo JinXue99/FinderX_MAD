@@ -52,6 +52,11 @@ public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacher
         return list.size();
     }
 
+    public void filterList(ArrayList<TaskModel> filteredList){
+        list = filteredList;
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTaskTitle,tvTaskDesc,tvDate;
         public ViewHolder(@NonNull View itemView) {

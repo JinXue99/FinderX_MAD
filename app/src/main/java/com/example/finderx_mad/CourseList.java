@@ -2,13 +2,23 @@ package com.example.finderx_mad;
 
 public class CourseList {
     String Code,Name;
+    private int imageView;
 
-    public CourseList(String code, String name) {
+    public CourseList(String code, String name,int imageView) {
         this.Code = code;
         this.Name = name;
+        this.imageView = imageView;
     }
 
     public CourseList(){
+    }
+
+    public int getImageView() {
+        return imageView;
+    }
+
+    public void setImageView(int imageView) {
+        this.imageView = imageView;
     }
 
     public String getCode() {
