@@ -32,10 +32,17 @@ public class SGroupListPMAdapter extends RecyclerView.Adapter<SGroupListPMAdapte
     public void onBindViewHolder(@NonNull SGroupListPMAdapter.myviewHolder holder, int position) {
 
         String TName = list.get(position).getTName();
-        String Name = list.get(position).getName();
-
+        String TM1 = list.get(position).getTM1();
+        String TM2 = list.get(position).getTM2();
+        String TM3 = list.get(position).getTM3();
+        String TM4 = list.get(position).getTM4();
+        String TM5 = list.get(position).getTM5();
         holder.TName.setText(TName);
-        holder.Name.setText(Name);
+        holder.TM1.setText(TM1);
+        holder.TM2.setText(TM2);
+        holder.TM3.setText(TM3);
+        holder.TM4.setText(TM4);
+        holder.TM5.setText(TM5);
     }
 
     @Override
@@ -49,12 +56,18 @@ public class SGroupListPMAdapter extends RecyclerView.Adapter<SGroupListPMAdapte
     }
 
     public class myviewHolder extends RecyclerView.ViewHolder {
-        TextView TName,Name;
+        TextView TName,TM1,TM2,TM3,TM4,TM5;
 
         public myviewHolder(@NonNull View itemView) {
             super(itemView);
+
             TName=itemView.findViewById(R.id.tvTeamName);
-            Name=itemView.findViewById(R.id.tvTM1);
+            TM1=itemView.findViewById(R.id.tvTM1);
+            TM2=itemView.findViewById(R.id.tvTM2);
+            TM3=itemView.findViewById(R.id.tvTM3);
+            TM4=itemView.findViewById(R.id.tvTM4);
+            TM5=itemView.findViewById(R.id.tvTM5);
+
         }
     }
 }

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,7 +41,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.my
         holder.Code.setText(code);
         holder.Name.setText(name);
 
-        holder.Name.setOnClickListener(new View.OnClickListener() {
+        holder.CV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switch(position){
@@ -86,12 +87,21 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.my
     public class myviewHolder extends RecyclerView.ViewHolder {
 
         TextView Code,Name;
+        CardView CV;
 
         public myviewHolder(@NonNull View itemView) {
             super(itemView);
 
             Code=itemView.findViewById(R.id.TVCourseCodeTitle);
             Name=itemView.findViewById(R.id.TVCourseNameStudent);
+            CV=itemView.findViewById(R.id.CV);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(itemView.getContext(), "Course Selected", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }
