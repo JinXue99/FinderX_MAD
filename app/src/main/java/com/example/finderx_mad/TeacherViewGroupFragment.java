@@ -2,11 +2,23 @@ package com.example.finderx_mad;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -15,12 +27,18 @@ import android.view.ViewGroup;
  */
 public class TeacherViewGroupFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    RecyclerView recview;
+    TGroupListDBAdapter adapter;
+    ArrayList<SGroupListDB> list;
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+    SGroupListDB viewGroup;
+
+    SearchView searchView;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
@@ -28,15 +46,6 @@ public class TeacherViewGroupFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TeacherViewGroupFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static TeacherViewGroupFragment newInstance(String param1, String param2) {
         TeacherViewGroupFragment fragment = new TeacherViewGroupFragment();
         Bundle args = new Bundle();
@@ -55,10 +64,66 @@ public class TeacherViewGroupFragment extends Fragment {
         }
     }
 
+    private void filter(String newText) {
+        ArrayList<SGroupListDB>filteredList = new ArrayList<>();
+        for(SGroupListDB item : list){
+            if(item.getTName().toLowerCase().contains(newText.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+        adapter.filterList(filteredList);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_teacher_view_group, container, false);
+        View view = inflater.inflate(R.layout.fragment_teacher_view_group, null, false);
+        recview = (RecyclerView) view.findViewById(R.id.CVTeacherViewGroup2001_Occ1);
+
+        //Firebase
+        database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        myRef = database.getReference("Student Group List DB").child("Teams");
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext().getApplicationContext());
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        recview.setLayoutManager(layoutManager);
+
+        list = new ArrayList<>();
+        adapter = new TGroupListDBAdapter(getContext().getApplicationContext(), list);
+        recview.setAdapter(adapter);
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    viewGroup = dataSnapshot.getValue(SGroupListDB.class);
+                    list.add(viewGroup);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        searchView=view.findViewById(R.id.search2001);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filter(newText);
+                return true;
+            }
+        });
+
+        return view;
     }
 }

@@ -39,12 +39,7 @@ public class TeacherCourseFragment extends Fragment {
     DatabaseReference myRef, CourseRef;
     CourseListTeacher viewCourseTeacher;
 
-    //private MenuItem menuItem;
-    SearchView searchView;
-    //Toolbar toolbar;
-
     public TeacherCourseFragment() {
-        // Required empty public constructor
     }
 
     public static TeacherCourseFragment newInstance(String param1, String param2) {
@@ -63,17 +58,6 @@ public class TeacherCourseFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
-
-    private void filter(String newText) {
-        ArrayList<CourseListTeacher>filteredList = new ArrayList<>();
-        for(CourseListTeacher item : list){
-            if(item.getCode().toLowerCase().contains(newText.toLowerCase())
-                    ||item.getName().toLowerCase().contains(newText.toLowerCase())){
-                filteredList.add(item);
-            }
-        }
-        adapter.filterList(filteredList);
     }
 
     @Override
@@ -111,21 +95,6 @@ public class TeacherCourseFragment extends Fragment {
 
             }
         });
-
-//        searchView=view.findViewById(R.id.searchField);
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                filter(newText);
-//                return true;
-//            }
-//        });
-
         return view;
     }
 

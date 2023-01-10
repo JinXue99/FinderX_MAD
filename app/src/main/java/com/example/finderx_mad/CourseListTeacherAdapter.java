@@ -1,5 +1,6 @@
 package com.example.finderx_mad;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -30,12 +32,31 @@ public class CourseListTeacherAdapter extends RecyclerView.Adapter<CourseListTea
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CourseListTeacherAdapter.myviewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CourseListTeacherAdapter.myviewHolder holder, @SuppressLint("RecyclerView") int position) {
         String code = list.get(position).getCode();
         String name = list.get(position).getName();
 
         holder.Code.setText(code);
         holder.Name.setText(name);
+
+        holder.CVTeacherCourse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch(position){
+                    case 0:
+                        Toast.makeText(view.getContext().getApplicationContext(),code + " is selected ",Toast.LENGTH_SHORT).show();
+                        Navigation.findNavController(view).navigate(R.id.DestTeacherOcc);
+                        break;
+                    case 1:
+                        Toast.makeText(view.getContext().getApplicationContext(),code + " is selected ",Toast.LENGTH_SHORT).show();
+//                        Navigation.findNavController(view).navigate(R.id.DestTeacherOcc);
+                        break;
+
+
+                }
+            }
+        });
+
     }
 
     @Override
@@ -52,14 +73,14 @@ public class CourseListTeacherAdapter extends RecyclerView.Adapter<CourseListTea
     public class myviewHolder extends RecyclerView.ViewHolder {
 
         TextView Code,Name;
-        CardView CVTeacher;
+        CardView CVTeacherCourse;
 
         public myviewHolder(@NonNull View itemView) {
             super(itemView);
 
             Code=itemView.findViewById(R.id.tvCourseCodeTeacher);
             Name=itemView.findViewById(R.id.tvCourseNameTeacher);
-//            CVTeacher=itemView.findViewById(R.id.CVTeacher);
+            CVTeacherCourse=itemView.findViewById(R.id.CVTeacherCourse);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
