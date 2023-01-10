@@ -25,7 +25,11 @@
         android:id="@+id/DestStudentAnnouncement"
         android:name="com.example.finderx_mad.StudentAnnouncementFragment"
         android:label="Student Announcement"
-        tools:layout="@layout/fragment_student_announcement" />
+        tools:layout="@layout/fragment_student_announcement" >
+        <action
+            android:id="@+id/action_DestStudentAnnouncement_to_announcementContent"
+            app:destination="@id/DestannouncementContent" />
+    </fragment>
     <fragment
         android:id="@+id/DestStudentViewRequest"
         android:name="com.example.finderx_mad.StudentViewRequestFragment"
@@ -65,4 +69,9 @@
         android:id="@+id/DestGroup2002"
         android:name="com.example.finderx_mad.StudentGroup2002Fragment"
         android:label="StudentGroup2002Fragment" />
+    <fragment
+        android:id="@+id/DestannouncementContent"
+        android:name="com.example.finderx_mad.AnnouncementContent"
+        android:label="fragment_announcement_content"
+        tools:layout="@layout/fragment_announcement_content" />
 </navigation>
