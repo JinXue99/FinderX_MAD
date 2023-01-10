@@ -50,8 +50,9 @@
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/content_student.xml" value="0.14743589743589744" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/content_student2.xml" value="0.1358974358974359" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/content_teacher.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/course_item.xml" value="0.14743589743589744" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/course_view_for_student.xml" value="0.14743589743589744" />
-        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/course_view_for_teacher.xml" value="0.22" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/course_view_for_teacher.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/custom_spinner.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/custom_spinner_dropdown.xml" value="0.1" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_create_new_group.xml" value="0.14743589743589744" />
@@ -61,7 +62,13 @@
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_chat.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_course.xml" value="0.14556962025316456" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_create_group.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_group2001.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_group2002.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_group2003.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_group2006.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_group2007.xml" value="0.14743589743589744" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_group_chat.xml" value="0.14743589743589744" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_group_list.xml" value="0.14743589743589744" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_join_group.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_main_page.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_profile.xml" value="0.12962962962962962" />
@@ -69,14 +76,14 @@
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_student_view_request.xml" value="0.14743589743589744" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_add_new_task.xml" value="0.14743589743589744" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_choice.xml" value="0.14743589743589744" />
-        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_course.xml" value="0.14743589743589744" />
-        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_occ.xml" value="0.11851851851851852" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_course.xml" value="0.22" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_occ.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_profile.xml" value="0.12962962962962962" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_profile_no_access.xml" value="0.14743589743589744" />
-        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_view_group.xml" value="0.12962962962962962" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_view_group.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/fragment_teacher_view_task.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/group_chat_view_for_student.xml" value="0.14743589743589744" />
-        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/group_view_for_student.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/group_view_for_student.xml" value="0.22" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/group_view_for_teacher.xml" value="0.14743589743589744" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/item_containter_received_message.xml" value="0.22" />
         <entry key="..\:/Users/kelee/Documents/WIA2007 FINDERX/FinderX_MAD/app/src/main/res/layout/item_containter_sent_message.xml" value="0.14743589743589744" />

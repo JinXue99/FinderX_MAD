@@ -29,4 +29,19 @@
         android:name="com.example.finderx_mad.TeacherAddNewTaskFragment"
         android:label="Add New Task"
         tools:layout="@layout/fragment_teacher_add_new_task" />
+    <fragment
+        android:id="@+id/DestTeacherOcc"
+        android:name="com.example.finderx_mad.TeacherOccFragment"
+        android:label="fragment_teacher_occ"
+        tools:layout="@layout/fragment_teacher_occ" />
+    <fragment
+        android:id="@+id/DestTeacherChoice"
+        android:name="com.example.finderx_mad.TeacherChoiceFragment"
+        android:label="fragment_teacher_choice"
+        tools:layout="@layout/fragment_teacher_choice" />
+    <fragment
+        android:id="@+id/DestTeacherViewGroup"
+        android:name="com.example.finderx_mad.TeacherViewGroupFragment"
+        android:label="fragment_teacher_view_group"
+        tools:layout="@layout/fragment_teacher_view_group" />
 </navigation>
