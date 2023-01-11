@@ -87,7 +87,7 @@ public class StudentCourseFragment extends Fragment {
         //Firebase
         recview = (RecyclerView) view.findViewById(R.id.RVCourseList);
         database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        myRef = database.getReference("Courses").child("Course Code");
+        myRef = database.getReference("Courses");
         //CourseRef = myRef.child("Course Code");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext().getApplicationContext());

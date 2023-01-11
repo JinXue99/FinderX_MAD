@@ -46,27 +46,21 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.my
             public void onClick(View view) {
                 switch(position){
                     case 0:
-                        Toast.makeText(view.getContext().getApplicationContext(),"Moving to Database Group",Toast.LENGTH_SHORT).show();
-                        Navigation.findNavController(view).navigate(R.id.DestStudentGrouplist);
+                        Navigation.findNavController(view).navigate(R.id.DestGroup2007);
                         break;
                     case 1:
-                        Toast.makeText(view.getContext().getApplicationContext(),"Moving to P&S Group",Toast.LENGTH_SHORT).show();
                         Navigation.findNavController(view).navigate(R.id.DestGroup2003);
                         break;
                     case 2:
-                        Toast.makeText(view.getContext().getApplicationContext(),"Moving to SAD Group",Toast.LENGTH_SHORT).show();
                         Navigation.findNavController(view).navigate(R.id.DestGroup2006);
                         break;
                     case 3:
-                        Toast.makeText(view.getContext().getApplicationContext(),"Moving to MAD Group",Toast.LENGTH_SHORT).show();
-                        Navigation.findNavController(view).navigate(R.id.DestGroup2007);
+                        Navigation.findNavController(view).navigate(R.id.DestStudentGrouplist);
                         break;
                     case 4:
-                        Toast.makeText(view.getContext().getApplicationContext(),"Moving to TCS Group",Toast.LENGTH_SHORT).show();
                         Navigation.findNavController(view).navigate(R.id.DestGroup2001);
                         break;
                     case 5:
-                        Toast.makeText(view.getContext().getApplicationContext(),"Moving to PM Group",Toast.LENGTH_SHORT).show();
                         Navigation.findNavController(view).navigate(R.id.DestGroup2002);
                         break;
                 }

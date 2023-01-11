@@ -116,6 +116,7 @@ public class StudentGroupListFragment extends Fragment {
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Toast.makeText(getContext().getApplicationContext(), "Create Group Button is Clicked", Toast.LENGTH_SHORT).show();
                 Navigation.findNavController(view).navigate(R.id.DestStudentCreateGroup);
             }
