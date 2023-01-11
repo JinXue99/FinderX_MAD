@@ -6,10 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 
-import androidx.annotation.Nullable;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -21,14 +25,13 @@ import com.google.firebase.database.FirebaseDatabase;
  */
 public class CreateNewGroup extends Fragment {
 
-    EditText etGroupName;
-    EditText etDescription;
-    Spinner SPNoMembers;
-    Button btnPublish;
+
+    EditText ETGroupName, ETTM1, ETTM2, ETTM3, ETTM4, ETTM5;
+    FirebaseDatabase database;
+    DatabaseReference myRef;
+    SGroupListDB group;
 
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -73,33 +76,57 @@ public class CreateNewGroup extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_student_create_group, container, false);
 
-        etGroupName = (EditText) view.findViewById(R.id.ETGroupName);
-        etDescription = (EditText) view.findViewById(R.id.ETDescription);
-        SPNoMembers = (Spinner) view.findViewById(R.id.SPNoMembers);
-        btnPublish = (Button) view.findViewById(R.id.BtnPublish);
+        View view = inflater.inflate(R.layout.fragment_student_create_group, null, false);
 
+        database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        myRef = database.getReference("Student Group List DB").child("Teams");
 
-        btnPublish.setOnClickListener(new View.OnClickListener() {
+        ETGroupName = (EditText) view.findViewById(R.id.ETGroupName);
+        ETTM1 = (EditText) view.findViewById(R.id.ETTM1);
+        ETTM2 = (EditText) view.findViewById(R.id.ETTM2);
+        ETTM3 = (EditText) view.findViewById(R.id.ETTM3);
+        ETTM4 = (EditText) view.findViewById(R.id.ETTM4);
+        ETTM5 = (EditText) view.findViewById(R.id.ETTM5);
+
+        Button BtnPublish = (Button) view.findViewById(R.id.BtnPublish);
+        BtnPublish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createGroup();
+                if (ETGroupName.getText().toString().isEmpty()) {
+                    ETGroupName.setError("Group Name is required!");
+                    return;
+                }
+                if (ETTM1.getText().toString().isEmpty()) {
+                    ETTM1.setError("At least one member is required!");
+                    return;
+                }
+                CreateNewGroup(group);
             }
         });
+
 
         return view;
     }
 
-    public void createGroup(){
+    public void CreateNewGroup(SGroupListDB group) {
+        SGroupListDB newgroup = new SGroupListDB(
+                ETGroupName.getText().toString(),
+                ETTM1.getText().toString(), ETTM2.getText().toString(),
+                ETTM3.getText().toString(), ETTM4.getText().toString(),
+                ETTM5.getText().toString());
 
-        String name = etGroupName.getText().toString();
-        String description = etDescription.getText().toString();
-        String noMembers = SPNoMembers.getSelectedItem().toString();
+        myRef.child(newgroup.getTName()).setValue(newgroup).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(getContext().getApplicationContext(), "Group is Created!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext().getApplicationContext(), "Unsuccessful to create group", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
-        GroupModel newGroup = new GroupModel(name, description, noMembers);
-        groupRef.push().setValue(newGroup);
     }
 
 }

@@ -12,6 +12,20 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
+        android:id="@+id/TVGroupMember1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
+        android:text="Group Member 1:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#80000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TVGroupName" />
+
+    <TextView
         android:id="@+id/TVTitle"
         style="@style/Widget.AppCompat.TextView"
         android:layout_width="320dp"
@@ -25,64 +39,13 @@
         android:textColor="#000000"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" /><![CDATA[
+        app:layout_constraintTop_toTopOf="parent" />
+     app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    app:layout_constraintStart_toEndOf="@+id/TVGroupMember"
-        app:layout_constraintTop_toBottomOf="@+id/ETDescription"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    ]]>
 
     <TextView
         android:id="@+id/TVGroupName"
@@ -102,96 +65,169 @@
         android:id="@+id/ETGroupName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="380dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="Enter your group name"
         android:textColor="#4B000000"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.315"
-        app:layout_constraintStart_toEndOf="@+id/TVGroupName" />
-
-    <TextView
-        android:id="@+id/TVGroupDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Group Description:"
-        android:textColor="#80000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="272dp" />
+        app:layout_constraintStart_toEndOf="@+id/TVGroupName"
+        app:layout_constraintTop_toBottomOf="@+id/TVTitle" />
 
     <EditText
-        android:id="@+id/ETDescription"
+        android:id="@+id/ETTM2"
         android:layout_width="360dp"
         android:layout_height="52dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Write something..."
+        android:text="Enter Member Name..."
         android:textColor="#4B000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVGroupDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/TVGroupMember2" />
 
+    <EditText
+        android:id="@+id/ETTM3"
+        android:layout_width="360dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter Member Name..."
+        android:textColor="#4B000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVGroupMember3" />
 
-    <Spinner
-        android:id="@+id/SPNoMembers"
-        android:layout_width="94dp"
-        android:layout_height="48dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:entries="@array/noMembers"
-        android:spinnerMode="dropdown"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="252dp"
-        tools:layout_editor_absoluteY="434dp" />
+    <EditText
+        android:id="@+id/ETTM4"
+        android:layout_width="360dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter Member Name..."
+        android:textColor="#4B000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVGroupMember4" />
+
+    <EditText
+        android:id="@+id/ETTM5"
+        android:layout_width="360dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter Member Name..."
+        android:textColor="#4B000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVGroupMember5" />
+
+    <EditText
+        android:id="@+id/ETTM1"
+        android:layout_width="360dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter Member Name..."
+        android:textColor="#4B000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVGroupMember1" />
+
+    <TextView
+        android:id="@+id/TVGroupMember2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        android:text="Group Member 2:"
+        android:textColor="#80000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ETTM1" />
+
+    <TextView
+        android:id="@+id/TVGroupMember3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        android:text="Group Member 3:"
+        android:textColor="#80000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ETTM2" />
+
+    <TextView
+        android:id="@+id/TVGroupMember4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        android:text="Group Member 4:"
+        android:textColor="#80000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ETTM3" />
+
+    <TextView
+        android:id="@+id/TVGroupMember5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        android:text="Group Member 5:"
+        android:textColor="#80000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ETTM4" />
 
     <Button
         android:id="@+id/BtnPublish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         android:backgroundTint="#C2716EE7"
-        android:text="Publish"
+        android:text="Invite and Publish"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.344"
         app:layout_constraintStart_toEndOf="@+id/BtnCancel"
-        tools:layout_editor_absoluteY="541dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/ETTM5" />
 
     <Button
         android:id="@+id/BtnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
         android:backgroundTint="#C2716EE7"
         android:text="Cancel"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="541dp"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/TVNoMembers"
-        android:layout_width="164dp"
-        android:layout_height="34dp"
-        android:text="Number of Members"
-        app:layout_constraintEnd_toStartOf="@+id/SPNoMembers"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="448dp" />
+        app:layout_constraintTop_toBottomOf="@+id/ETTM5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
