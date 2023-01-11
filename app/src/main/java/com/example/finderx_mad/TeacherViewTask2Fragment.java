@@ -14,6 +14,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,6 +49,10 @@ public class TeacherViewTask2Fragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //private FirebaseAuth teacher;
+    private FirebaseUser teacher;
+    String TeacherID;
 
     public TeacherViewTask2Fragment() {
         // Required empty public constructor
@@ -87,9 +93,11 @@ public class TeacherViewTask2Fragment extends Fragment {
 
         recyclerView = (RecyclerView) view.findViewById(R.id.teacherViewTaskRecycleView);
 
-        database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app");
-        myRef = database.getReference("Teacher");
-        TaskRef = myRef.child("Course Code").child("C1").child("Occ").child("Occ 1").child("Task Assigned");
+        // Connect to Firebase
+        teacher = FirebaseAuth.getInstance().getCurrentUser();
+        TeacherID = teacher.getUid();
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("Teachers").child(TeacherID).child("C1").child("Occ").child("Occ A").child("Task Assigned");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext().getApplicationContext());
         layoutManager.setReverseLayout(true);
@@ -101,7 +109,7 @@ public class TeacherViewTask2Fragment extends Fragment {
         adapter = new TaskViewTeacherAdapter(getContext().getApplicationContext(), list);
         recyclerView.setAdapter(adapter);
 
-        TaskRef.addValueEventListener(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
