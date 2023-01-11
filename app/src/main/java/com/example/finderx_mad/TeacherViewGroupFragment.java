@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +42,10 @@ public class TeacherViewGroupFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    //private FirebaseAuth teacher;
+    private FirebaseUser teacher;
+    String TeacherID;
 
     public TeacherViewGroupFragment() {
         // Required empty public constructor
@@ -79,11 +84,12 @@ public class TeacherViewGroupFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_teacher_view_group, null, false);
-        recview = (RecyclerView) view.findViewById(R.id.CVTeacherViewGroup2001_Occ1);
+
+        recview = (RecyclerView) view.findViewById(R.id.CVTeacherViewGroup2007_Occ5);
 
         //Firebase
         database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        myRef = database.getReference("Student Group List DB").child("Teams");
+        myRef = database.getReference("Student Group List MAD").child("Teams");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext().getApplicationContext());
         layoutManager.setReverseLayout(true);

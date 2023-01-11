@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,11 +34,15 @@ public class TeacherCourseFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    //private FirebaseAuth teacher;
+    private FirebaseUser teacher;
+    String TeacherID;
+
     RecyclerView recview;
     CourseListTeacherAdapter adapter;
     ArrayList<CourseListTeacher> list;
     FirebaseDatabase database;
-    DatabaseReference myRef, CourseRef;
+    DatabaseReference myRef;
     CourseListTeacher viewCourseTeacher;
 
     public TeacherCourseFragment() {
@@ -65,15 +71,18 @@ public class TeacherCourseFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_teacher_course, null, false);
 
+        // Connect to Firebase
+        teacher = FirebaseAuth.getInstance().getCurrentUser();
+        TeacherID = teacher.getUid();
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("Teachers").child(TeacherID);
+
         //Firebase
         recview = (RecyclerView) view.findViewById(R.id.RVCourseListTeacher);
-        database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        myRef = database.getReference("Teacher").child("Course Code");
-        //CourseRef = myRef.child("Course Code");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext().getApplicationContext());
-        layoutManager.setReverseLayout(true);
-        layoutManager.setStackFromEnd(true);
+//        layoutManager.setReverseLayout(true);
+//        layoutManager.setStackFromEnd(true);
         recview.setLayoutManager(layoutManager);
 
         list = new ArrayList<>();
