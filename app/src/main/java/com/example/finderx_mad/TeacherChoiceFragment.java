@@ -87,6 +87,14 @@ public class TeacherChoiceFragment extends Fragment {
         };
         cvGroupingList.setOnClickListener(OCLGroupingList);
 
+        CardView cvStudentNameList = view.findViewById(R.id.cvStudentNameList);
+        View.OnClickListener OCLStudentNameList = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.DestTeacherViewStudentNamelist);
+            }
+        };
+        cvStudentNameList.setOnClickListener(OCLStudentNameList);
 
 
     }

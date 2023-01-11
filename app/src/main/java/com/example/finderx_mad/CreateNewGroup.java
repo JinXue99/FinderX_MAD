@@ -27,6 +27,7 @@ public class CreateNewGroup extends Fragment {
 
 
     EditText ETGroupName,etTM1, etTM2, etTM3, etTM4, etTM5;
+
     FirebaseDatabase database;
     DatabaseReference myRef;
     SGroupListMAD group;

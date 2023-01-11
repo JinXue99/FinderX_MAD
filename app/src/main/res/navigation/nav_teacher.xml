@@ -44,4 +44,9 @@
         android:name="com.example.finderx_mad.TeacherViewGroupFragment"
         android:label="View Grouping"
         tools:layout="@layout/fragment_teacher_view_group" />
+    <fragment
+        android:id="@+id/DestTeacherViewStudentNamelist"
+        android:name="com.example.finderx_mad.TeacherViewStudentNamelistFragment"
+        android:label="Student Namelist"
+        tools:layout="@layout/fragment_teacher_view_student_namelist" />
 </navigation>

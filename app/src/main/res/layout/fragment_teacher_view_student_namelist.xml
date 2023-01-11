@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".StudentGroupChatFragment"
-    android:background="@drawable/gradient_studentbackground">
+    tools:context=".TeacherViewStudentNamelistFragment"
+    android:background="@drawable/gradient_teacherbackground">
 
     <ImageView
         android:id="@+id/ivheader"
@@ -19,42 +19,24 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/headerlogo" />
 
-    <SearchView
-        android:id="@+id/SearchGroup"
-        android:layout_width="319dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="19dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivheader" />
-
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <View
         android:id="@+id/divider4"
         android:layout_width="409dp"
         android:layout_height="1dp"
         android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="@+id/SearchGroup"
+        app:layout_constraintBottom_toBottomOf="@+id/ivheader"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
         android:layout_width="409dp"
         android:layout_height="439dp"
         android:layout_marginTop="1dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SearchGroup">
+        app:layout_constraintTop_toBottomOf="@+id/ivheader">
 
         <ListView
-            android:id="@+id/group_chat_view"
+            android:id="@+id/student_namelist_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </RelativeLayout>

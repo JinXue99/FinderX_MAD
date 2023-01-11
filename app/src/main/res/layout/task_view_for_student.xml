@@ -1,83 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="12dp"
-    app:cardCornerRadius="16dp"
     android:layout_margin="16dp"
     android:backgroundTint="#efefef"
-    >
+    app:cardCornerRadius="30dp"
+    app:cardElevation="12dp"
+    android:id="@+id/cardview">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="5dp"
         android:padding="5dp"
-        android:id="@+id/maintaskforstudent">
+        android:id="@+id/constraintlayoutTaskView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/ivTaskImage"
-                android:layout_width="150dp"
-                android:layout_height="130dp"
+            <TextView
+                android:id="@+id/tvTaskTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="TaskTitle"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/task_student" />
+                app:layout_constraintTop_toBottomOf="@+id/tvLecturer" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ivTaskImage"
-                app:layout_constraintTop_toTopOf="parent">
+            <TextView
+                android:id="@+id/tvTaskDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="10dp"
+                android:text="Task Description"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTaskTitle" />
 
-                <TextView
-                    android:id="@+id/tvCourseCode"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="CourseCode"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="130dp"
+                android:text="Deadline"
+                android:textColor="#f54242"
+                android:textStyle="bold|italic"
+                app:layout_constraintBottom_toBottomOf="@+id/tvCourseCodeAnnouncement"
+                app:layout_constraintStart_toEndOf="@+id/tvCourseCodeAnnouncement" />
 
+            <TextView
+                android:id="@+id/tvCourseCodeAnnouncement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="CourseCode"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="@color/purple_700"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tvDeadline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="Deadline"
-                    android:textColor="#fc032c"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvCourseCode"
-                    app:layout_constraintVertical_bias="0.64" />
+            <TextView
+                android:id="@+id/tvLecturer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="lecturer"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tvCourseCodeAnnouncement"
+                app:layout_constraintTop_toBottomOf="@+id/tvCourseCodeAnnouncement" />
 
-                <TextView
-                    android:id="@+id/tvTaskTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="TaskTitle"
-                    app:layout_constraintBottom_toTopOf="@+id/tvDeadline"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvCourseCode"
-                    android:textStyle="bold"/>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -118,9 +118,9 @@ public class StudentGroupListFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Boolean status = snapshot.child("Status").getValue(Boolean.class);
-                if (status){
-                    create.setVisibility(View.GONE);
-                }
+//                if (status){
+         //           create.setVisibility(View.GONE);
+          //      }
             }
 
             @Override

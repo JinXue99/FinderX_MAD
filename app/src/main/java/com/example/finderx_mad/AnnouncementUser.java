@@ -5,20 +5,25 @@ import java.util.Date;
 public class AnnouncementUser {
 
     String CourseCode, TaskTitle, TaskDeadline, TaskDetails;
+    String Name;
 
     public AnnouncementUser(){}
 
-    public AnnouncementUser(String CourseCode, String TaskTitle, String TaskDeadline, String TaskDetails){
+    public AnnouncementUser(String CourseCode, String TaskTitle, String TaskDeadline, String TaskDetails, String Name){
         this.CourseCode = CourseCode;
         this.TaskTitle = TaskTitle;
         this.TaskDeadline = TaskDeadline;
         this.TaskDetails = TaskDetails;
+        this.Name = Name;
     }
 
-//    public AnnouncementUser(String TaskTitle, String TaskDeadline){
-//        this.TaskTitle = TaskTitle;
-//        this.TaskDeadline = TaskDeadline;
-//    }
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
 
     public String getCourseCode() {return CourseCode;}
 
