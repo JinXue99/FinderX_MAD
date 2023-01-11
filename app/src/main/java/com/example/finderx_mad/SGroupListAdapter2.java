@@ -19,13 +19,13 @@ import java.util.ArrayList;
 public class SGroupListAdapter2 extends RecyclerView.Adapter<SGroupListAdapter2.myviewHolder> {
 
     LayoutInflater inflater;
-    ArrayList<SGroupListDB> list;
+    ArrayList<SGroupListMAD> list;
 
     DatabaseReference CountRef;
     TextView MemberCount;
     int countMember;
 
-    SGroupListAdapter2(Context context, ArrayList<SGroupListDB> list){
+    SGroupListAdapter2(Context context, ArrayList<SGroupListMAD> list){
         this.inflater = LayoutInflater.from(context);
         this.list = list;
     }
@@ -59,7 +59,7 @@ public class SGroupListAdapter2 extends RecyclerView.Adapter<SGroupListAdapter2.
         return list.size();
     }
 
-    public void filterList(ArrayList<SGroupListDB> filteredList){
+    public void filterList(ArrayList<SGroupListMAD> filteredList){
         list = filteredList;
         notifyDataSetChanged();
     }

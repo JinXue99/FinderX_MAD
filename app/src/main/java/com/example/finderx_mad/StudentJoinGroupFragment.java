@@ -28,10 +28,10 @@ public class StudentJoinGroupFragment extends Fragment {
 
     RecyclerView recview;
     SGroupListAdapter2 adapter;
-    ArrayList<SGroupListDB> list;//,sortList;
+    ArrayList<SGroupListMAD> list;//,sortList;
     FirebaseDatabase database;
     DatabaseReference myRef;
-    SGroupListDB viewGroup;
+    SGroupListMAD viewGroup;
 
     Button btnJoinGroup,btnDecline;
     String CurrentState = "new";
@@ -84,7 +84,7 @@ public class StudentJoinGroupFragment extends Fragment {
         String userEmail = getArguments().getString("etUsernameEmail");
 
         database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        myRef = database.getReference("Student Group List DB").child("Teams");
+        myRef = database.getReference("Student Group List MAD").child("Teams");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext().getApplicationContext());
         layoutManager.setReverseLayout(true);
@@ -99,7 +99,7 @@ public class StudentJoinGroupFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    viewGroup = dataSnapshot.getValue(SGroupListDB.class);
+                    viewGroup = dataSnapshot.getValue(SGroupListMAD.class);
                     list.add(viewGroup);
                 }
                 adapter.notifyDataSetChanged();
