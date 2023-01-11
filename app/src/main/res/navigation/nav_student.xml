@@ -84,4 +84,12 @@
         android:name="com.example.finderx_mad.AnnouncementContent"
         android:label="fragment_announcement_content"
         tools:layout="@layout/fragment_announcement_content" />
+    <fragment
+        android:id="@+id/DestViewMembers2"
+        android:name="com.example.finderx_mad.StudentJoinGroupFragment2"
+        android:label="StudentJoinGroupFragment2" />
+    <fragment
+        android:id="@+id/DestViewMember3"
+        android:name="com.example.finderx_mad.StudentJoinGroupFragment3"
+        android:label="StudentJoinGroupFragment3" />
 </navigation>

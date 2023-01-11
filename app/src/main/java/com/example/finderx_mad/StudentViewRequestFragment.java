@@ -1,12 +1,11 @@
 package com.example.finderx_mad;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,4 +60,90 @@ public class StudentViewRequestFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_student_view_request, container, false);
     }
+
+//ViewRequest
+    /*private void CheckUserExistence(String userEmail) {
+        myRef.child("T1").child("Members").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    CurrentState = "Member";
+                    btnJoinGroup.setText("View Group");
+                    btnDecline.setText("Left Group");
+                    btnDecline.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        myRef.child("Members").child("T1").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    CurrentState = "Member";
+                    btnJoinGroup.setText("View Group");
+                    btnDecline.setText("Left Group");
+                    btnDecline.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        myRef.child(myId).child(nuserID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    if(snapshot.child("status").getValue().toString().equals("pending")){
+                        CurrentState = "I_sent_pending";
+                        btnJoinGroup.setText("Leave Group");
+                        btnDecline.setVisibility(View.GONE);
+                    }
+                    if(snapshot.child("status").getValue().toString().equals("decline")){
+                        CurrentState = "I_sent_decline";
+                        btnJoinGroup.setText("Leave Group");
+                        btnDecline.setVisibility(View.GONE);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        myRef.child(userId).child(myId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    if(snapshot.child("status").getValue().toString().equals("pending")){
+                        CurrentState="he_sent_pending";
+                        btnJoinGroup.setText("Accept Join Group Request");
+                        btnDecline.setText(("Decline Request"));
+                        btnDecline.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        if(CurrentState.equals("new")){
+            CurrentState = "new";
+            btnJoinGroup.setText("Send Join Group Request");
+            btnDecline.setVisibility(View.GONE);
+        }
+
+    }
+    //View Request
+}
+     */
 }

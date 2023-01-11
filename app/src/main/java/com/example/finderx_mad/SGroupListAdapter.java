@@ -20,13 +20,13 @@ import java.util.ArrayList;
 public class SGroupListAdapter extends RecyclerView.Adapter<SGroupListAdapter.myviewHolder> {
 
     LayoutInflater inflater;
-    ArrayList<SGroupListDB> list;
+    ArrayList<SGroupListMAD> list;
 
     DatabaseReference CountRef;
     TextView MemberCount;
     int countMember;
 
-    SGroupListAdapter(Context context, ArrayList<SGroupListDB> list){
+    SGroupListAdapter(Context context, ArrayList<SGroupListMAD> list){
         this.inflater = LayoutInflater.from(context);
         this.list = list;
     }

@@ -46,7 +46,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.my
             public void onClick(View view) {
                 switch(position){
                     case 0:
-                        Navigation.findNavController(view).navigate(R.id.DestGroup2007);
+                        Navigation.findNavController(view).navigate(R.id.DestStudentGrouplist);
                         break;
                     case 1:
                         Navigation.findNavController(view).navigate(R.id.DestGroup2003);
@@ -55,7 +55,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.my
                         Navigation.findNavController(view).navigate(R.id.DestGroup2006);
                         break;
                     case 3:
-                        Navigation.findNavController(view).navigate(R.id.DestStudentGrouplist);
+                        Navigation.findNavController(view).navigate(R.id.DestGroup2007);
                         break;
                     case 4:
                         Navigation.findNavController(view).navigate(R.id.DestGroup2001);
