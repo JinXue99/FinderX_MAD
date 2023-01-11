@@ -13,12 +13,15 @@ import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +41,7 @@ public class  StudentAnnouncementFragment extends Fragment {
     DatabaseReference myRef, TaskRef;
     myAnnouncementAdapter myAdapter;
     AnnouncementUser studentViewTask;
+    TextView tvContentCourseCode,tvContentTaskTitle, tvContentDeadline, tvContentDetails;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -89,6 +93,8 @@ public class  StudentAnnouncementFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_student_announcement,container,false);
 
+
+
         recyclerView = view.findViewById(R.id.addRecycleView);
 
         database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app");
@@ -104,12 +110,40 @@ public class  StudentAnnouncementFragment extends Fragment {
         myAdapter = new myAnnouncementAdapter(this.getContext(), list);
         recyclerView.setAdapter(myAdapter);
 
+//        tvContentCourseCode = (TextView) view1.findViewById(R.id.tvContentCourseCode);
+//        tvContentTaskTitle = (TextView) view1.findViewById(R.id.tvContentTaskTitle);
+//        tvContentDeadline = (TextView) view1.findViewById(R.id.tvContentDeadline);
+//        tvContentDetails = (TextView) view1.findViewById(R.id.tvContentDetails);
+
+
+//        CharSequence CourseCode = tvContentCourseCode.getText();
+//        CharSequence TaskTitle = tvContentTaskTitle.getText();
+//        CharSequence Deadline = tvContentDeadline.getText();
+//        CharSequence TaskDetails = tvContentDetails.getText();
+//
+//        String coursecode = CourseCode.toString();
+//        String tasktitle = TaskTitle.toString();
+//        String deadline = Deadline.toString();
+//        String taskdetails = TaskDetails.toString();
+//
+//        Bundle bundle = new Bundle();
+//        bundle.putString("course",coursecode);
+//        bundle.putString("title",tasktitle);
+//        bundle.putString("deadline",deadline);
+//        bundle.putString("details",taskdetails);
+
+
         TaskRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     studentViewTask = dataSnapshot.getValue(AnnouncementUser.class);
                     list.add(studentViewTask);
+//                    tvContentCourseCode.setText(dataSnapshot.child("courseCode").getValue().toString());
+//                    tvContentTaskTitle.setText(dataSnapshot.child("taskTitle").getValue().toString());
+//                    tvContentDeadline.setText(dataSnapshot.child("taskDeadline").getValue().toString());
+//                    tvContentDetails.setText(dataSnapshot.child("taskDetails").getValue().toString());
+//                    tvContentCourseCode.setText(dataSnapshot.child("courseCode").getValue().toString());
                 }
                 myAdapter.notifyDataSetChanged();
             }
