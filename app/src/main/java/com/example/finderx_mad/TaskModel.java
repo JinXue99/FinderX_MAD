@@ -3,17 +3,18 @@ package com.example.finderx_mad;
 
 public class TaskModel{
 
-    String taskTitle, taskDetails, taskDeadline;
+    String taskTitle, taskDetails, taskDeadline, courseCode;
     String taskDateandTime;
 
     public TaskModel() {
     }
 
-    public TaskModel(String taskTitle, String taskDetails, String taskDeadline, String taskDateandTime) {
+    public TaskModel(String taskTitle, String taskDetails, String taskDeadline, String taskDateandTime, String courseCode) {
         this.taskTitle = taskTitle;
         this.taskDetails = taskDetails;
         this.taskDeadline = taskDeadline;
         this.taskDateandTime = taskDateandTime;
+        this.courseCode = courseCode;
     }
 
     public TaskModel(String taskTitle, String taskDateandTime) {
@@ -56,5 +57,11 @@ public class TaskModel{
         this.taskDateandTime = taskDate;
     }
 
+    public String getCourseCode() {
+        return courseCode;
+    }
 
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
 }

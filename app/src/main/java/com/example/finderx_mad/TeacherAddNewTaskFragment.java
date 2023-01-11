@@ -58,7 +58,7 @@ public class TeacherAddNewTaskFragment extends Fragment {
     SimpleDateFormat sdf;
     String currentDateandTime;
     TaskModel task;
-    String DL;
+    String DL, courseCode;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -118,6 +118,7 @@ public class TeacherAddNewTaskFragment extends Fragment {
         calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
         sdf = new SimpleDateFormat("yyyy.MM.dd");
         currentDateandTime = sdf.format(new Date());
+        courseCode = "WIA2001";
 
         MaterialDatePicker materialDatePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Select Submission Date")
@@ -170,7 +171,8 @@ public class TeacherAddNewTaskFragment extends Fragment {
                 etTaskTitle.getText().toString(),
                 etTaskDetails.getText().toString(),
                 DL,
-                currentDateandTime
+                currentDateandTime,
+                courseCode
         );
 
         TaskRef.child(aTask.getTaskTitle()).setValue(aTask)
