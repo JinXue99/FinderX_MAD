@@ -38,8 +38,10 @@ import java.util.Set;
 public class CreateNewGroup extends Fragment {
 
 
-    EditText ETGroupName, ETTM1, ETTM2, ETTM3, ETTM4, ETTM5;
-    FirebaseAuth mAuth;
+
+    EditText ETGroupName,ETTM1,ETTM2,ETTM3,ETTM4,ETTM5;
+
+
     FirebaseDatabase database;
     DatabaseReference myRef, userRef,chatRef;
     SGroupListMAD group;
@@ -92,7 +94,7 @@ public class CreateNewGroup extends Fragment {
 
         database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app/");
         myRef = database.getReference("Student Group List MAD").child("Teams");
-        mAuth = FirebaseAuth.getInstance();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         //emailRef = database.getReference("Users").child(mAuth.getUid()).child("Email");
 
         ETGroupName = (EditText) view.findViewById(R.id.ETGroupName);

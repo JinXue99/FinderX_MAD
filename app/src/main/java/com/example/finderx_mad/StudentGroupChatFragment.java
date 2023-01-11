@@ -113,7 +113,9 @@ public class StudentGroupChatFragment extends Fragment {
             }
         });
 
-//        //Create Group OnClickListener
+
+        //Create Group OnClickListener
+
 //        Button tentative = (Button) view.findViewById(R.id.TentativeGroupChat);
 //        tentative.setOnClickListener(new View.OnClickListener() {
 //            @Override

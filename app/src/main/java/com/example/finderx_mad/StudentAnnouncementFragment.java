@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -52,6 +54,10 @@ public class  StudentAnnouncementFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //private FirebaseAuth teacher;
+    private FirebaseUser teacher;
+    String TeacherID;
 
     public StudentAnnouncementFragment() {
         // Required empty public constructor
@@ -91,62 +97,37 @@ public class  StudentAnnouncementFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_student_announcement,container,false);
-
-
+        View view = inflater.inflate(R.layout.fragment_student_announcement,null,false);
 
         recyclerView = view.findViewById(R.id.addRecycleView);
 
-        database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app");
-        myRef = database.getReference("Teacher");
-        TaskRef = myRef.child("Course Code").child("C1").child("Occ").child("Occ 1").child("Task Assigned");
+        // Connect to Firebase
+        //teacher = FirebaseAuth.getInstance().getCurrentUser();
+        //TeacherID = teacher.getUid();
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("Teachers").child("rf1la9CMmOUxkAl6R69Q3qWb2cB3").child("C1").child("Occ").child("Occ A").child("Task Assigned");
 
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext().getApplicationContext());
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(layoutManager);
 
-//        database = FirebaseDatabase.getInstance().getReference("Task Assigned");
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
         list = new ArrayList<>();
-        myAdapter = new myAnnouncementAdapter(this.getContext(), list);
+        myAdapter = new myAnnouncementAdapter(getContext().getApplicationContext(), list);
         recyclerView.setAdapter(myAdapter);
 
-//        tvContentCourseCode = (TextView) view1.findViewById(R.id.tvContentCourseCode);
-//        tvContentTaskTitle = (TextView) view1.findViewById(R.id.tvContentTaskTitle);
-//        tvContentDeadline = (TextView) view1.findViewById(R.id.tvContentDeadline);
-//        tvContentDetails = (TextView) view1.findViewById(R.id.tvContentDetails);
 
-
-//        CharSequence CourseCode = tvContentCourseCode.getText();
-//        CharSequence TaskTitle = tvContentTaskTitle.getText();
-//        CharSequence Deadline = tvContentDeadline.getText();
-//        CharSequence TaskDetails = tvContentDetails.getText();
-//
-//        String coursecode = CourseCode.toString();
-//        String tasktitle = TaskTitle.toString();
-//        String deadline = Deadline.toString();
-//        String taskdetails = TaskDetails.toString();
-//
-//        Bundle bundle = new Bundle();
-//        bundle.putString("course",coursecode);
-//        bundle.putString("title",tasktitle);
-//        bundle.putString("deadline",deadline);
-//        bundle.putString("details",taskdetails);
-
-
-        TaskRef.addValueEventListener(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     studentViewTask = dataSnapshot.getValue(AnnouncementUser.class);
                     list.add(studentViewTask);
-//                    tvContentCourseCode.setText(dataSnapshot.child("courseCode").getValue().toString());
-//                    tvContentTaskTitle.setText(dataSnapshot.child("taskTitle").getValue().toString());
-//                    tvContentDeadline.setText(dataSnapshot.child("taskDeadline").getValue().toString());
-//                    tvContentDetails.setText(dataSnapshot.child("taskDetails").getValue().toString());
-//                    tvContentCourseCode.setText(dataSnapshot.child("courseCode").getValue().toString());
                 }
                 myAdapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
