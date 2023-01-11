@@ -96,6 +96,7 @@ public class TeacherViewTask2Fragment extends Fragment {
         layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
 
+
         list = new ArrayList<>();
         adapter = new TaskViewTeacherAdapter(getContext().getApplicationContext(), list);
         recyclerView.setAdapter(adapter);
@@ -134,12 +135,10 @@ public class TeacherViewTask2Fragment extends Fragment {
             }
 
             @Override
-            public boolean onQueryTextChange(String newText) {
-                filter(newText);
+            public boolean onQueryTextChange(String query) {
                 return true;
             }
         });
-
 
         return view;
     }

@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,12 +27,12 @@ public class StudentGroupListFragment extends Fragment {
 
     RecyclerView recview;
     SGroupListAdapter adapter;
-    ArrayList<SGroupListDB> list;
+    ArrayList<SGroupListDB> list;//,sortList;
     FirebaseDatabase database;
     DatabaseReference myRef;
     SGroupListDB viewGroup;
 
-    SearchView searchView;
+    //SearchView searchView;
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -55,13 +58,14 @@ public class StudentGroupListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
-    private void filter(String newText) {
+    /*private void filter(String newText) {
         ArrayList<SGroupListDB>filteredList = new ArrayList<>();
         for(SGroupListDB item : list){
             if(item.getTName().toLowerCase().contains(newText.toLowerCase())){
@@ -69,7 +73,7 @@ public class StudentGroupListFragment extends Fragment {
             }
         }
         adapter.filterList(filteredList);
-    }
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -88,6 +92,7 @@ public class StudentGroupListFragment extends Fragment {
         recview.setLayoutManager(layoutManager);
 
         list = new ArrayList<>();
+        //sortList = (ArrayList<SGroupListDB>) list.clone();
         adapter = new SGroupListAdapter(getContext().getApplicationContext(), list);
         recview.setAdapter(adapter);
 
@@ -101,13 +106,23 @@ public class StudentGroupListFragment extends Fragment {
                 adapter.notifyDataSetChanged();
             }
 
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
 
-        searchView=view.findViewById(R.id.searchOccGroup);
+        ImageView create = (ImageView) view.findViewById(R.id.IVAddGroup);
+        create.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext().getApplicationContext(), "Create Group Button is Clicked", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(view).navigate(R.id.DestStudentCreateGroup);
+            }
+        });
+
+        /*searchView=view.findViewById(R.id.searchOccGroup);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -120,7 +135,10 @@ public class StudentGroupListFragment extends Fragment {
                 return true;
             }
         });
+*/
+        recview.setVisibility(View.VISIBLE);
 
         return view;
     }
+
 }

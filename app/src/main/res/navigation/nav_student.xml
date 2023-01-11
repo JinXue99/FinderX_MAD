@@ -65,4 +65,14 @@
         android:id="@+id/DestGroup2002"
         android:name="com.example.finderx_mad.StudentGroup2002Fragment"
         android:label="StudentGroup2002Fragment" />
+    <fragment
+        android:id="@+id/DestViewMembers"
+        android:name="com.example.finderx_mad.StudentJoinGroupFragment"
+        android:label="fragment_student_join_group"
+        tools:layout="@layout/fragment_student_join_group" />
+    <fragment
+        android:id="@+id/DestStudentCreateGroup"
+        android:name="com.example.finderx_mad.CreateNewGroup"
+        android:label="fragment_student_create_group"
+        tools:layout="@layout/fragment_student_create_group" />
 </navigation>

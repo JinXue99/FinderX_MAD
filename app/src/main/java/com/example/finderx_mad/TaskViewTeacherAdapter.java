@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 
 
-public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacherAdapter.ViewHolder> {
+public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacherAdapter.ViewHolder>{
 
     LayoutInflater inflater;
 //    List<TaskModel> taskModels;
