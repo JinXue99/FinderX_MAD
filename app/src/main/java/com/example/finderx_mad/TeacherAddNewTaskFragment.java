@@ -25,6 +25,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -48,7 +50,7 @@ import java.util.TimeZone;
 public class TeacherAddNewTaskFragment extends Fragment {
     private View view;
     FirebaseDatabase database;
-    DatabaseReference myRef,TaskRef;
+    DatabaseReference myRef;
 
     TextView tvDeadLine;
     EditText etTaskTitle;
@@ -69,6 +71,10 @@ public class TeacherAddNewTaskFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //private FirebaseAuth teacher;
+    private FirebaseUser teacher;
+    String TeacherID;
 
     public TeacherAddNewTaskFragment() {
         // Required empty public constructor
@@ -107,10 +113,11 @@ public class TeacherAddNewTaskFragment extends Fragment {
         //Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_teacher_add_new_task,null,false);
 
-        database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app");
-        myRef = database.getReference("Teacher");
-        TaskRef = myRef.child("Course Code").child("C1").child("Occ").child("Occ 1").child("Task Assigned");
-
+    // Connect to Firebase
+        teacher = FirebaseAuth.getInstance().getCurrentUser();
+        TeacherID = teacher.getUid();
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("Teachers").child(TeacherID).child("C1").child("Occ").child("Occ A").child("Task Assigned");
 
         tvDeadLine =(TextView)  view.findViewById(R.id.tvDeadLine);
         etTaskTitle =(EditText)  view.findViewById(R.id.etTaskTitle);
@@ -118,7 +125,7 @@ public class TeacherAddNewTaskFragment extends Fragment {
         calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
         sdf = new SimpleDateFormat("yyyy.MM.dd");
         currentDateandTime = sdf.format(new Date());
-        courseCode = "WIA2001";
+        courseCode = "WIA2007";
 
         MaterialDatePicker materialDatePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Select Submission Date")
@@ -175,7 +182,7 @@ public class TeacherAddNewTaskFragment extends Fragment {
                 courseCode
         );
 
-        TaskRef.child(aTask.getTaskTitle()).setValue(aTask)
+        myRef.child(aTask.getTaskTitle()).setValue(aTask)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {

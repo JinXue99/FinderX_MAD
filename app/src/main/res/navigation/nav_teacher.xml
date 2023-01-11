@@ -32,16 +32,16 @@
     <fragment
         android:id="@+id/DestTeacherOcc"
         android:name="com.example.finderx_mad.TeacherOccFragment"
-        android:label="fragment_teacher_occ"
+        android:label="Teacher Occ"
         tools:layout="@layout/fragment_teacher_occ" />
     <fragment
         android:id="@+id/DestTeacherChoice"
         android:name="com.example.finderx_mad.TeacherChoiceFragment"
-        android:label="fragment_teacher_choice"
+        android:label="Teacher Choice"
         tools:layout="@layout/fragment_teacher_choice" />
     <fragment
         android:id="@+id/DestTeacherViewGroup"
         android:name="com.example.finderx_mad.TeacherViewGroupFragment"
-        android:label="fragment_teacher_view_group"
+        android:label="View Grouping"
         tools:layout="@layout/fragment_teacher_view_group" />
 </navigation>

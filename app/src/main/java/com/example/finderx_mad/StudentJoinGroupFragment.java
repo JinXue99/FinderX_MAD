@@ -81,7 +81,7 @@ public class StudentJoinGroupFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_student_join_group, null, false);
         recview = (RecyclerView) view.findViewById(R.id.RVmembers);
 
-        String userEmail = getArguments().getString("etUsernameEmail");
+//        String userEmail = getArguments().getString("etUsernameEmail");
 
         database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app/");
         myRef = database.getReference("Student Group List MAD").child("Teams");

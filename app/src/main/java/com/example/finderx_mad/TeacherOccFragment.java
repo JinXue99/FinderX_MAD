@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +32,9 @@ public class TeacherOccFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    //private FirebaseAuth teacher;
+    private FirebaseUser teacher;
+    String TeacherID;
     RecyclerView recview;
     OccListTeacherAdapter adapter;
     ArrayList<OccListTeacher> list;
@@ -65,14 +70,18 @@ public class TeacherOccFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_teacher_occ, null, false);
 
+        // Connect to Firebase
+        teacher = FirebaseAuth.getInstance().getCurrentUser();
+        TeacherID = teacher.getUid();
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("Teachers").child(TeacherID).child("C1").child("Occ");
+
         //Firebase
         recview = (RecyclerView) view.findViewById(R.id.RVOccListTeacher);
-        database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        myRef = database.getReference("Teacher").child("Course Code").child("C1").child("Occ");
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext().getApplicationContext());
-        layoutManager.setReverseLayout(true);
-        layoutManager.setStackFromEnd(true);
+//        layoutManager.setReverseLayout(true);
+//        layoutManager.setStackFromEnd(true);
         recview.setLayoutManager(layoutManager);
 
         list = new ArrayList<>();
