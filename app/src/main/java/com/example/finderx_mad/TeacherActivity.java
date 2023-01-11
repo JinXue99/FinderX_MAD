@@ -1,6 +1,7 @@
 package com.example.finderx_mad;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 
@@ -8,6 +9,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -48,4 +50,40 @@ public class TeacherActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        NavController navController = Navigation.findNavController(this,
+//                R.id.nav_host_fragment_content_teacher);
+//
+//        // By calling onNavDestinationSelected(), you always get the right behavior
+//        return NavigationUI.onNavDestinationSelected(item, navController)
+//                || super.onOptionsItemSelected(item);
+//    }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        Bundle bundle =new Bundle();
+//        switch (item.getItemId()) {
+//            case R.id.DestTeacherProfile:
+//            {
+//                // Manually build the NavOptions that manually do
+//                // what NavigationUI.onNavDestinationSelected does for you
+//                NavOptions navOptions = new NavOptions.Builder()
+//                        .setPopUpTo(R.id.DestTeacherCourse, false, true)
+//                        .setRestoreState(true)
+//                        .build();
+//
+//                NavController navController = Navigation.findNavController(this,
+//                        R.id.nav_host_fragment_content_teacher);
+//
+//                navController.navigate(String.valueOf(R.id.DestTeacherCourse), navOptions);
+//                return true;
+//            }
+//
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 }
+

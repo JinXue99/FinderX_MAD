@@ -19,29 +19,29 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/headerlogo" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchTask"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="130dp"
-        android:focusable="false"
-        app:closeIcon="@drawable/ic_baseline_close_24"
-        app:iconifiedByDefault="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:queryHint="Search..."
-        app:searchHintIcon="@null"
-        app:searchIcon="@drawable/searchbutton" />
+<!--    <androidx.appcompat.widget.SearchView-->
+<!--        android:id="@+id/searchTask"-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="130dp"-->
+<!--        android:focusable="false"-->
+<!--        app:closeIcon="@drawable/ic_baseline_close_24"-->
+<!--        app:iconifiedByDefault="false"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:queryHint="Search..."-->
+<!--        app:searchHintIcon="@null"-->
+<!--        app:searchIcon="@drawable/searchbutton" />-->
 
     <ImageView
         android:id="@+id/ivAddTaskButton"
         android:layout_width="48dp"
         android:layout_height="49dp"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="50dp"
         android:onClick="BtnAddTaskOnClicked"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/searchTask"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_post_add_24"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="207dp" />
+        app:layout_constraintGuide_begin="179dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineDown"

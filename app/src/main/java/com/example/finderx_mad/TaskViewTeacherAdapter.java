@@ -4,10 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -45,6 +49,19 @@ public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacher
         holder.tvTaskDesc.setText(desc);
         holder.tvDate.setText(date);
 
+//        int x[] = {R.color.matColor1,R.color.matColor2,R.color.matColor3,R.color.matColor5,R.color.matColor4,R.color.matColor6,R.color.matColor7,R.color.matColor8,R.color.matColor9,R.color.matColor10};
+        int x[] = {R.color.darker_purple,R.color.purple_500};
+        int i=0;
+        for(int j=0;j<getItemCount();j++){
+            if(i==2)
+                i=0;
+            if(position==j){
+                holder.constraintlayoutTaskView.setBackgroundColor(x[i]);
+
+            }
+            i++;
+        }
+
 
 
     }
@@ -54,12 +71,13 @@ public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacher
         return list.size();
     }
 
-    public void filterList(ArrayList<TaskModel> filteredList){
-        list = filteredList;
-        notifyDataSetChanged();
-    }
+//    public void filterList(ArrayList<TaskModel> filteredList){
+//        list = filteredList;
+//        notifyDataSetChanged();
+//    }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        ConstraintLayout constraintlayoutTaskView;
         TextView tvTaskTitle,tvTaskDesc,tvDate;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,7 +85,7 @@ public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacher
             tvTaskTitle = itemView.findViewById(R.id.tvTaskTitle);
             tvDate = itemView.findViewById(R.id.tvDate);
             tvTaskDesc = itemView.findViewById(R.id.tvTaskDesc);
-
+            constraintlayoutTaskView = itemView.findViewById(R.id.constraintlayoutTaskView);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
