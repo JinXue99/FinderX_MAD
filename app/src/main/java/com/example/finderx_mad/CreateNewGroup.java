@@ -26,10 +26,10 @@ import com.google.firebase.database.FirebaseDatabase;
 public class CreateNewGroup extends Fragment {
 
 
-    EditText ETGroupName, ETTM1, ETTM2, ETTM3, ETTM4, ETTM5;
+    EditText ETGroupName,etTM1, etTM2, etTM3, etTM4, etTM5;
     FirebaseDatabase database;
     DatabaseReference myRef;
-    SGroupListDB group;
+    SGroupListMAD group;
 
 
     private static final String ARG_PARAM1 = "param1";
@@ -77,14 +77,14 @@ public class CreateNewGroup extends Fragment {
         View view = inflater.inflate(R.layout.fragment_student_create_group, null, false);
 
         database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        myRef = database.getReference("Student Group List DB").child("Teams");
+        myRef = database.getReference("Student Group List MAD").child("Teams");
 
         ETGroupName = (EditText) view.findViewById(R.id.ETGroupName);
-        ETTM1 = (EditText) view.findViewById(R.id.ETTM1);
-        ETTM2 = (EditText) view.findViewById(R.id.ETTM2);
-        ETTM3 = (EditText) view.findViewById(R.id.ETTM3);
-        ETTM4 = (EditText) view.findViewById(R.id.ETTM4);
-        ETTM5 = (EditText) view.findViewById(R.id.ETTM5);
+        etTM1 = (EditText) view.findViewById(R.id.etTM1);
+        etTM2 = (EditText) view.findViewById(R.id.etTM2);
+        etTM3 = (EditText) view.findViewById(R.id.etTM3);
+        etTM4 = (EditText) view.findViewById(R.id.etTM4);
+        etTM5 = (EditText) view.findViewById(R.id.etTM5);
 
         Button BtnPublish = (Button) view.findViewById(R.id.BtnPublish);
         BtnPublish.setOnClickListener(new View.OnClickListener() {
@@ -94,8 +94,8 @@ public class CreateNewGroup extends Fragment {
                     ETGroupName.setError("Group Name is required!");
                     return;
                 }
-                if (ETTM1.getText().toString().isEmpty()) {
-                    ETTM1.setError("At least one member is required!");
+                if (etTM1.getText().toString().isEmpty()) {
+                    etTM1.setError("At least one member is required!");
                     return;
                 }
                 CreateNewGroup(group);
@@ -106,12 +106,12 @@ public class CreateNewGroup extends Fragment {
         return view;
     }
 
-    public void CreateNewGroup(SGroupListDB group) {
+    public void CreateNewGroup(SGroupListMAD group) {
         SGroupListDB newgroup = new SGroupListDB(
                 ETGroupName.getText().toString(),
-                ETTM1.getText().toString(), ETTM2.getText().toString(),
-                ETTM3.getText().toString(), ETTM4.getText().toString(),
-                ETTM5.getText().toString());
+                etTM1.getText().toString(), etTM2.getText().toString(),
+                etTM3.getText().toString(), etTM4.getText().toString(),
+                etTM5.getText().toString());
 
         myRef.child(newgroup.getTName()).setValue(newgroup).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

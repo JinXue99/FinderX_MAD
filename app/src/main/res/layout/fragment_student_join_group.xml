@@ -98,12 +98,12 @@
 
     <Button
         android:id="@+id/btnJoinGroup"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="#514FE1"
         android:fontFamily="sans-serif"
-        android:text="Join this Group"
+        android:text="Send Request"
         android:textColor="@color/white"
         android:textAllCaps="false"
         android:textSize="20sp"
@@ -115,12 +115,12 @@
 
     <Button
         android:id="@+id/btnDecline"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:backgroundTint="#E82031"
         android:fontFamily="sans-serif"
-        android:text="Left Group"
+        android:text="Cancel Request"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp"
