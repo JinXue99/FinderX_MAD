@@ -41,4 +41,11 @@
     <string name="title_activity_teacher">TeacherActivity</string>
     <string name="title_activity_student2">StudentActivity2</string>
 
+    <array name = "noMembers">
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </array>
+
 </resources>

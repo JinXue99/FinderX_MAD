@@ -25,7 +25,11 @@
         android:id="@+id/DestStudentAnnouncement"
         android:name="com.example.finderx_mad.StudentAnnouncementFragment"
         android:label="Student Announcement"
-        tools:layout="@layout/fragment_student_announcement" />
+        tools:layout="@layout/fragment_student_announcement" >
+        <action
+            android:id="@+id/action_DestStudentAnnouncement_to_announcementContent"
+            app:destination="@id/DestannouncementContent" />
+    </fragment>
     <fragment
         android:id="@+id/DestStudentViewRequest"
         android:name="com.example.finderx_mad.StudentViewRequestFragment"

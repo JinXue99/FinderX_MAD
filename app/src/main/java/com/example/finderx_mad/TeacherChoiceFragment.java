@@ -2,11 +2,15 @@ package com.example.finderx_mad;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,5 +64,30 @@ public class TeacherChoiceFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_teacher_choice, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
+
+        CardView cvTaskAssigned = view.findViewById(R.id.cvTaskAssigned);
+        View.OnClickListener OCLTaskAssigned = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.DestTeacherViewTask2);
+            }
+        };
+        cvTaskAssigned.setOnClickListener(OCLTaskAssigned);
+
+        CardView cvGroupingList = view.findViewById(R.id.cvGroupingList);
+        View.OnClickListener OCLGroupingList = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.DestTeacherViewGroup);
+            }
+        };
+        cvGroupingList.setOnClickListener(OCLGroupingList);
+
+
+
     }
 }

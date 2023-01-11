@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.FinderX_MAD" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+    //Need to change NoActionBar.Bridge to DarkActionBar for PickCalendar to work
+    <style name="Theme.FinderX_MAD" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -22,4 +23,5 @@
     <style name="Theme.FinderX_MAD.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.FinderX_MAD.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

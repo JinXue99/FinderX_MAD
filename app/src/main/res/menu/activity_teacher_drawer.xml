@@ -8,10 +8,6 @@
             android:id="@+id/DestTeacherCourse"
             android:icon="@drawable/ic_book"
             android:title="Course" />
-        <item
-            android:id="@+id/DestTeacherViewTask2"
-            android:icon="@drawable/ic_book"
-            android:title="Task" />
 
     </group>
 
