@@ -5,34 +5,22 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-tools:context=".TeacherViewTaskFragment"
 android:background="@drawable/gradient_studentbackground">
 
-<ImageView
-    android:id="@+id/ivheader"
-    android:layout_width="199dp"
-    android:layout_height="167dp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.089"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.0"
-    app:srcCompat="@drawable/headerlogo" />
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchOccGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:focusable="false"
-        app:closeIcon="@drawable/ic_baseline_close_24"
-        app:iconifiedByDefault="false"
-        app:layout_constraintStart_toEndOf="@id/guidelineLeft"
+    <ImageView
+        android:id="@+id/ivheader"
+        android:layout_width="199dp"
+        android:layout_height="167dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:queryHint="Search..."
-        app:searchHintIcon="@null"
-        app:searchIcon="@drawable/searchbutton" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/headerlogo" />
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RVOccGroupListList"
@@ -45,21 +33,6 @@ android:background="@drawable/gradient_studentbackground">
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/BtnCreateGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_marginBottom="45dp"
-        android:backgroundTint="@color/light_blue"
-        android:text="Create Group"
-        android:textColor="#FBFBFB"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RVOccGroupListList" />
 
     <androidx.constraintlayout.widget.Guideline
     android:id="@+id/guidelineLeft"
@@ -89,5 +62,14 @@ android:background="@drawable/gradient_studentbackground">
     android:orientation="horizontal"
     app:layout_constraintGuide_begin="852dp" />
 
+    <ImageView
+        android:id="@+id/IVAddGroup"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/ic_baseline_add_circle_outline_24"
+        tools:layout_editor_absoluteX="296dp"
+        tools:layout_editor_absoluteY="69dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

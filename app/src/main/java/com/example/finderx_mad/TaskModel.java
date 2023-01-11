@@ -1,9 +1,7 @@
 package com.example.finderx_mad;
 
 
-import java.util.Date;
-
-public class TaskModel {
+public class TaskModel{
 
     String taskTitle, taskDetails, taskDeadline;
     String taskDateandTime;
@@ -21,6 +19,9 @@ public class TaskModel {
     public TaskModel(String taskTitle, String taskDateandTime) {
         this.taskTitle = taskTitle;
         this.taskDateandTime = taskDateandTime;
+    }
+
+    public TaskModel(String taskModel) {
     }
 
     public String getTaskTitle() {

@@ -4,14 +4,15 @@ import java.util.Date;
 
 public class AnnouncementUser {
 
-    String CourseCode, TaskTitle, TaskDeadline;
+    String CourseCode, TaskTitle, TaskDeadline, TaskDetails;
 
     public AnnouncementUser(){}
 
-    public AnnouncementUser(String CourseCode, String TaskTitle, String TaskDeadline){
+    public AnnouncementUser(String CourseCode, String TaskTitle, String TaskDeadline, String TaskDetails){
         this.CourseCode = CourseCode;
         this.TaskTitle = TaskTitle;
         this.TaskDeadline = TaskDeadline;
+        this.TaskDetails = TaskDetails;
     }
 
 //    public AnnouncementUser(String TaskTitle, String TaskDeadline){
@@ -34,5 +35,11 @@ public class AnnouncementUser {
     }
 
     public void setTaskDeadline(String taskDeadline) {this.TaskDeadline = taskDeadline;}
+
+    public String getTaskDetails() {
+        return TaskDetails;
+    }
+
+    public void setTaskDetails(String taskDetails) {this.TaskDetails = taskDetails;}
 
 }

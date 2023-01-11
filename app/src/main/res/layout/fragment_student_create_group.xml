@@ -6,17 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_studentbackground"
-    tools:context=".CreateNewGroup">
+    tools:context=".CreateNewGroup"
+    tools:ignore="ExtraText">
 
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
-        android:id="@+id/TVGroupImage"
+        android:id="@+id/TVGroupMember1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="25dp"
-        android:text="Group Image:"
+        android:text="Group Member 1:"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#80000000"
         android:textSize="20sp"
@@ -38,19 +39,20 @@
         android:textColor="#000000"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+     app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
+
 
     <TextView
         android:id="@+id/TVGroupName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="92dp"
         android:text="Group Name:"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#80000000"
@@ -63,165 +65,169 @@
         android:id="@+id/ETGroupName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="615dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:text="Enter your group name"
         android:textColor="#4B000000"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/TVGroupName" />
-
-    <ImageView
-        android:id="@+id/IVUpload"
-        android:layout_width="78dp"
-        android:layout_height="73dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginBottom="530dp"
-        android:background="@color/material_dynamic_neutral90"
-        android:backgroundTint="@color/material_dynamic_neutral90"
-        android:src="@android:drawable/ic_menu_camera"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/TVGroupImage" />
-
-    <TextView
-        android:id="@+id/TVOptional"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="2dp"
-        android:text="*optional"
-        android:textColor="#80F43737"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVGroupImage" />
-
-    <TextView
-        android:id="@+id/TVInstruction"
-        android:layout_width="123dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="173dp"
-        android:layout_marginEnd="116dp"
-        android:text="Choose an image to upload"
-        android:textAlignment="center"
-        android:textColor="#E6B39DDB"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IVUpload" />
-
-    <TextView
-        android:id="@+id/TVGroupDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="80dp"
-        android:text="Group Description:"
-        android:textColor="#80000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/TVOptional" />
+        app:layout_constraintStart_toEndOf="@+id/TVGroupName"
+        app:layout_constraintTop_toBottomOf="@+id/TVTitle" />
 
     <EditText
-        android:id="@+id/ETDescription"
+        android:id="@+id/ETTM2"
         android:layout_width="360dp"
         android:layout_height="52dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Write something..."
+        android:text="Enter Member Name..."
         android:textColor="#4B000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVGroupDescription" />
-
-    <TextView
-        android:id="@+id/TVGroupMember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="33dp"
-        android:text="Number of Members:"
-        android:textColor="#80000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ETDescription" />
-
-    <Spinner
-        android:id="@+id/SPNoMembers"
-        android:layout_width="94dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="25dp"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        app:layout_constraintStart_toEndOf="@+id/TVGroupMember"
-        app:layout_constraintTop_toBottomOf="@+id/ETDescription"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/TVInviteStudent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="35dp"
-        android:text="Invite Student:"
-        android:textColor="#80000000"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVGroupMember" />
+        app:layout_constraintTop_toBottomOf="@+id/TVGroupMember2" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="320dp"
+        android:id="@+id/ETTM3"
+        android:layout_width="360dp"
         android:layout_height="52dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
-        android:text="Student Email"
-        android:textColor="#80000000"
+        android:inputType="textPersonName"
+        android:text="Enter Member Name..."
+        android:textColor="#4B000000"
         android:textSize="16sp"
-        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVInviteStudent" />
+        app:layout_constraintTop_toBottomOf="@+id/TVGroupMember3" />
+
+    <EditText
+        android:id="@+id/ETTM4"
+        android:layout_width="360dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter Member Name..."
+        android:textColor="#4B000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVGroupMember4" />
+
+    <EditText
+        android:id="@+id/ETTM5"
+        android:layout_width="360dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter Member Name..."
+        android:textColor="#4B000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVGroupMember5" />
+
+    <EditText
+        android:id="@+id/ETTM1"
+        android:layout_width="360dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Enter Member Name..."
+        android:textColor="#4B000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TVGroupMember1" />
+
+    <TextView
+        android:id="@+id/TVGroupMember2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        android:text="Group Member 2:"
+        android:textColor="#80000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ETTM1" />
+
+    <TextView
+        android:id="@+id/TVGroupMember3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        android:text="Group Member 3:"
+        android:textColor="#80000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ETTM2" />
+
+    <TextView
+        android:id="@+id/TVGroupMember4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        android:text="Group Member 4:"
+        android:textColor="#80000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ETTM3" />
+
+    <TextView
+        android:id="@+id/TVGroupMember5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        android:text="Group Member 5:"
+        android:textColor="#80000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ETTM4" />
 
     <Button
         android:id="@+id/BtnPublish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
         android:backgroundTint="#C2716EE7"
         android:text="Invite and Publish"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.344"
         app:layout_constraintStart_toEndOf="@+id/BtnCancel"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/ETTM5" />
 
     <Button
         android:id="@+id/BtnCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="25dp"
         android:backgroundTint="#C2716EE7"
         android:text="Cancel"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
-
+        app:layout_constraintTop_toBottomOf="@+id/ETTM5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

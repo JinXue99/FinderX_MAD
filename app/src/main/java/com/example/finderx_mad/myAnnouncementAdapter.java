@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class  myAnnouncementAdapter extends RecyclerView.Adapter<myAnnouncementA
     LayoutInflater inflater;
 
     ArrayList<AnnouncementUser> list;
+
+
 
 
     public myAnnouncementAdapter(Context context, ArrayList<AnnouncementUser> list) {
@@ -42,6 +45,7 @@ public class  myAnnouncementAdapter extends RecyclerView.Adapter<myAnnouncementA
         String course = list.get(position).getCourseCode();
         String title = list.get(position).getTaskTitle();
         String deadline = list.get(position).getTaskDeadline();
+
 
         holder.tvCourseCode.setText(course);
         holder.tvTaskTitle.setText(title);
@@ -74,7 +78,7 @@ public class  myAnnouncementAdapter extends RecyclerView.Adapter<myAnnouncementA
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvCourseCode,tvTaskTitle, tvDeadline;
-        //ConstraintLayout mainLayout;
+
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -82,12 +86,14 @@ public class  myAnnouncementAdapter extends RecyclerView.Adapter<myAnnouncementA
             tvCourseCode = itemView.findViewById(R.id.tvCourseCode);
             tvTaskTitle = itemView.findViewById(R.id.tvTaskTitle);
             tvDeadline = itemView.findViewById(R.id.tvDeadline);
-            //mainLayout = itemView.findViewById(R.id.mainLayout);
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(itemView.getContext(), "item Clicked", Toast.LENGTH_SHORT).show();
+                    Navigation.findNavController(view).navigate(R.id.DestannouncementContent);
+
                 }
             });
 

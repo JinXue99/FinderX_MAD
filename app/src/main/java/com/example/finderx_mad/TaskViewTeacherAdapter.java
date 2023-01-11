@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 
 
-public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacherAdapter.ViewHolder> {
+public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacherAdapter.ViewHolder>{
 
     LayoutInflater inflater;
 //    List<TaskModel> taskModels;
@@ -44,6 +44,7 @@ public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacher
         String desc = list.get(position).getTaskDetails();
         String date = list.get(position).getTaskDateandTime();
 
+
         holder.tvTaskTitle.setText(title);
         holder.tvTaskDesc.setText(desc);
         holder.tvDate.setText(date);
@@ -60,6 +61,7 @@ public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacher
             }
             i++;
         }
+
 
 
     }

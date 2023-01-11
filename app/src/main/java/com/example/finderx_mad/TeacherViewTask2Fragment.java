@@ -96,6 +96,7 @@ public class TeacherViewTask2Fragment extends Fragment {
         layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
 
+
         list = new ArrayList<>();
         adapter = new TaskViewTeacherAdapter(getContext().getApplicationContext(), list);
         recyclerView.setAdapter(adapter);
@@ -125,6 +126,7 @@ public class TeacherViewTask2Fragment extends Fragment {
 
             }
         });
+
 
 //        searchView=view.findViewById(R.id.searchTask);
 //        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
