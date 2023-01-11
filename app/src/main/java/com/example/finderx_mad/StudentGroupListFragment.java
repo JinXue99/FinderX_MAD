@@ -117,10 +117,10 @@ public class StudentGroupListFragment extends Fragment {
         FirebaseDatabase.getInstance().getReference("Users").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Boolean status = snapshot.child("Status").getValue(Boolean.class);
-                if (status){
-                    create.setVisibility(View.GONE);
-                }
+ //               Boolean status = snapshot.child("Status").getValue(Boolean.class);
+//                if (status){
+//                    create.setVisibility(View.GONE);
+//                }
             }
 
             @Override
