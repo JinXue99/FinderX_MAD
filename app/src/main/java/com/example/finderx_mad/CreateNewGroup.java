@@ -69,9 +69,6 @@ public class CreateNewGroup extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-    FirebaseDatabase database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app");
-    DatabaseReference myRef = database.getReference("Student Group List DB");
-    DatabaseReference groupRef = myRef.child("Teams");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

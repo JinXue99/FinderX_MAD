@@ -92,7 +92,7 @@ public class  myAnnouncementAdapter extends RecyclerView.Adapter<myAnnouncementA
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(itemView.getContext(), "item Clicked", Toast.LENGTH_SHORT).show();
-                    Navigation.findNavController(view).navigate(R.id.DestannouncementContent);
+                    Navigation.findNavController(view).navigate(R.id.DestAnnouncementContent);
 
                 }
             });
