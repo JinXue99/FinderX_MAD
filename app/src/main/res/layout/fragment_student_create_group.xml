@@ -25,44 +25,24 @@
         app:layout_constraintTop_toBottomOf="@id/TVGroupName" />
 
     <TextView
-        android:id="@+id/TVTitle"
-        style="@style/Widget.AppCompat.TextView"
-        android:layout_width="320dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTintMode="multiply"
-        android:shadowColor="#C2716EE7"
-        android:text="Create Group"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/TVGroupName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:text="Group Name:"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#80000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/TVTitle" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/ETGroupName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:minHeight="48dp"
@@ -70,7 +50,7 @@
         android:textColor="#4B000000"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/TVGroupName"
-        app:layout_constraintTop_toBottomOf="@+id/TVTitle" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/ETTM2"
