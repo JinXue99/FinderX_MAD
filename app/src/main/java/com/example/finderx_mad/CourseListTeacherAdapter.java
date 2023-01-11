@@ -51,6 +51,10 @@ public class CourseListTeacherAdapter extends RecyclerView.Adapter<CourseListTea
                         Toast.makeText(view.getContext().getApplicationContext(),code + " is selected ",Toast.LENGTH_SHORT).show();
 //                        Navigation.findNavController(view).navigate(R.id.DestTeacherOcc);
                         break;
+                    case 2:
+                        Toast.makeText(view.getContext().getApplicationContext(),code + " is selected ",Toast.LENGTH_SHORT).show();
+//                        Navigation.findNavController(view).navigate(R.id.DestTeacherOcc);
+                        break;
 
 
                 }
