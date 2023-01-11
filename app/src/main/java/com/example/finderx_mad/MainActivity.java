@@ -15,6 +15,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,10 +28,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    // FirebaseUser
+    private FirebaseUser currentUser;
     //Firebase Authentication
     FirebaseAuth firebaseAuth;
-    //Firebase Firestore
+    //Firebase Firestore * to read the access level
     FirebaseFirestore firebaseStore;
     ActivityMainBinding binding;
 
@@ -55,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         //Firebase Firestore
         firebaseStore = FirebaseFirestore.getInstance();
-
+        //getUid
+        currentUser = firebaseAuth.getCurrentUser();
         //When Login button is clicked
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                         checkIsStudent(authResult.getUser().getUid());
 
                     }
+
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
@@ -121,8 +130,8 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
 
-
             });
+
 
     }
 

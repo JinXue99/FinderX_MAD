@@ -40,9 +40,11 @@ public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacher
         String desc = list.get(position).getTaskDetails();
         String date = list.get(position).getTaskDateandTime();
 
+
         holder.tvTaskTitle.setText(title);
         holder.tvTaskDesc.setText(desc);
         holder.tvDate.setText(date);
+
 
 
     }
