@@ -126,31 +126,31 @@ public class TeacherViewTask2Fragment extends Fragment {
             }
         });
 
-        searchView=view.findViewById(R.id.searchTask);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                filter(newText);
-                return true;
-            }
-        });
+//        searchView=view.findViewById(R.id.searchTask);
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                filter(newText);
+//                return true;
+//            }
+//        });
 
 
         return view;
     }
 
-    private void filter(String newText) {
-        ArrayList<TaskModel>filteredList = new ArrayList<>();
-        for(TaskModel item : list){
-            if(item.getTaskTitle().toLowerCase().contains(newText.toLowerCase())){
-                filteredList.add(item);
-            }
-        }
-        adapter.filterList(filteredList);
-    }
+//    private void filter(String newText) {
+//        ArrayList<TaskModel>filteredList = new ArrayList<>();
+//        for(TaskModel item : list){
+//            if(item.getTaskTitle().toLowerCase().contains(newText.toLowerCase())){
+//                filteredList.add(item);
+//            }
+//        }
+//        adapter.filterList(filteredList);
+//    }
 }

@@ -12,6 +12,11 @@
     <color name="darker_purple">#9a02c4</color>
     <color name="light_blue">#8684FF</color>
 
+    <color name="taskcolor1">#CC77FF</color>
+    <color name="taskcolor2">#DA9DFF</color>
+    <color name="taskcolor3">#6DC1FE</color>
+    <color name="taskcolor4">#93D1FF</color>
+
 
 
 </resources>
