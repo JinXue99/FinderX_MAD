@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="220dp"
+    android:layout_height="250dp"
     android:layout_margin="16dp"
     android:backgroundTint="#91B0B2"
     app:cardCornerRadius="30dp"
@@ -58,6 +58,16 @@
                 app:layout_constraintStart_toEndOf="@+id/TVGroupName"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:id="@+id/ivArrow"
+                android:layout_width="40dp"
+                android:layout_height="37dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/right_arrow"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/tvTM1"
                 android:layout_width="wrap_content"
@@ -67,6 +77,7 @@
                 android:paddingLeft="22dp"
                 android:text="TM1"
                 android:textAlignment="textStart"
+                android:textColor="#80000000"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/TVMembers"
@@ -78,12 +89,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="11dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:paddingLeft="22dp"
                 android:text="TM2"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="#80000000"
                 app:layout_constraintStart_toEndOf="@+id/TVMembers"
                 app:layout_constraintTop_toBottomOf="@+id/tvTM1" />
 
@@ -91,42 +103,43 @@
                 android:id="@+id/tvTM3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="148dp"
                 android:layout_marginTop="8dp"
                 android:paddingLeft="22dp"
                 android:text="TM3"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="#80000000"
+                app:layout_constraintEnd_toEndOf="@id/tvTM2"
+                app:layout_constraintStart_toStartOf="@id/tvTM2"
                 app:layout_constraintTop_toBottomOf="@+id/tvTM2" />
 
             <TextView
                 android:id="@+id/tvTM4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="148dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="8dp"
                 android:paddingLeft="22dp"
                 android:text="TM4"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="#80000000"
+                app:layout_constraintEnd_toEndOf="@id/tvTM3"
                 app:layout_constraintTop_toBottomOf="@+id/tvTM3" />
 
             <TextView
                 android:id="@+id/tvTM5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="148dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="8dp"
                 android:paddingLeft="22dp"
                 android:text="TM5"
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textColor="#80000000"
+                app:layout_constraintEnd_toEndOf="@id/tvTM4"
                 app:layout_constraintTop_toBottomOf="@+id/tvTM4" />
 
 

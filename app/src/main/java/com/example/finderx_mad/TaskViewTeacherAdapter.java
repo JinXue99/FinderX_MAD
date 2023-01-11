@@ -49,18 +49,18 @@ public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacher
         holder.tvTaskDesc.setText(desc);
         holder.tvDate.setText(date);
 
-//        int x[] = {R.color.matColor1,R.color.matColor2,R.color.matColor3,R.color.matColor5,R.color.matColor4,R.color.matColor6,R.color.matColor7,R.color.matColor8,R.color.matColor9,R.color.matColor10};
-        int x[] = {R.color.darker_purple,R.color.purple_500};
-        int i=0;
-        for(int j=0;j<getItemCount();j++){
-            if(i==2)
-                i=0;
-            if(position==j){
-                holder.constraintlayoutTaskView.setBackgroundColor(x[i]);
-
-            }
-            i++;
-        }
+////        int x[] = {R.color.matColor1,R.color.matColor2,R.color.matColor3,R.color.matColor5,R.color.matColor4,R.color.matColor6,R.color.matColor7,R.color.matColor8,R.color.matColor9,R.color.matColor10};
+//        int x[] = {R.color.white,R.color.purple_500};
+//        int i=0;
+//        for(int j=0;j<getItemCount();j++){
+//            if(i==2)
+//                i=0;
+//            if(position==j){
+//                holder.constraintlayoutTaskView.setBackgroundColor(x[i]);
+//
+//            }
+//            i++;
+//        }
 
 
 

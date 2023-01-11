@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="230dp"
+    android:layout_height="250dp"
     android:layout_margin="16dp"
     android:id="@+id/CV"
     android:backgroundTint="#9F9DFF"
@@ -78,6 +78,7 @@
                 android:paddingLeft="22dp"
                 android:text="TM1"
                 android:textAlignment="textStart"
+                android:textColor="#80000000"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@id/TVMembers"
@@ -95,6 +96,7 @@
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="#80000000"
                 app:layout_constraintStart_toEndOf="@+id/TVMembers"
                 app:layout_constraintTop_toBottomOf="@+id/tvTM1" />
 
@@ -108,6 +110,7 @@
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="#80000000"
                 app:layout_constraintEnd_toEndOf="@id/tvTM2"
                 app:layout_constraintStart_toStartOf="@id/tvTM2"
                 app:layout_constraintTop_toBottomOf="@+id/tvTM2" />
@@ -122,6 +125,7 @@
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="#80000000"
                 app:layout_constraintEnd_toEndOf="@id/tvTM3"
                 app:layout_constraintTop_toBottomOf="@+id/tvTM3" />
 
@@ -135,6 +139,7 @@
                 android:textAlignment="textStart"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="#80000000"
                 app:layout_constraintEnd_toEndOf="@id/tvTM4"
                 app:layout_constraintTop_toBottomOf="@+id/tvTM4" />
 
