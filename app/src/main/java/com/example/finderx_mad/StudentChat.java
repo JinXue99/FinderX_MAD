@@ -54,7 +54,7 @@ public class StudentChat extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         currentUserID = firebaseAuth.getCurrentUser().getUid();
         userRef = FirebaseDatabase.getInstance().getReference().child("Users");
-        groupNameRef = FirebaseDatabase.getInstance().getReference("Courses").child("Group").child(currentGroupName);
+        groupNameRef = FirebaseDatabase.getInstance().getReference().child("Group").child(currentGroupName).child("Message");
 
         InitializeField();
 

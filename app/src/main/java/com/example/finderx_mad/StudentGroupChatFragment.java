@@ -94,8 +94,8 @@ public class StudentGroupChatFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_student_group_chat,null,false);
 
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("Courses");
-        GroupRef = myRef.child("Group");
+        myRef = database.getReference();
+        //GroupRef = myRef.child("Group");
         InitializeField();
         RetrieveAndDisplayGroups();
 
@@ -164,7 +164,7 @@ public class StudentGroupChatFragment extends Fragment {
 
     //Print the Group List
     private void RetrieveAndDisplayGroups() {
-        GroupRef.addValueEventListener(new ValueEventListener() {
+        myRef.child("Group").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Set<String> set = new HashSet<>();
