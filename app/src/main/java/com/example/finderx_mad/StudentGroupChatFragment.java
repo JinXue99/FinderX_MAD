@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -112,7 +113,9 @@ public class StudentGroupChatFragment extends Fragment {
             }
         });
 
+
         //Create Group OnClickListener
+
 //        Button tentative = (Button) view.findViewById(R.id.TentativeGroupChat);
 //        tentative.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -131,69 +134,122 @@ public class StudentGroupChatFragment extends Fragment {
         groupChatView.setAdapter(arrayAdapter);
     }
 
-    // Create Group Analog
-    private void CreateGroup( ) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Enter Group Name");
-        final EditText groupNameField = new EditText(getContext().getApplicationContext());
-        groupNameField.setHint("e.g. FinderX");
-        builder.setView(groupNameField);
-        builder.setPositiveButton("Create", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String groupName = groupNameField.getText().toString();
-                if(TextUtils.isEmpty(groupName)){
-                    Toast.makeText(getContext().getApplicationContext(), "Please Enter Your GroupName", Toast.LENGTH_SHORT).show();
-                }else{
-                    CreateYourGroup(groupName);
-                }
-
-            }
-        });
-
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        builder.show();
-    }
+//    // Create Group Analog
+//    private void CreateGroup( ) {
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//        builder.setTitle("Enter Group Name");
+//        final EditText groupNameField = new EditText(getContext().getApplicationContext());
+//        groupNameField.setHint("e.g. FinderX");
+//        builder.setView(groupNameField);
+//        builder.setPositiveButton("Create", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                String groupName = groupNameField.getText().toString();
+//                if(TextUtils.isEmpty(groupName)){
+//                    Toast.makeText(getContext().getApplicationContext(), "Please Enter Your GroupName", Toast.LENGTH_SHORT).show();
+//                }else{
+//                    CreateYourGroup(groupName);
+//                }
+//
+//            }
+//        });
+//
+//        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                dialog.cancel();
+//            }
+//        });
+//
+//        builder.show();
+//    }
 
 
     //Print the Group List
     private void RetrieveAndDisplayGroups() {
-        myRef.child("Group").addValueEventListener(new ValueEventListener() {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String userID =  mAuth.getCurrentUser().getUid();
+        DatabaseReference userRef = database.getReference().child("Users").child(userID).child("Email");
+        DatabaseReference tm1Ref = database.getReference().child("Student Group List MAD").child("Teams").child("Hello");
+        userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Set<String> set = new HashSet<>();
-                Iterator iterator = snapshot.getChildren().iterator();
-                while(iterator.hasNext()){
-                    set.add(((DataSnapshot)iterator.next()).getKey());
-                }
-                list_of_group_chat.clear();
-                list_of_group_chat.addAll(set);
-                arrayAdapter.notifyDataSetChanged();
+                if(snapshot.exists()){
+                    tm1Ref.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                            if(snapshot1.child("tm1").getValue().toString().equals(snapshot.getValue().toString())||
+                                    snapshot1.child("tm2").getValue().toString().equals(snapshot.getValue().toString())||
+                                    snapshot1.child("tm3").getValue().toString().equals(snapshot.getValue().toString())||
+                                    snapshot1.child("tm4").getValue().toString().equals(snapshot.getValue().toString())||
+                                    snapshot1.child("tm5").getValue().toString().equals(snapshot.getValue().toString())){
+                                myRef.child("Group").addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        Set<String> set = new HashSet<>();
+                                        Iterator iterator = snapshot.getChildren().iterator();
+                                        while(iterator.hasNext()){
+                                            set.add(((DataSnapshot)iterator.next()).getKey());
+                                        }
+                                        list_of_group_chat.clear();
+                                        list_of_group_chat.addAll(set);
+                                        arrayAdapter.notifyDataSetChanged();
 
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) { }
+                                });
+                            }
+
+                        }
+
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
         });
-    }
+
+//            myRef.child("Group").addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                    Set<String> set = new HashSet<>();
+//                    Iterator iterator = snapshot.getChildren().iterator();
+//                    while(iterator.hasNext()){
+//                        set.add(((DataSnapshot)iterator.next()).getKey());
+//                    }
+//                    list_of_group_chat.clear();
+//                    list_of_group_chat.addAll(set);
+//                    arrayAdapter.notifyDataSetChanged();
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) { }
+//            });
+//        }
+
+    }}
 
 
-    //Save the Created GroupName into FirebaseDatabase
-   private void CreateYourGroup(String groupName) {
-        myRef.child("Group").child(groupName).setValue("")
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(getContext().getApplicationContext(),groupName+ " is created", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-}
+//    //Save the Created GroupName into FirebaseDatabase
+//   private void CreateYourGroup(String groupName) {
+//        myRef.child("Group").child(groupName).setValue("")
+//                .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful()){
+//                            Toast.makeText(getContext().getApplicationContext(),groupName+ " is created", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
+//    }
