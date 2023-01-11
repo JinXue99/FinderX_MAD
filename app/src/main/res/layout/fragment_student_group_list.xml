@@ -62,9 +62,11 @@ android:background="@drawable/gradient_studentbackground">
         android:id="@+id/IVAddGroup"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:srcCompat="@drawable/ic_baseline_add_circle_outline_24"
-        tools:layout_editor_absoluteX="296dp"
-        tools:layout_editor_absoluteY="69dp" />
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="65dp"
+        app:layout_constraintStart_toEndOf="@+id/ivheader"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_add_circle_outline_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
