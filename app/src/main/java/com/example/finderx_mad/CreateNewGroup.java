@@ -187,28 +187,72 @@ public class CreateNewGroup extends Fragment {
                 tentativeRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Boolean validETTM2 = false;
+                        Boolean validETTM3 = false;
+                        Boolean validETTM4 = false;
+                        Boolean validETTM5 = false;
+                        for (DataSnapshot data : snapshot.getChildren()) {
+                            if (data.getValue().toString().equals(ETTM2.getText().toString())){
+                                validETTM2 = true;
+                            }
+                            if (data.getValue().toString().equals(ETTM3.getText().toString())){
+                                validETTM3 = true;
+                            }
+                            if (data.getValue().toString().equals(ETTM4.getText().toString())){
+                                validETTM4 = true;
+                            }
+                            if (data.getValue().toString().equals(ETTM5.getText().toString())){
+                                validETTM5 = true;
+                            }
 
+                        }
                         if(ETTM2.getText().toString().isEmpty()){
-                            ETTM2.setError("This Field cannot be empty");
-                        } else if (!ETTM2.getText().toString().equals(snapshot.child("1").getValue().toString())) {
+                            CreateNewGroup(group);
+                        }
+                       else if(!validETTM2){
                             ETTM2.setError("This email does not exist");
                             return;
-                        }if(ETTM3.getText().toString().isEmpty()) {
+                        }
+                        if(ETTM3.getText().toString().isEmpty()){
                             CreateNewGroup(group);
-                        }else if (!ETTM3.getText().toString().equals(snapshot.child("2").getValue().toString())) {
+                        }
+                        else if(!validETTM3){
                             ETTM3.setError("This email does not exist");
                             return;
-                        } if (ETTM4.getText().toString().isEmpty()) {
+                        }
+                        if(ETTM4.getText().toString().isEmpty()){
                             CreateNewGroup(group);
-                        } else if (!ETTM4.getText().toString().equals(snapshot.child("3").getValue().toString())) {
+                        }
+                       else if(!validETTM4){
                             ETTM4.setError("This email does not exist");
                             return;
-                        } if (ETTM5.getText().toString().isEmpty()) {
+                        }
+                        if(ETTM5.getText().toString().isEmpty()){
                             CreateNewGroup(group);
-                        } else if (!ETTM5.getText().toString().equals(snapshot.child("4").getValue().toString())) {
+                        }
+                        else if(!validETTM5){
                             ETTM5.setError("This email does not exist");
                             return;
                         }
+
+                        //CreateNewGroup(group);
+
+//                        if(ETTM3.getText().toString().isEmpty()) {
+//                            CreateNewGroup(group);
+//                        }else if (!ETTM3.getText().toString().equals(snapshot.child("2").getValue().toString())) {
+//                            ETTM3.setError("This email does not exist");
+//                            return;
+//                        } if (ETTM4.getText().toString().isEmpty()) {
+//                            CreateNewGroup(group);
+//                        } else if (!ETTM4.getText().toString().equals(snapshot.child("3").getValue().toString())) {
+//                            ETTM4.setError("This email does not exist");
+//                            return;
+//                        } if (ETTM5.getText().toString().isEmpty()) {
+//                            CreateNewGroup(group);
+//                        } else if (!ETTM5.getText().toString().equals(snapshot.child("4").getValue().toString())) {
+//                            ETTM5.setError("This email does not exist");
+//                            return;
+//                        }
 
                         }
 
