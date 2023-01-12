@@ -9,14 +9,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:backgroundTint="#efefef"
     app:cardElevation="8dp"
-    app:cardCornerRadius="8dp"
+    app:cardCornerRadius="21dp"
     android:layout_margin="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="5dp"
-        android:padding="5dp">
+        android:padding="5dp"
+        android:background="#9F9DFF">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -38,6 +39,7 @@
                 android:text="Course Code"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textStyle="bold"
+                android:textColor="@color/purple_700"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,6 +51,7 @@
                 android:paddingBottom="10dp"
                 android:text="Course Name"
                 android:textSize="16sp"
+                android:textColor="#381454"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/TVCourseCodeTitle" />
