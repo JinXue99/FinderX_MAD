@@ -92,4 +92,8 @@
         android:id="@+id/DestViewMember3"
         android:name="com.example.finderx_mad.StudentJoinGroupFragment3"
         android:label="StudentJoinGroupFragment3" />
+    <fragment
+        android:id="@+id/DestStudentViewNameList"
+        android:name="com.example.finderx_mad.StudentViewNameListFragment"
+        android:label="Student Name List" />
 </navigation>

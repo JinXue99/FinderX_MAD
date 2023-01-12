@@ -140,6 +140,16 @@ public class StudentGroupListFragment extends Fragment {
             }
         });
 
+        ImageView ivStudentList = (ImageView) view.findViewById(R.id.ivStudentList);
+        ivStudentList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext().getApplicationContext(), "StudentList", Toast.LENGTH_SHORT).show();
+                Navigation.findNavController(view).navigate(R.id.DestStudentViewNameList);
+            }
+        });
+
+
         /*searchView=view.findViewById(R.id.searchOccGroup);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
