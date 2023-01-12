@@ -16,25 +16,21 @@
         android:layout_height="match_parent"
         android:elevation="5dp"
         android:padding="5dp"
-        android:id="@+id/constraintlayoutTaskView"
-        android:background="#9F9DFF">
+        android:id="@+id/constraintlayoutTaskView">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="-6dp"
-            tools:layout_editor_absoluteY="4dp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tvTaskTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="TaskTitle"
-                android:textColor="#381454"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
@@ -45,10 +41,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="5dp"
                 android:paddingBottom="10dp"
+                android:paddingRight="10dp"
                 android:text="Task Description"
-                android:textColor="#4D0666"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTaskTitle" />
@@ -62,7 +58,8 @@
                 android:textColor="#f54242"
                 android:textStyle="bold|italic"
                 app:layout_constraintBottom_toBottomOf="@+id/tvCourseCodeAnnouncement"
-                app:layout_constraintStart_toEndOf="@+id/tvCourseCodeAnnouncement" />
+                app:layout_constraintStart_toEndOf="@+id/tvCourseCodeAnnouncement"
+                app:layout_constraintTop_toTopOf="@+id/tvCourseCodeAnnouncement" />
 
             <TextView
                 android:id="@+id/tvCourseCodeAnnouncement"
@@ -83,7 +80,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="lecturer"
-                android:textColor="#381454"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="@+id/tvCourseCodeAnnouncement"
                 app:layout_constraintTop_toBottomOf="@+id/tvCourseCodeAnnouncement" />
