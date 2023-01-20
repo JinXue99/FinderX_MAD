@@ -95,9 +95,9 @@ public class StudentProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         //Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_student_profile,null,false);
-        RatingBar RBRating = view.findViewById(R.id.RBRating);
+        //RatingBar RBRating = view.findViewById(R.id.RBRating);
         //RBRating.setRating(AvgRating);
-        RBRating.setIsIndicator(true);
+        //RBRating.setIsIndicator(true);
 
         TextView TVStudentName =(TextView)  view.findViewById(R.id.TVStudentName);
         TextView TVStudentID = (TextView) view.findViewById(R.id.TVStudentID);

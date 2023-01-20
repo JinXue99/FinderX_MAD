@@ -170,39 +170,68 @@ public class StudentGroupChatFragment extends Fragment {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String userID =  mAuth.getCurrentUser().getUid();
         DatabaseReference userRef = database.getReference().child("Users").child(userID).child("Email");
-        DatabaseReference tm1Ref = database.getReference().child("Student Group List MAD").child("Teams").child("Hello");
+        DatabaseReference tm1Ref = database.getReference().child("Student Group List MAD").child("Teams");
         userRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
+                if (snapshot.exists()) {
                     tm1Ref.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                            if(snapshot1.child("tm1").getValue().toString().equals(snapshot.getValue().toString())||
-                                    snapshot1.child("tm2").getValue().toString().equals(snapshot.getValue().toString())||
-                                    snapshot1.child("tm3").getValue().toString().equals(snapshot.getValue().toString())||
-                                    snapshot1.child("tm4").getValue().toString().equals(snapshot.getValue().toString())||
-                                    snapshot1.child("tm5").getValue().toString().equals(snapshot.getValue().toString())){
-                                myRef.child("Group").addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                        Set<String> set = new HashSet<>();
-                                        Iterator iterator = snapshot.getChildren().iterator();
-                                        while(iterator.hasNext()){
-                                            set.add(((DataSnapshot)iterator.next()).getKey());
-                                        }
-                                        list_of_group_chat.clear();
-                                        list_of_group_chat.addAll(set);
-                                        arrayAdapter.notifyDataSetChanged();
 
+//                            DataSnapshot snapshot3 = (DataSnapshot) snapshot1.getChildren();
+
+                            for (DataSnapshot snapshot2 : snapshot1.getChildren()) {
+                                for (DataSnapshot snapshot3 : snapshot2.getChildren()) {
+                                    if (snapshot3.getValue().toString().equals(snapshot.getValue().toString())) {
+                                        myRef.child("Group").addValueEventListener(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                Set<String> set = new HashSet<>();
+//                                                Iterator iterator = snapshot.getChildren().iterator();
+//                                                while (iterator.hasNext()) {
+                                                    //set.add(((DataSnapshot) iterator.next()).getKey());
+
+                                                    set.add(snapshot2.getKey());
+//                                                }
+                                                //list_of_group_chat.clear();
+                                                list_of_group_chat.addAll(set);
+                                                arrayAdapter.notifyDataSetChanged();
+
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+                                            }
+                                        });
                                     }
+                                }
 
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) { }
-                                });
                             }
-
                         }
+//                            if(snapshot1.child("tm1").getValue().toString().equals(snapshot.getValue().toString())||
+//                                    snapshot1.child("tm2").getValue().toString().equals(snapshot.getValue().toString())||
+//                                    snapshot1.child("tm3").getValue().toString().equals(snapshot.getValue().toString())||
+//                                    snapshot1.child("tm4").getValue().toString().equals(snapshot.getValue().toString())||
+//                                    snapshot1.child("tm5").getValue().toString().equals(snapshot.getValue().toString())){
+//                                myRef.child("Group").addValueEventListener(new ValueEventListener() {
+//                                    @Override
+//                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                                        Set<String> set = new HashSet<>();
+//                                        Iterator iterator = snapshot.getChildren().iterator();
+//                                        while(iterator.hasNext()){
+//                                            set.add(((DataSnapshot)iterator.next()).getKey());
+//                                        }
+//                                        list_of_group_chat.clear();
+//                                        list_of_group_chat.addAll(set);
+//                                        arrayAdapter.notifyDataSetChanged();
+//
+//                                    }
+//
+//                                    @Override
+//                                    public void onCancelled(@NonNull DatabaseError error) { }
+//                                });
+//                            }
 
 
                         @Override
@@ -211,13 +240,14 @@ public class StudentGroupChatFragment extends Fragment {
                         }
                     });
                 }
-            }
 
+            }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+        }
 
 //            myRef.child("Group").addValueEventListener(new ValueEventListener() {
 //                @Override
@@ -238,7 +268,7 @@ public class StudentGroupChatFragment extends Fragment {
 //            });
 //        }
 
-    }}
+    }
 
 
 //    //Save the Created GroupName into FirebaseDatabase
