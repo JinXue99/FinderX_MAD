@@ -94,6 +94,7 @@
             android:layout_height="68dp"
             android:drawableEnd="@drawable/ic_baseline_edit_24"
             android:gravity="center"
+            android:scaleType="centerCrop"
             android:text="Description"
             android:textColor="#090909"
             android:textSize="24sp" />

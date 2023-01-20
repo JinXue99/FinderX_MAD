@@ -128,7 +128,7 @@ public class StudentProfileFragment extends Fragment {
         TextView TVStudentDescription = (TextView) view.findViewById(R.id.TVStudentDescription);
         IVStudentProfileImage = (CircleImageView) view.findViewById(R.id.IVStudentFrofileImage);
 
-        loading = new ProgressDialog(getContext().getApplicationContext());
+        //loading = new ProgressDialog(getContext().getApplicationContext());
 
         //
         IVStudentProfileImage.setOnClickListener(new View.OnClickListener() {

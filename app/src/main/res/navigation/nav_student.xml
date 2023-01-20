@@ -33,7 +33,7 @@
     <fragment
         android:id="@+id/DestStudentViewRequest"
         android:name="com.example.finderx_mad.StudentViewRequestFragment"
-        android:label="Student View Request"
+        android:label="View Request"
         tools:layout="@layout/fragment_student_view_request" />
     <activity
         android:id="@+id/DestLogin"
@@ -48,50 +48,50 @@
     <fragment
         android:id="@+id/DestStudentGrouplist"
         android:name="com.example.finderx_mad.StudentGroupListFragment"
-        android:label="fragment_student_group_list" />
+        android:label="Student Group List" />
     <fragment
         android:id="@+id/DestGroup2003"
         android:name="com.example.finderx_mad.StudentGroup2003Fragment"
-        android:label="StudentGroup2003Fragment" />
+        android:label="WIA2003 Group List" />
     <fragment
         android:id="@+id/DestGroup2001"
         android:name="com.example.finderx_mad.StudentGroup2001Fragment"
-        android:label="StudentGroup2001Fragment" />
+        android:label="WIA2001 Group List" />
     <fragment
         android:id="@+id/DestGroup2006"
         android:name="com.example.finderx_mad.StudentGroup2006Fragment"
-        android:label="StudentGroup2006Fragment" />
+        android:label="WIA2006 Group List" />
     <fragment
         android:id="@+id/DestGroup2007"
         android:name="com.example.finderx_mad.StudentGroup2007Fragment"
-        android:label="StudentGroup2007Fragment" />
+        android:label="WIA2007 Group List" />
     <fragment
         android:id="@+id/DestGroup2002"
         android:name="com.example.finderx_mad.StudentGroup2002Fragment"
-        android:label="StudentGroup2002Fragment" />
+        android:label="WIX2002 Group List" />
     <fragment
         android:id="@+id/DestViewMembers"
         android:name="com.example.finderx_mad.StudentJoinGroupFragment"
-        android:label="fragment_student_join_group"
+        android:label="Join Group"
         tools:layout="@layout/fragment_student_join_group" />
     <fragment
         android:id="@+id/DestStudentCreateGroup"
         android:name="com.example.finderx_mad.CreateNewGroup"
-        android:label="fragment_student_create_group"
+        android:label="Create New Group"
         tools:layout="@layout/fragment_student_create_group" />
     <fragment
         android:id="@+id/DestAnnouncementContent"
         android:name="com.example.finderx_mad.AnnouncementContent"
-        android:label="fragment_announcement_content"
+        android:label="Announcement Content"
         tools:layout="@layout/fragment_announcement_content" />
     <fragment
         android:id="@+id/DestViewMembers2"
         android:name="com.example.finderx_mad.StudentJoinGroupFragment2"
-        android:label="StudentJoinGroupFragment2" />
+        android:label="Join Group 2" />
     <fragment
         android:id="@+id/DestViewMember3"
         android:name="com.example.finderx_mad.StudentJoinGroupFragment3"
-        android:label="StudentJoinGroupFragment3" />
+        android:label="Join Group 3" />
     <fragment
         android:id="@+id/DestStudentViewNameList"
         android:name="com.example.finderx_mad.StudentViewNameListFragment"
