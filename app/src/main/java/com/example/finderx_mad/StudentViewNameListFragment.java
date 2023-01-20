@@ -75,10 +75,10 @@ public class StudentViewNameListFragment extends Fragment {
         view =  inflater.inflate(R.layout.fragment_student_view_name_list, null, false);
 
         // Connect to Firebase
-        teacher = FirebaseAuth.getInstance().getCurrentUser();
-        TeacherID = teacher.getUid();
+        //teacher = FirebaseAuth.getInstance().getCurrentUser();
+        //TeacherID = teacher.getUid();
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("Teachers").child("rf1la9CMmOUxkAl6R69Q3qWb2cB3").child("C1").child("Occ").child("Occ A").child("Student List");
+        myRef = database.getReference("Users");
 
         InitializeField();
         RetrieveAndDisplayGroups();

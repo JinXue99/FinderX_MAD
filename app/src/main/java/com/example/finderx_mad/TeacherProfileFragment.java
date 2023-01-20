@@ -97,7 +97,7 @@ public class TeacherProfileFragment extends Fragment {
         teacher = FirebaseAuth.getInstance().getCurrentUser();
         TeacherID = teacher.getUid();
         database=FirebaseDatabase.getInstance();
-        teacherRef=database.getReference("Users").child(TeacherID);
+        teacherRef=database.getReference("TeacherList").child(TeacherID);
         teacherRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

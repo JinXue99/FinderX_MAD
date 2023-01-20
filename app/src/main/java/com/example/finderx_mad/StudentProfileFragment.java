@@ -1,6 +1,12 @@
 package com.example.finderx_mad;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +21,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +31,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,6 +42,13 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,10 +60,17 @@ public class StudentProfileFragment extends Fragment {
     private FirebaseUser student;
     // Declare Database
     private FirebaseDatabase database;
-    private DatabaseReference studentRef;
+    private DatabaseReference studentRef, RootRef;
 
-   // private FirebaseFirestore FirebaseStore;
-   // private DocumentReference df;
+    private static final int GalleryPick = 1;
+    private StorageReference studentProfileImageRef;
+    private ProgressDialog loading;
+    private Uri ImageUri;
+
+    CircleImageView IVStudentProfileImage;
+
+    // private FirebaseFirestore FirebaseStore;
+    // private DocumentReference df;
 
     String StudentID;
     // TODO: Rename parameter arguments, choose names that match
@@ -94,17 +117,30 @@ public class StudentProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_student_profile,null,false);
-        //RatingBar RBRating = view.findViewById(R.id.RBRating);
-        //RBRating.setRating(AvgRating);
-        //RBRating.setIsIndicator(true);
+        View view = inflater.inflate(R.layout.fragment_student_profile, null, false);
 
-        TextView TVStudentName =(TextView)  view.findViewById(R.id.TVStudentName);
+
+        TextView TVStudentName = (TextView) view.findViewById(R.id.TVStudentName);
         TextView TVStudentID = (TextView) view.findViewById(R.id.TVStudentID);
         TextView TVStudentMajor = (TextView) view.findViewById(R.id.TVStudentMajor);
         TextView TVStudentPhone = (TextView) view.findViewById(R.id.TVStudentPhone);
         TextView TVStudentEmail = (TextView) view.findViewById(R.id.TVStudentEmail);
         TextView TVStudentDescription = (TextView) view.findViewById(R.id.TVStudentDescription);
+        IVStudentProfileImage = (CircleImageView) view.findViewById(R.id.IVStudentFrofileImage);
+
+        loading = new ProgressDialog(getContext().getApplicationContext());
+
+        //
+        IVStudentProfileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent galleryIntent = new Intent();
+                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+                galleryIntent.setType("image/*");
+                startActivityForResult(galleryIntent, GalleryPick);
+                //choosePicture();
+            }
+        });
         TVStudentDescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,55 +152,39 @@ public class StudentProfileFragment extends Fragment {
         student = FirebaseAuth.getInstance().getCurrentUser();
         StudentID = student.getUid();
         database = FirebaseDatabase.getInstance();
+
+        // Firebase Storage
+        studentProfileImageRef = FirebaseStorage.getInstance().getReference().child("Student Profile");
+
+        // Realtime Database Reference
         studentRef = database.getReference("Users").child(StudentID);
+        //RootRef = database.getReference();
         studentRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists() && snapshot.hasChildren()){
+                if (snapshot.exists() && snapshot.hasChildren()) {
                     TVStudentName.setText(snapshot.child("Name").getValue().toString());
                     TVStudentID.setText(snapshot.child("StudentID").getValue().toString());
                     TVStudentEmail.setText(snapshot.child("Email").getValue().toString());
                     TVStudentMajor.setText(snapshot.child("Majoring").getValue().toString());
                     TVStudentPhone.setText(snapshot.child("Phone").getValue().toString());
                     TVStudentDescription.setText(snapshot.child("Description").getValue().toString());
+                    if (snapshot.child("image").exists()) {
+                        Picasso.get().load(snapshot.child("image").getValue().toString()).into(IVStudentProfileImage);
+                    }else{
+                        IVStudentProfileImage.setImageResource(R.drawable.avatar_profile);
+                    }
 
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-       // FirebaseStore = FirebaseFirestore.getInstance();
-       // df = FirebaseStore.collection("User").document(StudentID);
-        /*
-        df.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    TVStudentName.setText(document.getString("Name"));
-                    TVStudentID.setText(document.getString("StudentID"));
-                    TVStudentEmail.setText(document.getString("Email"));
-                    TVStudentMajor.setText(document.getString("Majoring"));
-                    TVStudentPhone.setText(document.getString("Phone"));
-                    TVStudentDescription.setText(document.getString("Description"));
-                    if (document.exists()) {
-                        Log.d("TAG", "DocumentSnapshot data: " + document.getData());
-                    } else {
-                        Log.d("TAG", "No such document");
-                    }
-                } else {
-                    Log.d("TAG", "get failed with ", task.getException());
-                }
-            }
-        });
-
-         */
-
         return view;
     }
+
 
     //Function to display the custom dialog
     private void showCustomDialog() {
@@ -187,18 +207,6 @@ public class StudentProfileFragment extends Fragment {
                 ETStudentDescription.setText(snapshot.child("Description").getValue().toString());
             }
         });
-        /*
-        DocumentReference dfDesc = FirebaseStore.collection("User").document(StudentID);
-        dfDesc.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                DocumentSnapshot document = task.getResult();
-                //initial description
-                ETStudentDescription.setText(document.getString("Description"));
-            }
-        });
-
-         */
 
         //String updatedDescription = String.valueOf(ETStudentDescription.getText());
 
@@ -206,34 +214,19 @@ public class StudentProfileFragment extends Fragment {
         btnUpdate.setOnClickListener((v -> {
             String studentUpdatedDesc = ETStudentDescription.getText().toString();
             dbDesc.child("Description").setValue(studentUpdatedDesc);
-           // dfDesc.update("Description",studentUpdatedDesc);
+            // dfDesc.update("Description",studentUpdatedDesc);
             dbDesc.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
                 @Override
                 public void onSuccess(DataSnapshot dataSnapshot) {
-                    Toast.makeText(getContext().getApplicationContext(),"Update Successfully!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Update Successfully!", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getContext().getApplicationContext(),"Fail!",Toast.LENGTH_SHORT).show();
-                }
-            });
-            /*
-            dfDesc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    Toast.makeText(getContext().getApplicationContext(),"Update Successfully!",Toast.LENGTH_SHORT).show();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getContext().getApplicationContext(),"Fail!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext().getApplicationContext(), "Fail!", Toast.LENGTH_SHORT).show();
                 }
             });
 
-             */
-            //Toast.makeText(getContext().getApplicationContext(),"Update Successfully!",Toast.LENGTH_SHORT).show();
-            // updateStudentDesc(studentUpdatedDesc);
             descDialog.dismiss();
         }));
 
@@ -241,15 +234,59 @@ public class StudentProfileFragment extends Fragment {
     }
 
 
-    //to calculate the average rating and display them
-        /*float sum=0;
-        int numRatings = ratings.size();
-        for(float rating:ratings){
-            sum += rating;
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == GalleryPick && resultCode == RESULT_OK && data != null) ;
+        {
+
+            Uri ImageUri = data.getData();
+
+            StorageReference filepath = studentProfileImageRef.child(StudentID + ".jpg");
+
+            filepath.putFile(ImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(getContext().getApplicationContext(), "Profile Image is uploaded", Toast.LENGTH_SHORT).show();
+
+                        StorageReference imageRef = studentProfileImageRef.child(StudentID + ".jpg");
+
+                        imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                final String downloadUrl = uri.toString();
+                                studentRef.child("image").setValue(downloadUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+                                            Toast.makeText(getContext().getApplicationContext(), "Image saved in database", Toast.LENGTH_SHORT).show();
+
+                                        }else{
+                                            Toast.makeText(getContext().getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    }
+                                });
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                            }
+                        });
+
+                    } else {
+                        String errorMessage = task.getException().toString();
+                        Toast.makeText(getContext().getApplicationContext(), "Error" + errorMessage, Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+
+
         }
-        float AvgRating = sum/numRatings;*/
-
-    public void onViewCreated(View view,@Nullable Bundle savedInstanceState){
-
     }
 }

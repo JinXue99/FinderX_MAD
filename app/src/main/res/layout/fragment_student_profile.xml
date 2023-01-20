@@ -18,7 +18,7 @@
 
     <TextView
         android:id="@+id/TVStudentName"
-        android:layout_width="105dp"
+        android:layout_width="wrap_content"
         android:layout_height="44dp"
         android:layout_marginBottom="124dp"
         android:fontFamily="@font/poppins_semibold"
@@ -34,13 +34,14 @@
         android:id="@+id/TVStudentMajor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:text="Software Engineering"
         android:textColor="#555353"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+        app:layout_constraintTop_toBottomOf="@+id/IVStudentFrofileImage" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -100,15 +101,18 @@
     </LinearLayout>
 
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="162dp"
-        android:layout_height="164dp"
-        android:layout_marginTop="100dp"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/IVStudentFrofileImage"
+        android:layout_width="121dp"
+        android:layout_height="107dp"
+        android:layout_marginTop="136dp"
+        app:civ_border_color="#FFBB86FC"
+        app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/avatar_profile" />
+        app:srcCompat="@drawable/avatar_profile"
+        tools:ignore="MissingConstraints" />
 
     <View
         android:id="@+id/divider"
