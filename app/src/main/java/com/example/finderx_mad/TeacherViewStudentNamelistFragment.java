@@ -25,13 +25,16 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class TeacherViewStudentNamelistFragment extends Fragment {
     private View view;
     private ListView studentNameListView;
-    private ArrayAdapter<String> arrayAdapter;
-    private ArrayList<String> list_of_student_name = new ArrayList<>();
+
+    private List<StudentViewNameList> studentList;
+    private StudentViewNameListAdapter myAdapter;
+
     FirebaseDatabase database;
     DatabaseReference myRef,GroupRef;
 
@@ -78,7 +81,7 @@ public class TeacherViewStudentNamelistFragment extends Fragment {
         teacher = FirebaseAuth.getInstance().getCurrentUser();
         TeacherID = teacher.getUid();
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("Teachers").child(TeacherID).child("C1").child("Occ").child("Occ A").child("Student List");
+        myRef = database.getReference("Users");
 
         InitializeField();
         RetrieveAndDisplayGroups();
@@ -88,29 +91,37 @@ public class TeacherViewStudentNamelistFragment extends Fragment {
 
     //Initialize Field
     private void InitializeField() {
+        studentList = new ArrayList<>();
         studentNameListView = (ListView) view.findViewById(R.id.student_namelist_view);
-        arrayAdapter = new ArrayAdapter<String>(getContext().getApplicationContext(), android.R.layout.simple_list_item_1,list_of_student_name);
-        studentNameListView.setAdapter(arrayAdapter);
+
     }
 
     //Print the Group List
+    //Print the Group List
     private void RetrieveAndDisplayGroups() {
+        myAdapter = new StudentViewNameListAdapter(getActivity(),R.layout.view_name_list_row,studentList);
+        studentNameListView.setAdapter(myAdapter);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Set<String> set = new HashSet<>();
-                Iterator iterator = snapshot.getChildren().iterator();
-                while(iterator.hasNext()){
-                    set.add(((DataSnapshot)iterator.next()).getKey());
-                }
-                list_of_student_name.clear();
-                list_of_student_name.addAll(set);
-                arrayAdapter.notifyDataSetChanged();
+                for(DataSnapshot dataSnapshot1 : snapshot.getChildren()){
 
+                    String name = dataSnapshot1.child("Name").getValue().toString();
+                    String gmail = dataSnapshot1.child("Email").getValue().toString();
+                    String majoring = dataSnapshot1.child("Majoring").getValue().toString();
+                    String description = dataSnapshot1.child("Description").getValue().toString();
+                    String image = dataSnapshot1.child("image").getValue().toString();
+                    StudentViewNameList list =new StudentViewNameList(name,gmail,majoring,description,image);
+                    studentList.add(list);
+
+                }
+                myAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
         });
     }
 }

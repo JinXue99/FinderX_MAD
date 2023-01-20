@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.DateValidatorPointForward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -64,7 +66,7 @@ public class TeacherAddNewTaskFragment extends Fragment {
 
 
     // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    // the fragment initialization parameters, e.g. ARG_ITEMToast_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -127,9 +129,18 @@ public class TeacherAddNewTaskFragment extends Fragment {
         currentDateandTime = sdf.format(new Date());
         courseCode = "WIA2007";
 
+        // create the calendar constraint builder
+        CalendarConstraints.Builder calendarConstraintBuilder = new CalendarConstraints.Builder();
+        // set the validator point forward from current day
+        // this mean the all the dates before the current day are blocked
+        calendarConstraintBuilder.setValidator(DateValidatorPointForward.now());
+
+        // instantiate the Material date picker dialog builder
         MaterialDatePicker materialDatePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Select Submission Date")
-                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                //now pass the constrained calendar builder to
+                //material date picker Calendar constraints
+                .setCalendarConstraints(calendarConstraintBuilder.build())
                 .build();
 
         Button btnPickADate = (Button) view.findViewById(R.id.btnPickADate);
