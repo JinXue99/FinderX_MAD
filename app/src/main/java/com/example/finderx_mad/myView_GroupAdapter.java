@@ -15,14 +15,17 @@ import io.reactivex.rxjava3.annotations.NonNull;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import org.checkerframework.checker.units.qual.Current;
+
 
 public class myView_GroupAdapter extends RecyclerView.Adapter<myView_GroupAdapter.ViewHolder> {
 
     LayoutInflater inflater;
     ArrayList<View_GroupUser> list;
     Context context;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("string_data"); // to push the accept/decline
+//    FirebaseDatabase database = FirebaseDatabase.getInstance();
+//    DatabaseReference myRef = database.getReference("string_data"); // to push the accept/decline
+    String CurrentState = "nothing_happened";
 
 
     public myView_GroupAdapter(Context context, ArrayList<View_GroupUser> list){
@@ -56,13 +59,16 @@ public class myView_GroupAdapter extends RecyclerView.Adapter<myView_GroupAdapte
         holder.ibaccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myRef.push().setValue("accept");
+//                myRef.push().setValue("accept");
+                CurrentState = "accepted";
+
             }
         });
         holder.ibdecline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myRef.push().setValue("decline");
+//                myRef.push().setValue("decline");
+                CurrentState = "declined";
 
             }
         });
