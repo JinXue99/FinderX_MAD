@@ -39,8 +39,6 @@ public class StudentViewNameListFragment extends Fragment {
     private List<StudentViewNameList> studentList;
     private StudentViewNameListAdapter myAdapter;
 
-    private ArrayAdapter<String> arrayAdapter;
-    private ArrayList<String> list_of_student_name = new ArrayList<>();
     FirebaseDatabase database;
     DatabaseReference myRef,GroupRef;
 
@@ -99,9 +97,7 @@ public class StudentViewNameListFragment extends Fragment {
     private void InitializeField() {
         studentList = new ArrayList<>();
         studentNameListView = (ListView) view.findViewById(R.id.namelist_view);
-        arrayAdapter = new ArrayAdapter<String>(getContext().getApplicationContext(), android.R.layout.simple_list_item_1,list_of_student_name);
-        //arrayAdapter = new ArrayAdapter<String>(getContext().getApplicationContext(), R.layout.view_name_list_row,list_of_student_name);
-        studentNameListView.setAdapter(arrayAdapter);
+
     }
 
     //Print the Group List
