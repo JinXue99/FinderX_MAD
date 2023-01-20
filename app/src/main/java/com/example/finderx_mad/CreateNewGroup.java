@@ -122,59 +122,6 @@ public class CreateNewGroup extends Fragment {
         });
 
 
-        //Check the validation of the email
-
-//        DatabaseReference tentativeRef = database.getReference("Email");
-//        tentativeRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                Button BtnPublish = (Button) view.findViewById(R.id.BtnPublish);
-//                BtnPublish.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        if (ETGroupName.getText().toString().isEmpty()) {
-//                            ETGroupName.setError("Group Name is required!");
-//                            return;
-//                                    }
-//                                if (!ETTM2.getText().toString().equals(snapshot.child("1").getValue().toString())) {
-//                                    ETTM2.setError("This email does not exist");
-//                                    return;
-//                                } else if (ETTM2.getText().toString().isEmpty()) {
-//                                    CreateNewGroup(group);
-//                                }
-//                                if (!ETTM3.getText().toString().equals(snapshot.child("2").getValue().toString())) {
-//                                        ETTM3.setError("This email does not exist");
-//                                        return;
-//                                    } else if (ETTM3.getText().toString().isEmpty()) {
-//                                        CreateNewGroup(group);
-//                                    }
-//                                    if (!ETTM4.getText().toString().equals(snapshot.child("3").getValue().toString())) {
-//                                        ETTM4.setError("This email does not exist");
-//                                        return;
-//                                    } else if (ETTM4.getText().toString().isEmpty()) {
-//                                        CreateNewGroup(group);
-//                                    }
-//                                    if (!ETTM5.getText().toString().equals(snapshot.child("4").getValue().toString())) {
-//                                        ETTM5.setError("This email does not exist");
-//                                        return;
-//                                    }
-//                                    //at least one member in group
-//                                    else if (ETTM5.getText().toString().isEmpty()) {
-//                                        CreateNewGroup(group);
-//                                    }
-//
-//
-//                                }
-//                            });
-//                        }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//
-//        });
-
         Button BtnPublish = (Button) view.findViewById(R.id.BtnPublish);
         BtnPublish.setOnClickListener(new View.OnClickListener() {
             @Override

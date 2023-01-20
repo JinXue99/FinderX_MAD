@@ -1,5 +1,6 @@
 package com.example.finderx_mad;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,11 +27,18 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class StudentViewNameListFragment extends Fragment {
     private View view;
     private ListView studentNameListView;
+
+    private List<StudentViewNameList> studentList;
+    private StudentViewNameListAdapter myAdapter;
+
     private ArrayAdapter<String> arrayAdapter;
     private ArrayList<String> list_of_student_name = new ArrayList<>();
     FirebaseDatabase database;
@@ -88,29 +97,38 @@ public class StudentViewNameListFragment extends Fragment {
 
     //Initialize Field
     private void InitializeField() {
+        studentList = new ArrayList<>();
         studentNameListView = (ListView) view.findViewById(R.id.namelist_view);
         arrayAdapter = new ArrayAdapter<String>(getContext().getApplicationContext(), android.R.layout.simple_list_item_1,list_of_student_name);
+        //arrayAdapter = new ArrayAdapter<String>(getContext().getApplicationContext(), R.layout.view_name_list_row,list_of_student_name);
         studentNameListView.setAdapter(arrayAdapter);
     }
 
     //Print the Group List
     private void RetrieveAndDisplayGroups() {
+        myAdapter = new StudentViewNameListAdapter(getActivity(),R.layout.view_name_list_row,studentList);
+        studentNameListView.setAdapter(myAdapter);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Set<String> set = new HashSet<>();
-                Iterator iterator = snapshot.getChildren().iterator();
-                while(iterator.hasNext()){
-                    set.add(((DataSnapshot)iterator.next()).getKey());
-                }
-                list_of_student_name.clear();
-                list_of_student_name.addAll(set);
-                arrayAdapter.notifyDataSetChanged();
+                for(DataSnapshot dataSnapshot1 : snapshot.getChildren()){
 
+                        String name = dataSnapshot1.child("Name").getValue().toString();
+                        String gmail = dataSnapshot1.child("Email").getValue().toString();
+                        String majoring = dataSnapshot1.child("Majoring").getValue().toString();
+                        String description = dataSnapshot1.child("Description").getValue().toString();
+                        String image = dataSnapshot1.child("image").getValue().toString();
+                        StudentViewNameList list =new StudentViewNameList(name,gmail,majoring,description,image);
+                        studentList.add(list);
+
+                }
+                myAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
         });
     }
 }
