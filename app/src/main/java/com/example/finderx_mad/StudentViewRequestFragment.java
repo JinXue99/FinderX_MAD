@@ -5,7 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -13,6 +24,14 @@ import androidx.fragment.app.Fragment;
  * create an instance of this fragment.
  */
 public class StudentViewRequestFragment extends Fragment {
+
+    ArrayList<View_GroupUser> list;
+    RecyclerView recyclerView;
+    FirebaseDatabase database;
+    DatabaseReference myRef, TaskRef;
+    myView_GroupAdapter myAdapter;
+    View_GroupUser studentViewRequest;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -58,7 +77,41 @@ public class StudentViewRequestFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_student_view_request, container, false);
+        View view = inflater.inflate(R.layout.fragment_student_view_request, null, false);
+
+        recyclerView = view.findViewById(R.id.addRecycleView);
+
+        database = FirebaseDatabase.getInstance();
+        myRef = database.getReference("");
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext().getApplicationContext());
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+        recyclerView.setLayoutManager(layoutManager);
+
+        list = new ArrayList<>();
+        myAdapter = new myView_GroupAdapter(getContext().getApplicationContext(), list);
+        recyclerView.setAdapter(myAdapter);
+
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    studentViewRequest = dataSnapshot.getValue(View_GroupUser.class);
+                    list.add(studentViewRequest);
+                }
+                myAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        return view;
     }
 
 //ViewRequest

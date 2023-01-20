@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:backgroundTint="#efefef"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="12dp"
+    android:id="@+id/cardview"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="5dp"
+        android:padding="5dp"
+        android:id="@+id/constraintlayoutTaskView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvCourseCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Course Code"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvApplyName" />
+
+            <TextView
+                android:id="@+id/tvOcc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="8dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:text="OCC"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCourseCode" />
+
+            <TextView
+                android:id="@+id/tvApplyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Name "
+                android:textColor="@color/purple_700"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/ibaccept"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="108dp"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/roundbtn"
+                app:layout_constraintStart_toEndOf="@+id/tvCourseCode"
+                android:outlineSpotShadowColor="@color/grey"
+                app:layout_constraintTop_toTopOf="parent"
+                android:backgroundTint="#2BBD2F"
+                app:srcCompat="@drawable/button_accept" />
+
+            <ImageButton
+                android:id="@+id/ibdecline"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/roundbtn"
+                app:layout_constraintStart_toEndOf="@+id/ibaccept"
+                android:backgroundTint="#F72826"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/button_cancel" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>
