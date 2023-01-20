@@ -1,5 +1,6 @@
 package com.example.finderx_mad;
 
+import android.content.ClipData;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -104,7 +105,6 @@ public class TeacherViewTask2Fragment extends Fragment {
         layoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(layoutManager);
 
-
         list = new ArrayList<>();
         adapter = new TaskViewTeacherAdapter(getContext().getApplicationContext(), list);
         recyclerView.setAdapter(adapter);
@@ -125,6 +125,19 @@ public class TeacherViewTask2Fragment extends Fragment {
             }
         });
 
+        adapter.setOnItemClickListener(new TaskViewTeacherAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                teacherViewTask = list.get(position);
+                //Delete the item from Firebase
+                myRef.child(teacherViewTask.getTaskTitle()).removeValue();
+                //Delete the item from the RecyclerView's data source
+                list.remove(position);
+                //Notify the adapter that the item has been removed
+                adapter.notifyItemRemoved(position);
+            }
+        });
+
         ImageView ivAddTaskButton = (ImageView) view.findViewById(R.id.ivAddTaskButton);
         ivAddTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,32 +148,6 @@ public class TeacherViewTask2Fragment extends Fragment {
             }
         });
 
-
-//        searchView=view.findViewById(R.id.searchTask);
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                filter(newText);
-//                return true;
-//            }
-//        });
-
-
         return view;
     }
-
-//    private void filter(String newText) {
-//        ArrayList<TaskModel>filteredList = new ArrayList<>();
-//        for(TaskModel item : list){
-//            if(item.getTaskTitle().toLowerCase().contains(newText.toLowerCase())){
-//                filteredList.add(item);
-//            }
-//        }
-//        adapter.filterList(filteredList);
-//    }
 }
