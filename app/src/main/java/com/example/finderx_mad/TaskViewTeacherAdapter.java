@@ -40,23 +40,21 @@ public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacher
     ArrayList<TaskModel> list;
     private Context context;
     private OnItemClickListener listener;
+    private OnItemClickListenerEDIT listenerEDIT;
 
     public interface OnItemClickListener{
+        void onItemClick(int position);
+    }
+    public interface OnItemClickListenerEDIT{
         void onItemClick(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener clickListener){
         listener = clickListener;
     }
-
-    FirebaseDatabase database;
-    DatabaseReference myRef,TaskRef;
-    TaskModel teacherViewTask;
-    //private FirebaseAuth teacher;
-    private FirebaseUser teacher;
-    String TeacherID;
-    // Connect to Firebase
-
+    public void setOnItemClickListenerEDIT(OnItemClickListenerEDIT clickListener){
+        listenerEDIT = clickListener;
+    }
 
     TaskViewTeacherAdapter(Context context, ArrayList<TaskModel> list){
         this.inflater = LayoutInflater.from(context);
@@ -69,7 +67,7 @@ public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacher
         Context context = parent.getContext();
         View view = inflater.inflate(R.layout.task_view_for_teacher, parent, false);
 
-        return new ViewHolder(view, listener);
+        return new ViewHolder(view, listener,listenerEDIT);
     }
 
     @Override
@@ -85,22 +83,8 @@ public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacher
         holder.tvDate.setText(date);
         holder.IVEdit.setImageResource(R.drawable.ic_baseline_edit_24);
         holder.IVDelete.setImageResource(R.drawable.ic_baseline_delete_24);
-//        holder.IVDelete.setOnClickListener((view) -> {
-//            final Dialog descDialog = new Dialog(getContext());
-//                //Add A title in hte custom layout
-//                descDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//                //The user able to cancel the dialog by clicking anywhere outside the dialog
-//                descDialog.setCancelable(true);
-//                //Mention the name of the layout of your custom dialog
-//                descDialog.setContentView(R.layout.student_description_dialog);
-//                descDialog.show();
-//
-//
-//
-//        });
+
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -111,7 +95,7 @@ public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacher
         ConstraintLayout constraintlayoutTaskView;
         TextView tvTaskTitle,tvTaskDesc,tvDate;
         ImageView IVEdit, IVDelete;
-        public ViewHolder(@NonNull View itemView, OnItemClickListener listener) {
+        public ViewHolder(@NonNull View itemView, OnItemClickListener listener, OnItemClickListenerEDIT listener2) {
             super(itemView);
 
             tvTaskTitle = itemView.findViewById(R.id.tvTaskTitle);
@@ -126,58 +110,12 @@ public class TaskViewTeacherAdapter extends RecyclerView.Adapter<TaskViewTeacher
                     listener.onItemClick(getAdapterPosition());
                 }
             });
-
+            IVEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    listenerEDIT.onItemClick(getAdapterPosition());
+                }
+            });
         }
-        //Function to display the custom dialog
-        private void showCustomDialog() {
-            final Dialog descDialog = new Dialog(itemView.getContext());
-            //Add A title in hte custom layout
-            descDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            //The user able to cancel the dialog by clicking anywhere outside the dialog
-            descDialog.setCancelable(true);
-            //Mention the name of the layout of your custom dialog
-            descDialog.setContentView(R.layout.student_description_dialog);
-
-            //initializing the views of the dialog
-            final EditText ETStudentDescription = descDialog.findViewById(R.id.ETStudentDescription);
-//            DatabaseReference dbDesc = database.getReference("Users").child(StudentID);
-//            dbDesc.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-//                @Override
-//                public void onComplete(@NonNull Task<DataSnapshot> task) {
-//                    DataSnapshot snapshot = task.getResult();
-//                    // initial description
-//                    ETStudentDescription.setText(snapshot.child("Description").getValue().toString());
-//                }
-//            });
-//
-//            //String updatedDescription = String.valueOf(ETStudentDescription.getText());
-//
-//            Button btnUpdate = descDialog.findViewById(R.id.btnUpdate);
-//            btnUpdate.setOnClickListener((v -> {
-//                String studentUpdatedDesc = ETStudentDescription.getText().toString();
-//                dbDesc.child("Description").setValue(studentUpdatedDesc);
-//                // dfDesc.update("Description",studentUpdatedDesc);
-//                dbDesc.get().addOnSuccessListener(new OnSuccessListener<DataSnapshot>() {
-//                    @Override
-//                    public void onSuccess(DataSnapshot dataSnapshot) {
-//                        Toast.makeText(getContext().getApplicationContext(), "Update Successfully!", Toast.LENGTH_SHORT).show();
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Toast.makeText(getContext().getApplicationContext(), "Fail!", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//
-//                descDialog.dismiss();
-//            }));
-
-            descDialog.show();
-        }
-
     }
-
-
-
-
 }

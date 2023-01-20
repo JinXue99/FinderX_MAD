@@ -115,7 +115,7 @@ public class TeacherAddNewTaskFragment extends Fragment {
         //Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_teacher_add_new_task,null,false);
 
-    // Connect to Firebase
+        // Connect to Firebase
         teacher = FirebaseAuth.getInstance().getCurrentUser();
         TeacherID = teacher.getUid();
         database = FirebaseDatabase.getInstance();
