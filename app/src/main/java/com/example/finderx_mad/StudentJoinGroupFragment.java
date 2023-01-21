@@ -95,24 +95,35 @@ public class StudentJoinGroupFragment extends Fragment {
         UserName = (TextView) view.findViewById(R.id.username);
         GroupName = (TextView) view.findViewById(R.id.groupname);
 
-        LoadUser();
+        btnPerform = (Button)view.findViewById(R.id.btnPerform);
+        btnDecline = (Button)view.findViewById(R.id.btnDecline);
+
+        UserName.setText("Hello");
+        GroupName.setText("finderx@gmail.com");
+
+        CheckUserExistence(StudentID);
+
+        //LoadUser();
         btnPerform.setOnClickListener(new View.OnClickListener() {
-                                          @Override
-                                          public void onClick(View view) {
-                                              PerformAction(StudentID);
+            @Override
+            public void onClick(View view) {
+                PerformAction(StudentID);
                                           }
                                       });
         CheckUserExistence(StudentID);
         return view;
     }
 
-    private void LoadUser(){
+    /*private void LoadUser(){
         studentRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     username = snapshot.child("Name").getValue().toString();
                     groupname = snapshot.child("Email").getValue().toString();
+
+                    UserName.setText(username);
+                    GroupName.setText(groupname);
                 }else{
                     Toast.makeText(getActivity(), "Data Not Found", Toast.LENGTH_SHORT).show();
                 }
@@ -123,11 +134,11 @@ public class StudentJoinGroupFragment extends Fragment {
                 Toast.makeText(getActivity(), "" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
+    }*/
 
     //View Request
     private void CheckUserExistence(String StudentID){
-        friendRef.child(student.getUid()).child(StudentID).addValueEventListener(new ValueEventListener() {
+        friendRef.child(student.getUid()).child("2ENiy1H46BNaOZ7SGAJ5u3yFGM62").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
@@ -143,36 +154,51 @@ public class StudentJoinGroupFragment extends Fragment {
 
             }
         });
-        requestRef.child(student.getUid()).child(StudentID).addValueEventListener(new ValueEventListener() {
+        friendRef.child("2ENiy1H46BNaOZ7SGAJ5u3yFGM62").child(student.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-        if (snapshot.exists()){
-            if(snapshot.child("status").getValue().toString().equals("pending")){
-                CurrentState = "I_sent_pending";
-                btnPerform.setText("Leave Group");
-                btnDecline.setVisibility(View.GONE);
+                if(snapshot.exists()){
+                    CurrentState = "Member";
+                    btnPerform.setText("You are Member");
+                    btnDecline.setText("Being Rejected");
+                    btnDecline.setVisibility(View.VISIBLE);
+                }
             }
-            if(snapshot.child("status").getValue().toString().equals("decline")){
-                CurrentState = "I_sent_decline";
-                btnPerform.setText("Leave Group");
-                btnDecline.setVisibility(View.GONE);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
-        }
-            }
+        });
+        requestRef.child(student.getUid()).child("2ENiy1H46BNaOZ7SGAJ5u3yFGM62").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    if(snapshot.child("status").getValue().toString().equals("pending")){
+                        CurrentState = "I_sent_pending";
+                        btnPerform.setText("Leave Group");
+                        btnDecline.setVisibility(View.GONE);
+                    }
+                    if(snapshot.child("status").getValue().toString().equals("decline")){
+                        CurrentState = "I_sent_decline";
+                        btnPerform.setText("Leave Group");
+                        btnDecline.setVisibility(View.GONE);
+                    }
+            }}
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-        requestRef.child(StudentID).child(student.getUid()).addValueEventListener(new ValueEventListener() {
+
+        requestRef.child("2ENiy1H46BNaOZ7SGAJ5u3yFGM62").child(student.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     if(snapshot.child("status").getValue().toString().equals("pending")){
                         CurrentState="he_sent_pending";
                         btnPerform.setText("Accept Join Group Request");
-                        btnDecline.setText(("Decline Request"));
+                        btnDecline.setText("Decline Request");
                         btnDecline.setVisibility(View.VISIBLE);
                     }
                 }
@@ -195,7 +221,7 @@ public class StudentJoinGroupFragment extends Fragment {
         if(CurrentState.equals("new")){
             HashMap hashMap = new HashMap();
             hashMap.put("status","pending");
-            requestRef.child(student.getUid()).child(StudentID).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+            requestRef.child(student.getUid()).child("MnPiquK6wuPtaLKtgMOOxKiWVd03").updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
                 @Override
                 public void onComplete(@NonNull Task task) {
                     if(task.isSuccessful()){
@@ -210,7 +236,7 @@ public class StudentJoinGroupFragment extends Fragment {
             });
         }
         if(CurrentState.equals("I_sent_pending")||CurrentState.equals("I_sent_decline")){
-            requestRef.child(student.getUid()).child(StudentID).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            requestRef.child(student.getUid()).child("MnPiquK6wuPtaLKtgMOOxKiWVd03").removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
@@ -224,7 +250,7 @@ public class StudentJoinGroupFragment extends Fragment {
             };
         })
         ;if(CurrentState.equals("he_sent_pending")){
-            requestRef.child(student.getUid()).child(StudentID).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            requestRef.child("MnPiquK6wuPtaLKtgMOOxKiWVd03").child(student.getUid()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
@@ -235,7 +261,7 @@ public class StudentJoinGroupFragment extends Fragment {
                             @Override
                             public void onComplete(@NonNull Task task) {
                                 if(task.isSuccessful()){
-                                    friendRef.child(student.getUid()).child(StudentID).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                                    friendRef.child("MnPiquK6wuPtaLKtgMOOxKiWVd03").child(student.getUid()).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
                                         @Override
                                         public void onComplete(@NonNull Task task) {
                                             Toast.makeText(getActivity(),"You accept this member",Toast.LENGTH_SHORT).show();
