@@ -96,6 +96,8 @@ public class StudentJoinGroupFragment extends Fragment {
         GroupName = (TextView) view.findViewById(R.id.groupname);
 
         LoadUser();
+        btnPerform.setOnClickListener((view1 -> {PerformAction(StudentID);}));
+        CheckUserExistence(StudentID);
         return view;
     }
 
@@ -118,6 +120,72 @@ public class StudentJoinGroupFragment extends Fragment {
         });
     }
 
+    //View Request
+    private void CheckUserExistence(String StudentID){
+        friendRef.child(student.getUid()).child(StudentID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    CurrentState = "Member";
+                    btnPerform.setText("You are Member");
+                    btnDecline.setText("Being Rejected");
+                    btnDecline.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        requestRef.child(student.getUid()).child(StudentID).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+        if (snapshot.exists()){
+            if(snapshot.child("status").getValue().toString().equals("pending")){
+                CurrentState = "I_sent_pending";
+                btnPerform.setText("Leave Group");
+                btnDecline.setVisibility(View.GONE);
+            }
+            if(snapshot.child("status").getValue().toString().equals("decline")){
+                CurrentState = "I_sent_decline";
+                btnPerform.setText("Leave Group");
+                btnDecline.setVisibility(View.GONE);
+            }
+        }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        requestRef.child(StudentID).child(student.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    if(snapshot.child("status").getValue().toString().equals("pending")){
+                        CurrentState="he_sent_pending";
+                        btnPerform.setText("Accept Join Group Request");
+                        btnDecline.setText(("Decline Request"));
+                        btnDecline.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        if(CurrentState.equals("new")){
+            CurrentState = "new";
+            btnPerform.setText("Send Join Group Request");
+            btnDecline.setVisibility(View.GONE);
+        }
+    }
+
+    //Send Request
     private void PerformAction(String StudentID) {
         if(CurrentState.equals("new")){
             HashMap hashMap = new HashMap();

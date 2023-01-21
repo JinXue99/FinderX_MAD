@@ -4,12 +4,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,13 +29,14 @@ import java.util.ArrayList;
  */
 public class StudentViewRequestFragment extends Fragment {
 
-    ArrayList<View_GroupUser> list;
-    RecyclerView recyclerView;
-    FirebaseDatabase database;
-    DatabaseReference myRef, TaskRef;
-    myView_GroupAdapter myAdapter;
-    View_GroupUser studentViewRequest;
+    String username,groupname,CurrentState="new",StudentID;
+    Button btnPerform,btnDecline;
+    TextView UserName,GroupName;
 
+    FirebaseDatabase database;
+    DatabaseReference studentRef,requestRef,friendRef;
+    FirebaseAuth mAuth;
+    FirebaseUser student;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -79,22 +84,21 @@ public class StudentViewRequestFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_student_view_request, null, false);
 
-        recyclerView = view.findViewById(R.id.addRecycleView);
-
+        student = FirebaseAuth.getInstance().getCurrentUser();
+        StudentID = student.getUid();
         database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("");
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext().getApplicationContext());
-        layoutManager.setReverseLayout(true);
-        layoutManager.setStackFromEnd(true);
-        recyclerView.setLayoutManager(layoutManager);
+        // Realtime Database Reference
+        studentRef = database.getReference("Users").child(StudentID);
+        requestRef = FirebaseDatabase.getInstance().getReference().child("Requests");
+        friendRef = FirebaseDatabase.getInstance().getReference().child("Friends");
+        mAuth = FirebaseAuth.getInstance();
 
-        list = new ArrayList<>();
-        myAdapter = new myView_GroupAdapter(getContext().getApplicationContext(), list);
-        recyclerView.setAdapter(myAdapter);
+        UserName = (TextView) view.findViewById(R.id.username);
+        GroupName = (TextView) view.findViewById(R.id.groupname);
 
 
-        myRef.addValueEventListener(new ValueEventListener() {
+        studentRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
@@ -114,8 +118,8 @@ public class StudentViewRequestFragment extends Fragment {
         return view;
     }
 
-//ViewRequest
-    /*private void CheckUserExistence(String userEmail) {
+
+    private void CheckUserExistence(String userEmail) {
         myRef.child("T1").child("Members").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -197,6 +201,5 @@ public class StudentViewRequestFragment extends Fragment {
 
     }
     //View Request
-}
-     */
+
 }
