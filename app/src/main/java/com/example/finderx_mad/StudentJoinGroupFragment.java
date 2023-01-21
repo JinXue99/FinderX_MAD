@@ -96,7 +96,12 @@ public class StudentJoinGroupFragment extends Fragment {
         GroupName = (TextView) view.findViewById(R.id.groupname);
 
         LoadUser();
-        btnPerform.setOnClickListener((view1 -> {PerformAction(StudentID);}));
+        btnPerform.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View view) {
+                                              PerformAction(StudentID);
+                                          }
+                                      });
         CheckUserExistence(StudentID);
         return view;
     }

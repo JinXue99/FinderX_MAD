@@ -48,7 +48,7 @@
     <fragment
         android:id="@+id/DestStudentGrouplist"
         android:name="com.example.finderx_mad.StudentGroupListFragment"
-        android:label="fragment_student_group_list" />
+        android:label="Student Group List" />
     <fragment
         android:id="@+id/DestGroup2003"
         android:name="com.example.finderx_mad.StudentGroup2003Fragment"
