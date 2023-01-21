@@ -72,7 +72,7 @@
     <fragment
         android:id="@+id/DestViewMembers"
         android:name="com.example.finderx_mad.StudentJoinGroupFragment"
-        android:label="fragment_student_join_group"
+        android:label="Join Group"
         tools:layout="@layout/fragment_student_join_group" />
     <fragment
         android:id="@+id/DestStudentCreateGroup"
