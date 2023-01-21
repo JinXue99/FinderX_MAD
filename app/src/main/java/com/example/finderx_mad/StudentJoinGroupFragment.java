@@ -5,19 +5,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,16 +30,14 @@ import java.util.ArrayList;
  */
 public class StudentJoinGroupFragment extends Fragment {
 
-    RecyclerView recview;
-    SGroupListAdapter2 adapter;
-    ArrayList<SGroupListMAD> list;//,sortList;
-    FirebaseDatabase database;
-    DatabaseReference myRef;
-    SGroupListMAD viewGroup;
+    String username,groupname,CurrentState="new",StudentID;
+    Button btnPerform,btnDecline;
+    TextView UserName,GroupName;
 
-    Button btnJoinGroup,btnDecline;
-    String CurrentState = "new";
-    String tm1;
+    FirebaseDatabase database;
+    DatabaseReference studentRef,requestRef,friendRef;
+    FirebaseAuth mAuth;
+    FirebaseUser student;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -79,152 +81,55 @@ public class StudentJoinGroupFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_student_join_group, null, false);
-        recview = (RecyclerView) view.findViewById(R.id.RVmembers);
 
-//        String userEmail = getArguments().getString("etUsernameEmail");
+        student = FirebaseAuth.getInstance().getCurrentUser();
+        StudentID = student.getUid();
+        database = FirebaseDatabase.getInstance();
 
-        database = FirebaseDatabase.getInstance("https://finderx-6cd15-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        myRef = database.getReference("Student Group List MAD").child("Teams");
+        // Realtime Database Reference
+        studentRef = database.getReference("Users").child(StudentID);
+        requestRef = FirebaseDatabase.getInstance().getReference().child("Requests");
+        friendRef = FirebaseDatabase.getInstance().getReference().child("Friends");
+        mAuth = FirebaseAuth.getInstance();
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext().getApplicationContext());
-        layoutManager.setReverseLayout(true);
-        layoutManager.setStackFromEnd(true);
-        recview.setLayoutManager(layoutManager);
+        UserName = (TextView) view.findViewById(R.id.username);
+        GroupName = (TextView) view.findViewById(R.id.groupname);
 
-        list = new ArrayList<>();
-        adapter = new SGroupListAdapter2(getContext().getApplicationContext(), list);
-        recview.setAdapter(adapter);
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    viewGroup = dataSnapshot.getValue(SGroupListMAD.class);
-                    list.add(viewGroup);
-                }
-                adapter.notifyDataSetChanged();
-            }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        /*btnJoinGroup.setOnClickListener((view1) -> {PerformAction(userEmail);});
-        CheckUserExistence(userEmail);*/
-
-
-        btnJoinGroup = (Button) view.findViewById(R.id.btnJoinGroup);
-        btnDecline = (Button) view.findViewById(R.id.btnDecline);
-
-        /*btnJoinGroup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PerformAction(userEmail);
-            }
-        });*/
+        LoadUser();
         return view;
     }
 
-    //ViewRequest
-    /*private void CheckUserExistence(String userEmail) {
-        myRef.child("T1").child("Members").addValueEventListener(new ValueEventListener() {
+    private void LoadUser(){
+        studentRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
-                    CurrentState = "Member";
-                    btnJoinGroup.setText("View Group");
-                    btnDecline.setText("Left Group");
-                    btnDecline.setVisibility(View.VISIBLE);
+                    username = snapshot.child("Name").getValue().toString();
+                    groupname = snapshot.child("Email").getValue().toString();
+                }else{
+                    Toast.makeText(getActivity(), "Data Not Found", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(getActivity(), "" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
             }
         });
-
-        myRef.child("Members").child("T1").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    CurrentState = "Member";
-                    btnJoinGroup.setText("View Group");
-                    btnDecline.setText("Left Group");
-                    btnDecline.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        myRef.child(myId).child(nuserID).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    if(snapshot.child("status").getValue().toString().equals("pending")){
-                        CurrentState = "I_sent_pending";
-                        btnJoinGroup.setText("Leave Group");
-                        btnDecline.setVisibility(View.GONE);
-                    }
-                    if(snapshot.child("status").getValue().toString().equals("decline")){
-                        CurrentState = "I_sent_decline";
-                        btnJoinGroup.setText("Leave Group");
-                        btnDecline.setVisibility(View.GONE);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        myRef.child(userId).child(myId).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    if(snapshot.child("status").getValue().toString().equals("pending")){
-                        CurrentState="he_sent_pending";
-                        btnJoinGroup.setText("Accept Join Group Request");
-                        btnDecline.setText(("Decline Request"));
-                        btnDecline.setVisibility(View.VISIBLE);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        if(CurrentState.equals("new")){
-            CurrentState = "new";
-            btnJoinGroup.setText("Send Join Group Request");
-            btnDecline.setVisibility(View.GONE);
-        }
-
     }
-    //View Request
 
-    //Send Request
-    private void PerformAction(String userEmail) {
+    private void PerformAction(String StudentID) {
         if(CurrentState.equals("new")){
             HashMap hashMap = new HashMap();
             hashMap.put("status","pending");
-            myRef.child("T1").child("Members").updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+            requestRef.child(student.getUid()).child(StudentID).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
                 @Override
                 public void onComplete(@NonNull Task task) {
                     if(task.isSuccessful()){
                         Toast.makeText(getActivity(), "You have sent Join Request", Toast.LENGTH_SHORT).show();
                         btnDecline.setVisibility(View.GONE);
                         CurrentState="I_sent_pending";
-                        btnJoinGroup.setText("Cancel Join Request");
+                        btnPerform.setText("Cancel Join Request");
                     }else{
                         Toast.makeText(getActivity()," "+ task.getException().toString(),Toast.LENGTH_SHORT).show();
                     }
@@ -232,38 +137,37 @@ public class StudentJoinGroupFragment extends Fragment {
             });
         }
         if(CurrentState.equals("I_sent_pending")||CurrentState.equals("I_sent_decline")){
-            myRef.child("T1").child("Members").removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            requestRef.child(student.getUid()).child(StudentID).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(getActivity(),"You have cancelled Join Request",Toast.LENGTH_SHORT).show();
                         CurrentState = "nothing";
-                        btnJoinGroup.setText("Send Join Request");
+                        btnPerform.setText("Send Join Request");
                         btnDecline.setVisibility(View.GONE);
                     }else{
                         Toast.makeText(getActivity()," "+ task.getException().toString(),Toast.LENGTH_SHORT).show();
                     }
-                }
-            });
-        }
-        if(CurrentState.equals("he_sent_pending")){
-            myRef.child("T1").child("Members").removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            };
+        })
+        ;if(CurrentState.equals("he_sent_pending")){
+            requestRef.child(student.getUid()).child(StudentID).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful()){
                         HashMap hashMap = new HashMap();
                         hashMap.put("status","member");
-                        hashMap.put("TName",tm1);
-                        myRef.updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                        hashMap.put("TName",username);
+                        studentRef.updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
                             @Override
                             public void onComplete(@NonNull Task task) {
                                 if(task.isSuccessful()){
-                                    myRef.child("T1").child("Members").updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                                    friendRef.child(student.getUid()).child(StudentID).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
                                         @Override
                                         public void onComplete(@NonNull Task task) {
                                             Toast.makeText(getActivity(),"You accept this member",Toast.LENGTH_SHORT).show();
                                             CurrentState = "Member";
-                                            btnJoinGroup.setText("View Group");
+                                            btnPerform.setText("View Group");
                                             btnDecline.setText("Left Group");
                                             btnDecline.setVisibility(View.VISIBLE);
                                         }
@@ -278,5 +182,7 @@ public class StudentJoinGroupFragment extends Fragment {
         if(CurrentState.equals("friend")){
             //
         }
-    }*/
-}
+    }
+
+
+}}

@@ -4,131 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_studentbackground"
     tools:context=".StudentJoinGroupFragment">
 
-
-    <ImageView
-        android:id="@+id/ivGroupProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/tvTeamName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Team 1"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivGroupProfile" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvCourse"
-        android:layout_width="276dp"
-        android:layout_height="310dp"
-        android:layout_margin="16dp"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="#FFFFFF"
-        app:cardCornerRadius="30dp"
-        app:cardElevation="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTeamName" >
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:elevation="5dp"
-            android:padding="5dp">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/RVmembers"
-                android:layout_width="193dp"
-                android:layout_height="298dp"
-                android:layout_marginStart="36dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="49dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="344dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="349dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineDown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="705dp" />
-
     <Button
-        android:id="@+id/btnJoinGroup"
-        android:layout_width="200dp"
+        android:id="@+id/btnPerform"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#514FE1"
-        android:fontFamily="sans-serif"
-        android:text="Send Request"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:cornerRadius="50dp"
+        android:layout_marginBottom="150dp"
+        android:background="@color/teal_200"
+        android:backgroundTint="#A5D6A7"
+        android:text="Join Group"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvCourse" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnDecline"
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:backgroundTint="#E82031"
-        android:fontFamily="sans-serif"
-        android:text="Cancel Request"
-        android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:cornerRadius="50dp"
+        android:layout_marginTop="50dp"
+        android:text="Decline Request"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cvCourse" />
+        app:layout_constraintTop_toBottomOf="@+id/btnPerform" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="181dp"
+        android:text="Username"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/groupname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Groupname"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
