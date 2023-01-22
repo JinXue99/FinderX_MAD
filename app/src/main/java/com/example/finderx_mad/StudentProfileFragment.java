@@ -169,10 +169,10 @@ public class StudentProfileFragment extends Fragment {
                     TVStudentMajor.setText(snapshot.child("Majoring").getValue().toString());
                     TVStudentPhone.setText(snapshot.child("Phone").getValue().toString());
                     TVStudentDescription.setText(snapshot.child("Description").getValue().toString());
-                    if (snapshot.child("image").exists()) {
-                        Picasso.get().load(snapshot.child("image").getValue().toString()).into(IVStudentProfileImage);
-                    }else{
+                    if (!snapshot.child("image").exists()) {
                         IVStudentProfileImage.setImageResource(R.drawable.avatar_profile);
+                    }else{
+                        Picasso.get().load(snapshot.child("image").getValue().toString()).into(IVStudentProfileImage);
                     }
 
                 }

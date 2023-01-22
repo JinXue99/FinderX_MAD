@@ -30,12 +30,12 @@ import java.util.HashMap;
  */
 public class StudentJoinGroupFragment extends Fragment {
 
-    String username,groupname,CurrentState="new",StudentID;
-    Button btnPerform,btnDecline;
-    TextView UserName,GroupName;
+    String username, groupname, CurrentState = "new", StudentID;
+    Button btnPerform, btnDecline;
+    TextView UserName, GroupName;
 
     FirebaseDatabase database;
-    DatabaseReference studentRef,requestRef,friendRef;
+    DatabaseReference studentRef, requestRef, friendRef, groupRef;
     FirebaseAuth mAuth;
     FirebaseUser student;
 
@@ -90,41 +90,43 @@ public class StudentJoinGroupFragment extends Fragment {
         studentRef = database.getReference("Users").child(StudentID);
         requestRef = FirebaseDatabase.getInstance().getReference().child("Requests");
         friendRef = FirebaseDatabase.getInstance().getReference().child("Friends");
+        groupRef = FirebaseDatabase.getInstance().getReference("Student Group List MAD").child("Teams");
         mAuth = FirebaseAuth.getInstance();
 
         UserName = (TextView) view.findViewById(R.id.username);
         GroupName = (TextView) view.findViewById(R.id.groupname);
 
-        btnPerform = (Button)view.findViewById(R.id.btnPerform);
-        btnDecline = (Button)view.findViewById(R.id.btnDecline);
 
-        UserName.setText("Hello");
-        GroupName.setText("finderx@gmail.com");
+        btnPerform = view.findViewById(R.id.btnPerform);
+        btnDecline = view.findViewById(R.id.btnDecline);
 
+        LoadUser();
         CheckUserExistence(StudentID);
 
-        //LoadUser();
         btnPerform.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("Testing");
                 PerformAction(StudentID);
-                                          }
-                                      });
-        CheckUserExistence(StudentID);
+                System.out.println("Testi2");
+            }
+        });
+
+
         return view;
     }
 
-    /*private void LoadUser(){
-        studentRef.addValueEventListener(new ValueEventListener() {
+    private void LoadUser() {
+        groupRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    username = snapshot.child("Name").getValue().toString();
-                    groupname = snapshot.child("Email").getValue().toString();
+                if (snapshot.exists()) {
+                    username = snapshot.child("Hello").child("tname").getValue().toString();
+                    groupname = snapshot.child("Hello").child("tm1").getValue().toString();
 
                     UserName.setText(username);
                     GroupName.setText(groupname);
-                }else{
+                } else {
                     Toast.makeText(getActivity(), "Data Not Found", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -134,18 +136,19 @@ public class StudentJoinGroupFragment extends Fragment {
                 Toast.makeText(getActivity(), "" + error.getMessage().toString(), Toast.LENGTH_SHORT).show();
             }
         });
-    }*/
+    }
+
 
     //View Request
-    private void CheckUserExistence(String StudentID){
-        friendRef.child(student.getUid()).child("2ENiy1H46BNaOZ7SGAJ5u3yFGM62").addValueEventListener(new ValueEventListener() {
+    private void CheckUserExistence(String StudentID) {
+        requestRef.child(student.getUid()).child("MnPiquK6wuPtaLKtgMOOxKiWVd03").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
+                if (snapshot.exists()) {
                     CurrentState = "Member";
                     btnPerform.setText("You are Member");
-                    btnDecline.setText("Being Rejected");
-                    btnDecline.setVisibility(View.VISIBLE);
+                    // btnDecline.setText("Being Rejected");
+                    //btnDecline.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -154,50 +157,83 @@ public class StudentJoinGroupFragment extends Fragment {
 
             }
         });
-        friendRef.child("2ENiy1H46BNaOZ7SGAJ5u3yFGM62").child(student.getUid()).addValueEventListener(new ValueEventListener() {
+//        requestRef.child(student.getUid()).child("MnPiquK6wuPtaLKtgMOOxKiWVd03").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if(snapshot.exists()){
+//                    CurrentState = "Member";
+//                    btnPerform.setText("You are Member");
+//                    btnDecline.setText("Being Rejected");
+//                    btnDecline.setVisibility(View.VISIBLE);
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//        requestRef.child(student.getUid()).child("MJtSP27QtiVw3AqxYbjBzkFZqUc2").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (snapshot.exists()){
+//                    if(snapshot.child("status").getValue().toString().equals("pending")){
+//                        CurrentState = "I_sent_pending";
+//                        btnPerform.setText("Leave Group");
+//                        btnDecline.setVisibility(View.GONE);
+//                    }
+//                    if(snapshot.child("status").getValue().toString().equals("decline")){
+//                        CurrentState = "I_sent_decline";
+//                        btnPerform.setText("Leave Group");
+//                        btnDecline.setVisibility(View.GONE);
+//                    }
+//                }}
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+
+        requestRef.child("MJtSP27QtiVw3AqxYbjBzkFZqUc2").child(student.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    CurrentState = "Member";
-                    btnPerform.setText("You are Member");
-                    btnDecline.setText("Being Rejected");
-                    btnDecline.setVisibility(View.VISIBLE);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        requestRef.child(student.getUid()).child("2ENiy1H46BNaOZ7SGAJ5u3yFGM62").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    if(snapshot.child("status").getValue().toString().equals("pending")){
-                        CurrentState = "I_sent_pending";
-                        btnPerform.setText("Leave Group");
-                        btnDecline.setVisibility(View.GONE);
-                    }
-                    if(snapshot.child("status").getValue().toString().equals("decline")){
-                        CurrentState = "I_sent_decline";
-                        btnPerform.setText("Leave Group");
-                        btnDecline.setVisibility(View.GONE);
-                    }
-            }}
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        requestRef.child("2ENiy1H46BNaOZ7SGAJ5u3yFGM62").child(student.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    if(snapshot.child("status").getValue().toString().equals("pending")){
-                        CurrentState="he_sent_pending";
+                if (snapshot.exists()) {
+                    if (snapshot.child("status").getValue().toString().equals("pending")) {
+                        CurrentState = "he_sent_pending";
                         btnPerform.setText("Accept Join Group Request");
+                        btnPerform.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                requestRef.child("MJtSP27QtiVw3AqxYbjBzkFZqUc2").child(student.getUid()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            Toast.makeText(getContext().getApplicationContext(), "testing", Toast.LENGTH_SHORT).show();
+                                            HashMap hashMap = new HashMap();
+                                            hashMap.put("status", "member");
+                                            hashMap.put("TName", username);
+                                            groupRef.child("Hello").updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                                                @Override
+                                                public void onComplete(@NonNull Task task) {
+                                                    if (task.isSuccessful()) {
+                                                        requestRef.child(student.getUid()).child("MnPiquK6wuPtaLKtgMOOxKiWVd03").updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task task) {
+                                                                Toast.makeText(getActivity(), "You accept this member", Toast.LENGTH_SHORT).show();
+                                                                CurrentState = "Member";
+                                                                btnPerform.setText("View Group");
+                                                                btnDecline.setText("Left Group");
+                                                                btnDecline.setVisibility(View.VISIBLE);
+                                                            }
+                                                        });
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    }
+                                });
+                            }
+                        });
                         btnDecline.setText("Decline Request");
                         btnDecline.setVisibility(View.VISIBLE);
                     }
@@ -209,7 +245,7 @@ public class StudentJoinGroupFragment extends Fragment {
 
             }
         });
-        if(CurrentState.equals("new")){
+        if (CurrentState.equals("new")) {
             CurrentState = "new";
             btnPerform.setText("Send Join Group Request");
             btnDecline.setVisibility(View.GONE);
@@ -218,70 +254,127 @@ public class StudentJoinGroupFragment extends Fragment {
 
     //Send Request
     private void PerformAction(String StudentID) {
-        if(CurrentState.equals("new")){
+        if (CurrentState.equals("new")) {
             HashMap hashMap = new HashMap();
-            hashMap.put("status","pending");
+            hashMap.put("status", "pending");
             requestRef.child(student.getUid()).child("MnPiquK6wuPtaLKtgMOOxKiWVd03").updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
                 @Override
                 public void onComplete(@NonNull Task task) {
-                    if(task.isSuccessful()){
+                    if (task.isSuccessful()) {
                         Toast.makeText(getActivity(), "You have sent Join Request", Toast.LENGTH_SHORT).show();
                         btnDecline.setVisibility(View.GONE);
-                        CurrentState="I_sent_pending";
+                        CurrentState = "he_sent_pending";
                         btnPerform.setText("Cancel Join Request");
-                    }else{
-                        Toast.makeText(getActivity()," "+ task.getException().toString(),Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getActivity(), " " + task.getException().toString(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
         }
-        if(CurrentState.equals("I_sent_pending")||CurrentState.equals("I_sent_decline")){
-            requestRef.child(student.getUid()).child("MnPiquK6wuPtaLKtgMOOxKiWVd03").removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(getActivity(),"You have cancelled Join Request",Toast.LENGTH_SHORT).show();
-                        CurrentState = "nothing";
-                        btnPerform.setText("Send Join Request");
-                        btnDecline.setVisibility(View.GONE);
-                    }else{
-                        Toast.makeText(getActivity()," "+ task.getException().toString(),Toast.LENGTH_SHORT).show();
-                    }
-            };
-        })
-        ;if(CurrentState.equals("he_sent_pending")){
-            requestRef.child("MnPiquK6wuPtaLKtgMOOxKiWVd03").child(student.getUid()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        HashMap hashMap = new HashMap();
-                        hashMap.put("status","member");
-                        hashMap.put("TName",username);
-                        studentRef.updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+
+        DatabaseReference statusRef = requestRef.child("MJtSP27QtiVw3AqxYbjBzkFZqUc2").child(student.getUid()).child("status");
+        statusRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    if (snapshot.getValue().toString().equals("pending")) {
+                        btnPerform.setOnClickListener(new View.OnClickListener() {
                             @Override
-                            public void onComplete(@NonNull Task task) {
-                                if(task.isSuccessful()){
-                                    friendRef.child("MnPiquK6wuPtaLKtgMOOxKiWVd03").child(student.getUid()).updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                            public void onClick(View v) {
+                                if (CurrentState.equals("he_sent_pending")) {
+                                    requestRef.child("MJtSP27QtiVw3AqxYbjBzkFZqUc2").child(student.getUid()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
-                                        public void onComplete(@NonNull Task task) {
-                                            Toast.makeText(getActivity(),"You accept this member",Toast.LENGTH_SHORT).show();
-                                            CurrentState = "Member";
-                                            btnPerform.setText("View Group");
-                                            btnDecline.setText("Left Group");
-                                            btnDecline.setVisibility(View.VISIBLE);
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                //Toast.makeText(getContext().getApplicationContext(), "testing", Toast.LENGTH_SHORT).show();
+                                                HashMap hashMap = new HashMap();
+                                                hashMap.put("status", "member");
+                                                hashMap.put("TName", username);
+                                                groupRef.child("Hello").updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task task) {
+                                                        if (task.isSuccessful()) {
+                                                            requestRef.child(student.getUid()).child("MnPiquK6wuPtaLKtgMOOxKiWVd03").updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task task) {
+                                                                    Toast.makeText(getActivity(), "You accept this member", Toast.LENGTH_SHORT).show();
+                                                                    CurrentState = "Member";
+                                                                    //btnPerform.setText("View Group");
+                                                                    //btnDecline.setText("Left Group");
+                                                                    btnPerform.setVisibility(View.INVISIBLE);
+                                                                    btnDecline.setVisibility(View.INVISIBLE);
+                                                                }
+                                                            });
+                                                        }
+                                                    }
+                                                });
+
+                                            }
                                         }
+
+                                        ;
+
                                     });
                                 }
                             }
                         });
-                    }
+                    };
                 }
-            });
-        }
-        if(CurrentState.equals("friend")){
-            //
-        }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+//        if (CurrentState.equals("I_sent_pending") || CurrentState.equals("I_sent_decline")) {
+//            requestRef.child(student.getUid()).child("MnPiquK6wuPtaLKtgMOOxKiWVd03").removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+//                @Override
+//                public void onComplete(@NonNull Task<Void> task) {
+//                    if (task.isSuccessful()) {
+//                        Toast.makeText(getActivity(), "You have cancelled Join Request", Toast.LENGTH_SHORT).show();
+//                        CurrentState = "new";
+//                        btnPerform.setText("Send Join Request");
+//                        btnDecline.setVisibility(View.GONE);
+//                    } else {
+//                        Toast.makeText(getActivity(), " " + task.getException().toString(), Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//
+//                ;
+//            });
+//            if (CurrentState.equals("he_sent_pending")) {
+//                requestRef.child("MJtSP27QtiVw3AqxYbjBzkFZqUc2").child(student.getUid()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if (task.isSuccessful()) {
+//                            Toast.makeText(getContext().getApplicationContext(),"testing",Toast.LENGTH_SHORT).show();
+//                            HashMap hashMap = new HashMap();
+//                            hashMap.put("status", "member");
+//                            hashMap.put("TName", username);
+//                            groupRef.child("Hello").updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+//                                @Override
+//                                public void onComplete(@NonNull Task task) {
+//                                    if (task.isSuccessful()) {
+//                                        requestRef.child(student.getUid()).child("MnPiquK6wuPtaLKtgMOOxKiWVd03").updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+//                                            @Override
+//                                            public void onComplete(@NonNull Task task) {
+//                                                Toast.makeText(getActivity(), "You accept this member", Toast.LENGTH_SHORT).show();
+//                                                CurrentState = "Member";
+//                                                btnPerform.setText("View Group");
+//                                                btnDecline.setText("Left Group");
+//                                                btnDecline.setVisibility(View.VISIBLE);
+//                                            }
+//                                        });
+//                                    }
+//                                }
+//                            });
+//                        }
+//                    }
+//                });
+//            }
+
+        };
+
     }
-
-
-}}

@@ -63,7 +63,7 @@ public class StudentMainPageFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
         ImageView ivAcc = view.findViewById(R.id.ivAcc);
         View.OnClickListener OCLAcc = new View.OnClickListener() {
@@ -100,16 +100,16 @@ public class StudentMainPageFragment extends Fragment {
             }
         };
         cvAnnouncement.setOnClickListener(OCLAnnouncement);
-
-        CardView cvViewRequest = view.findViewById(R.id.cvViewRequest);
-        View.OnClickListener OCLViewRequest = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.DestStudentViewRequest);
-            }
-        };
-        cvViewRequest.setOnClickListener(OCLViewRequest);
     }
+       // CardView cvViewRequest = view.findViewById(R.id.cvViewRequest);
+//        View.OnClickListener OCLViewRequest = new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Navigation.findNavController(view).navigate(R.id.DestStudentViewRequest);
+//            }
+//        };
+//        cvViewRequest.setOnClickListener(OCLViewRequest);
+//    }
 
 
 }
